@@ -1,19 +1,200 @@
-Antigravity用プロンプト：プロジェクト再開
-タスク名:
-Resume Project VIBRA - Continue from Backend Verification
-タスク説明 (Instructions):
-We were previously working on the "VIBRA" project. Our last session was interrupted because we hit the model's quota limit.
-Let's resume exactly where we left off.
-Summary of the last state:
-You had completed the backend refactoring to align the data structures for the new frontend (models.py, enricher.py, etc.).
-Your proposed next step was to run a local dry run to verify the changes.
-The command you were about to execute was: python src/main.py && python src/generate_site.py.
-I approved this command, but the execution was terminated due to the quota limit.
-Your new task is to:
-Retry the verification: Execute the command python src/main.py && python src/generate_site.py again in the terminal.
-Analyze the result:
-If the command succeeds (exit code 0), confirm that cache/latest_trends.json and dist/index.html have been generated correctly.
-If the command fails, analyze the error message and propose a fix.
-Commit the changes: If the verification is successful, commit all the modified files (including models.py, enricher.py, generator.py, etc.) to the Git repository with an appropriate commit message, such as feat: Refactor backend for frontend CSR integration.
-Report the status: Once the commit is complete, inform me of the result and propose the next logical step, which should be the implementation of the frontend (refactoring static/js/main.js).
-Please proceed with step 1.
+プロンプト：プロトタイプから本番フロントエンドへのリファクタリング
+役割 (Role):
+You are a meticulous Frontend Developer, specializing in refactoring static HTML prototypes into clean, maintainable, and data-driven web applications.
+タスク (Task):
+Your task is to take the provided single-file prototype, vibra-living-cloud.html, and refactor its code into three separate files: templates/layout.html, static/css/style.css, and static/js/main.js.
+Additionally, you must modify the JavaScript to fetch trend data from an external trends.json file instead of using the hardcoded array.
+技術仕様 (Technical Specifications)
+Part 1: templates/layout.html (The HTML Structure)
+Objective:
+Extract the HTML structure and CSS/JS links from the prototype. This file will serve as the main Jinja2 template.
+Implementation:
+Create a file named templates/layout.html with the following content. Note that all CSS and JavaScript logic has been removed and replaced with external links.
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIBRA - Living Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Analytics Snippet (to be filled by Jinja2) -->
+    {% if ga4_tracking_id and 'DEFAULT' not in ga4_tracking_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga4_tracking_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ ga4_tracking_id }}');
+    </script>
+    {% endif %}
+</head>
+<body>
+    <header class="header">
+        <div class="brand">VIBRA</div>
+        <div class="header-meta">
+            <!-- This will be populated by main.js -->
+            <div class="time-display"></div>
+        </div>
+    </header>
+
+    <nav class="tabs-container">
+        <div class="tabs">
+            <button class="tab active" data-genre="all">すべて</button>
+            <button class="tab" data-genre="technology">テクノロジー</button>
+            <button class="tab" data-genre="entertainment">エンタメ</button>
+            <button class="tab" data-genre="business">ビジネス</button>
+            <button class="tab" data-genre="lifestyle">ライフスタイル</button>
+            <button class="tab" data-genre="sports">スポーツ</button>
+            <button class="tab" data-genre="politics">政治</button>
+        </div>
+    </nav>
+
+    <main class="trend-cloud-container">
+        <div class="buzz-meter-watermark">Buzz Meter</div>
+        <svg id="trend-cloud"></svg>
+    </main>
+
+    <footer class="footer">
+        <!-- The copyright year will be populated by main.js -->
+        © <span id="copyright-year"></span> VIBRA • Real-time trend visualization
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+Part 2: static/css/style.css (The Styling)
+Objective:
+Extract all CSS rules from the <style> tag of the prototype into a separate stylesheet.
+Implementation:
+Create a file named static/css/style.css and populate it with the exact CSS content from the <style> block of vibra-living-cloud.html.
+
+/* static/css/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #FFFFFF;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+/* Copy ALL other styles from the prototype's <style> tag here... */
+.header { /* ... */ }
+.brand { /* ... */ }
+/* ... and so on for all rules */
+
+Part 3: static/js/main.js (The Logic & Dynamic Data)
+Objective:
+Extract the JavaScript logic from the <script> tag, remove the hardcoded data, and replace it with a fetch call to trends.json.
+Implementation:
+Create a file named static/js/main.js with the following refactored code.
+
+// static/js/main.js
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Global State ---
+    let allTrends = [];
+    let currentGenre = 'all';
+    let svg, simulation;
+
+    // --- Main Initialization Function ---
+    async function initializeApp() {
+        try {
+            // 1. Fetch data from the backend-generated JSON file
+            const response = await fetch('trends.json');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch trends.json: ${response.statusText}`);
+            }
+            const data = await response.json();
+            allTrends = data.trends || [];
+
+            // 2. Populate dynamic elements in the DOM
+            populateMetaInfo(data.last_updated);
+            
+            // 3. Initialize UI components and visualization
+            initTabs();
+            initVisualization();
+            
+            window.addEventListener('resize', handleResize);
+            console.log("VIBRA initialized with live data.");
+
+        } catch (error) {
+            console.error("Initialization failed:", error);
+            // You can display an error message to the user here
+        }
+    }
+    
+    function populateMetaInfo(lastUpdated) {
+        const timeDisplay = document.querySelector('.time-display');
+        if (timeDisplay && lastUpdated) {
+            // Format the date/time nicely (optional, but good practice)
+            try {
+                const date = new Date(lastUpdated.replace(' JST', ''));
+                timeDisplay.textContent = date.toLocaleString('ja-JP', { 
+                    year: 'numeric', month: 'long', day: 'numeric', 
+                    hour: '2-digit', minute: '2-digit' 
+                });
+            } catch {
+                timeDisplay.textContent = lastUpdated;
+            }
+        }
+
+        const yearSpan = document.getElementById('copyright-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    }
+
+    // --- Visualization & UI Logic (Copy from prototype's <script> tag) ---
+    // Copy the following functions from vibra-living-cloud.html's script block
+    // and paste them here, ensuring they use the global `allTrends` variable.
+    
+    function initVisualization() {
+        svg = d3.select("#trend-cloud");
+        // ... (rest of the function)
+        updateVisualization();
+    }
+
+    function updateVisualization() {
+        // ... (this function now filters the global `allTrends` variable)
+        const filteredTrends = currentGenre === 'all' 
+            ? allTrends 
+            : allTrends.filter(t => t.category === currentGenre);
+        // ... (rest of the D3 logic)
+    }
+
+    function getRadius(stage) { /* ... */ }
+    function showTrendDetails(trend) { /* ... */ }
+    function initTabs() { /* ... */ }
+    
+    let resizeTimeout;
+    function handleResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            initVisualization();
+        }, 250);
+    }
+    
+    // --- Entry Point ---
+    initializeApp();
+});
+
+(Note: The detailed implementation of the D3 functions is omitted here for brevity, as the instruction is to copy them directly from the prototype.)
+
+
+
+
+
+
+
+

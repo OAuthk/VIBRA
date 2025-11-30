@@ -1,193 +1,165 @@
-:root {
-    --bg-color: #ffffff;
-    --text-color: #111111;
-    --accent-color: #ff3333;
-    --font-serif: 'Noto Serif JP', serif;
-    --font-sans: 'Zen Kaku Gothic New', sans-serif;
+/* static/css/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-sans);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #FFFFFF;
+    color: #111827;
     overflow-x: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: opacity 0.3s;
-}
-
-a:hover {
-    opacity: 0.7;
-}
-
-/* Watermark */
-.watermark {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-15deg);
-    font-size: 15vw;
-    font-weight: 900;
-    color: rgba(0, 0, 0, 0.03);
-    pointer-events: none;
-    z-index: -1;
-    white-space: nowrap;
-}
-
-/* Header & Tabs */
-header {
-    padding: 2rem;
+/* Header */
+.header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #F3F4F6;
 }
 
-.genre-tabs {
-    display: flex;
-    gap: 2rem;
-}
-
-.genre-tabs a {
+.brand {
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: -0.02em;
 }
 
-.genre-tabs a.active {
-    color: var(--text-color);
-    border-bottom: 2px solid var(--text-color);
-}
-
-/* Main Container */
-.container {
-    flex: 1;
+.header-meta {
     display: flex;
-    flex-direction: column;
+    gap: 1.5rem;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-/* Hero Trend */
-.hero-trend {
-    text-align: center;
-    margin-bottom: 4rem;
+.time-display {
+    font-family: 'Inter', monospace;
+    font-size: 0.875rem;
+    color: #6B7280;
 }
 
-.hero-trend h1 {
-    font-family: var(--font-serif);
-    font-size: 5rem;
-    margin: 0;
-    line-height: 1.2;
-    cursor: pointer;
+/* Tabs */
+.tabs-container {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #F3F4F6;
+    overflow-x: auto;
 }
 
-.pulse {
-    animation: pulse-animation 2s infinite;
-}
-
-@keyframes pulse-animation {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-.trend-meta {
-    margin-top: 1rem;
+.tabs {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 0.5rem;
 }
 
-.score {
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    font-size: 0.9rem;
+.tab {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6B7280;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: all 0.2s;
+    white-space: nowrap;
 }
 
-.related-nouns {
+.tab:hover {
+    background-color: #F3F4F6;
+    color: #111827;
+}
+
+.tab.active {
+    background-color: #111827;
+    color: #FFFFFF;
+}
+
+/* Main Container */
+.trend-cloud-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    overflow: hidden;
     display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.noun::before {
-    content: '#';
-}
-
-.actions {
-    margin-top: 2rem;
-}
-
-.mercari-btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    border: 1px solid var(--text-color);
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-/* Tag Cloud */
-.tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    align-items: baseline;
 }
 
-.tag {
-    font-family: var(--font-serif);
-    line-height: 1;
+.buzz-meter-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12vw;
+    font-weight: 900;
+    color: #F9FAFB;
+    pointer-events: none;
+    z-index: -1;
+    white-space: nowrap;
+    letter-spacing: -0.05em;
 }
 
-.heat-high { color: #ff0000; }
-.heat-medium { color: #333; }
-.heat-low { color: #888; }
+#trend-cloud {
+    width: 100%;
+    height: 100%;
+}
+
+/* Trend Items */
+.trend-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.trend-text:hover {
+    opacity: 0.8;
+}
+
+/* Heat Levels */
+.heat-high {
+    fill: #EF4444;
+}
+
+.heat-medium {
+    fill: #F59E0B;
+}
+
+.heat-low {
+    fill: #6B7280;
+}
+
+/* Stages */
+.stage-newborn {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.stage-peak {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.stage-fading {
+    opacity: 0.6;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 
 /* Footer */
-footer {
-    padding: 2rem;
+.footer {
+    padding: 1.5rem;
     text-align: center;
-    margin-top: auto;
-}
-
-.social-share {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.copyright {
-    font-size: 0.8rem;
-    color: #999;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-trend h1 {
-        font-size: 3rem;
-    }
-    
-    .genre-tabs {
-        gap: 1rem;
-        font-size: 0.9rem;
-    }
+    border-top: 1px solid #F3F4F6;
+    font-size: 0.75rem;
+    color: #9CA3AF;
 }
