@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIBRA - Trend Pulse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- Google Analytics -->
+    {% if ga_tracking_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '{{ ga_tracking_id }}');
+    </script>
+    {% endif %}
+</head>
+
+<body>
+    <div class="watermark">Buzz Meter</div>
+
+    <header>
+        <nav class="genre-tabs">
+            <a href="#" class="active">総合</a>
+            <a href="#">エンタメ</a>
+            <a href="#">ニュース</a>
+            <a href="#">スポーツ</a>
+            <a href="#">IT</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- SVG Container for D3.js -->
+        <svg id="trend-cloud" class="trend-cloud-container" style="width: 100%; height: 80vh;"></svg>
+
+        <!-- Fallback/Loading message could go here -->
+    </main>
+
+    <footer>
+        <div class="social-share">
+            <a href="https://twitter.com/share?url=https://vibra.pages.dev" target="_blank">X</a>
+            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+            <a href="https://www.threads.net/" target="_blank">Threads</a>
+        </div>
+        <p class="copyright">&copy; <span id="year"></span> VIBRA <span class="time-display"></span></p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Main Logic -->
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>

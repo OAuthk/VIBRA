@@ -1,0 +1,19 @@
+Antigravity用プロンプト：プロジェクト再開
+タスク名:
+Resume Project VIBRA - Continue from Backend Verification
+タスク説明 (Instructions):
+We were previously working on the "VIBRA" project. Our last session was interrupted because we hit the model's quota limit.
+Let's resume exactly where we left off.
+Summary of the last state:
+You had completed the backend refactoring to align the data structures for the new frontend (models.py, enricher.py, etc.).
+Your proposed next step was to run a local dry run to verify the changes.
+The command you were about to execute was: python src/main.py && python src/generate_site.py.
+I approved this command, but the execution was terminated due to the quota limit.
+Your new task is to:
+Retry the verification: Execute the command python src/main.py && python src/generate_site.py again in the terminal.
+Analyze the result:
+If the command succeeds (exit code 0), confirm that cache/latest_trends.json and dist/index.html have been generated correctly.
+If the command fails, analyze the error message and propose a fix.
+Commit the changes: If the verification is successful, commit all the modified files (including models.py, enricher.py, generator.py, etc.) to the Git repository with an appropriate commit message, such as feat: Refactor backend for frontend CSR integration.
+Report the status: Once the commit is complete, inform me of the result and propose the next logical step, which should be the implementation of the frontend (refactoring static/js/main.js).
+Please proceed with step 1.
