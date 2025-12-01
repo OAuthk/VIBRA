@@ -48,16 +48,8 @@ jobs:
           mkdir -p cache
           cp cache-data/cache/latest_trends.json cache/latest_trends.json
           
-          python src/generate_site.py
+          python src/generator.py
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'dist'
-
-      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

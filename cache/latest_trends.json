@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-12-01 19:00:25 JST",
+  "last_updated": "2025-12-02 03:09:04 JST",
   "trends": [
     {
       "text": "Election",
@@ -13,11 +13,11 @@
         "in",
         "This"
       ],
-      "cluster_id": 1
+      "cluster_id": 0
     },
     {
       "text": "Vote",
-      "category": "総合",
+      "category": "IT",
       "stage": "peak",
       "score": 92,
       "heatLevel": "high",
@@ -27,11 +27,11 @@
         "in",
         "This"
       ],
-      "cluster_id": 1
+      "cluster_id": 0
     },
     {
       "text": "Candidate",
-      "category": "総合",
+      "category": "ニュース",
       "stage": "peak",
       "score": 86,
       "heatLevel": "high",
@@ -41,11 +41,11 @@
         "in",
         "This"
       ],
-      "cluster_id": 1
+      "cluster_id": 0
     },
     {
       "text": "AI",
-      "category": "ニュース",
+      "category": "総合",
       "stage": "newborn",
       "score": 80,
       "heatLevel": "high",
@@ -55,11 +55,11 @@
         "in",
         "This"
       ],
-      "cluster_id": 1
+      "cluster_id": 0
     },
     {
       "text": "Python",
-      "category": "ニュース",
+      "category": "総合",
       "stage": "newborn",
       "score": 74,
       "heatLevel": "high",
@@ -69,11 +69,11 @@
         "in",
         "This"
       ],
-      "cluster_id": 1
+      "cluster_id": 0
     },
     {
       "text": "Code",
-      "category": "IT",
+      "category": "ニュース",
       "stage": "newborn",
       "score": 69,
       "heatLevel": "high",
@@ -83,17 +83,17 @@
     },
     {
       "text": "Gundam",
-      "category": "IT",
+      "category": "ニュース",
       "stage": "newborn",
       "score": 63,
       "heatLevel": "high",
       "detail_url": "https://www.google.com/search?q=Gundam",
       "related_words": [],
-      "cluster_id": 0
+      "cluster_id": 1
     },
     {
       "text": "Anime",
-      "category": "IT",
+      "category": "ニュース",
       "stage": "newborn",
       "score": 58,
       "heatLevel": "high",

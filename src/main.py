@@ -68,5 +68,10 @@ def main():
         
     print(f"Data pipeline completed. Saved to {trends_json_path}")
 
+    # 5. Generate Site
+    print("Generating site...")
+    from generator import generate_site
+    generate_site()
+
 if __name__ == "__main__":
     main()
