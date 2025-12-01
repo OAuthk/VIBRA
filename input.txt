@@ -1,198 +1,56 @@
-プロンプト：プロトタイプから本番フロントエンドへのリファクタリング
-役割 (Role):
-You are a meticulous Frontend Developer, specializing in refactoring static HTML prototypes into clean, maintainable, and data-driven web applications.
-タスク (Task):
-Your task is to take the provided single-file prototype, vibra-living-cloud.html, and refactor its code into three separate files: templates/layout.html, static/css/style.css, and static/js/main.js.
-Additionally, you must modify the JavaScript to fetch trend data from an external trends.json file instead of using the hardcoded array.
+Antigravity用プロンプト：フロントエンドの最終実装
+タスク名:
+Finalize Frontend Implementation for VIBRA
+タスク説明 (Instructions):
+You are a Senior Frontend Developer, specializing in D3.js and creating beautiful, interactive data visualizations.
+Your mission is to complete the frontend for the "VIBRA" project. The backend is already complete and provides a trends.json file. You must now build the final user interface by merging the best ideas from two previous prototypes: the dynamic physics simulation from keyword_constellation.html and the clean, white-themed UI components from vibra-living-cloud.html.
+Please generate a detailed implementation_plan.md first, then proceed to create/overwrite the following three files: templates/layout.html, static/css/style.css, and static/js/main.js.
 技術仕様 (Technical Specifications)
-Part 1: templates/layout.html (The HTML Structure)
+Part 1: templates/layout.html (The Skeleton)
 Objective:
-Extract the HTML structure and CSS/JS links from the prototype. This file will serve as the main Jinja2 template.
-Implementation:
-Create a file named templates/layout.html with the following content. Note that all CSS and JavaScript logic has been removed and replaced with external links.
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIBRA - Living Cloud</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Google Analytics Snippet (to be filled by Jinja2) -->
-    {% if ga4_tracking_id and 'DEFAULT' not in ga4_tracking_id %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga4_tracking_id }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ ga4_tracking_id }}');
-    </script>
-    {% endif %}
-</head>
-<body>
-    <header class="header">
-        <div class="brand">VIBRA</div>
-        <div class="header-meta">
-            <!-- This will be populated by main.js -->
-            <div class="time-display"></div>
-        </div>
-    </header>
-
-    <nav class="tabs-container">
-        <div class="tabs">
-            <button class="tab active" data-genre="all">すべて</button>
-            <button class="tab" data-genre="technology">テクノロジー</button>
-            <button class="tab" data-genre="entertainment">エンタメ</button>
-            <button class="tab" data-genre="business">ビジネス</button>
-            <button class="tab" data-genre="lifestyle">ライフスタイル</button>
-            <button class="tab" data-genre="sports">スポーツ</button>
-            <button class="tab" data-genre="politics">政治</button>
-        </div>
-    </nav>
-
-    <main class="trend-cloud-container">
-        <div class="buzz-meter-watermark">Buzz Meter</div>
-        <svg id="trend-cloud"></svg>
-    </main>
-
-    <footer class="footer">
-        <!-- The copyright year will be populated by main.js -->
-        © <span id="copyright-year"></span> VIBRA • Real-time trend visualization
-    </footer>
-
-    <script src="js/main.js"></script>
-</body>
-</html>
-
-Part 2: static/css/style.css (The Styling)
+Create the final HTML structure based on the clean layout of vibra-living-cloud.html, but adapt it for the physics-based constellation view.
+Implementation Details:
+Use the vibra-living-cloud.html structure: a <header>, <nav>, <main>, and <footer>.
+Inside the <main> tag, implement the structure from keyword_constellation.html:
+An <svg id="connection-lines"> element for drawing the connection lines.
+A <div id="keywords-container"> element where the keyword <div>s will be dynamically added.
+Include placeholders for dynamic content that will be populated by JavaScript (e.g., <div class="time-display"></div>, <span id="copyright-year"></span>).
+Ensure all necessary scripts (d3.v7.min.js, main.js) and stylesheets (style.css) are linked correctly.
+Part 2: static/css/style.css (The Look & Feel)
 Objective:
-Extract all CSS rules from the <style> tag of the prototype into a separate stylesheet.
-Implementation:
-Create a file named static/css/style.css and populate it with the exact CSS content from the <style> block of vibra-living-cloud.html.
-
-/* static/css/style.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #FFFFFF;
-    color: #111827;
-    overflow-x: hidden;
-}
-
-/* Copy ALL other styles from the prototype's <style> tag here... */
-.header { /* ... */ }
-.brand { /* ... */ }
-/* ... and so on for all rules */
-
-Part 3: static/js/main.js (The Logic & Dynamic Data)
+Merge the aesthetic styles from both prototypes to create the final look.
+Implementation Details:
+Base Style: Use the clean, professional, white-themed styles from vibra-living-cloud.html for the body, header, nav (tabs), and footer.
+Constellation Styles: From keyword_constellation.html, port over and adapt the following styles to the white theme:
+.connection-line: The style for the faint, dashed lines. Adjust the color to a light gray suitable for a white background (e.g., #E0E0E0).
+@keyframes pulse-glow: The animation for the connection lines.
+.keyword: The style for the keyword containers. Crucially, instead of multiple *-group classes with hardcoded colors, you will create a generic .keyword style. The text color will be set dynamically by the JavaScript based on the cluster_id.
+@keyframes float: The subtle floating animation for each keyword.
+Part 3: static/js/main.js (The Brain & Soul)
 Objective:
-Extract the JavaScript logic from the <script> tag, remove the hardcoded data, and replace it with a fetch call to trends.json.
-Implementation:
-Create a file named static/js/main.js with the following refactored code.
-
-// static/js/main.js
-document.addEventListener('DOMContentLoaded', function() {
-    // --- Global State ---
-    let allTrends = [];
-    let currentGenre = 'all';
-    let svg, simulation;
-
-    // --- Main Initialization Function ---
-    async function initializeApp() {
-        try {
-            // 1. Fetch data from the backend-generated JSON file
-            const response = await fetch('trends.json');
-            if (!response.ok) {
-                throw new Error(`Failed to fetch trends.json: ${response.statusText}`);
-            }
-            const data = await response.json();
-            allTrends = data.trends || [];
-
-            // 2. Populate dynamic elements in the DOM
-            populateMetaInfo(data.last_updated);
-            
-            // 3. Initialize UI components and visualization
-            initTabs();
-            initVisualization();
-            
-            window.addEventListener('resize', handleResize);
-            console.log("VIBRA initialized with live data.");
-
-        } catch (error) {
-            console.error("Initialization failed:", error);
-            // You can display an error message to the user here
-        }
-    }
-    
-    function populateMetaInfo(lastUpdated) {
-        const timeDisplay = document.querySelector('.time-display');
-        if (timeDisplay && lastUpdated) {
-            // Format the date/time nicely (optional, but good practice)
-            try {
-                const date = new Date(lastUpdated.replace(' JST', ''));
-                timeDisplay.textContent = date.toLocaleString('ja-JP', { 
-                    year: 'numeric', month: 'long', day: 'numeric', 
-                    hour: '2-digit', minute: '2-digit' 
-                });
-            } catch {
-                timeDisplay.textContent = lastUpdated;
-            }
-        }
-
-        const yearSpan = document.getElementById('copyright-year');
-        if (yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
-    }
-
-    // --- Visualization & UI Logic (Copy from prototype's <script> tag) ---
-    // Copy the following functions from vibra-living-cloud.html's script block
-    // and paste them here, ensuring they use the global `allTrends` variable.
-    
-    function initVisualization() {
-        svg = d3.select("#trend-cloud");
-        // ... (rest of the function)
-        updateVisualization();
-    }
-
-    function updateVisualization() {
-        // ... (this function now filters the global `allTrends` variable)
-        const filteredTrends = currentGenre === 'all' 
-            ? allTrends 
-            : allTrends.filter(t => t.category === currentGenre);
-        // ... (rest of the D3 logic)
-    }
-
-    function getRadius(stage) { /* ... */ }
-    function showTrendDetails(trend) { /* ... */ }
-    function initTabs() { /* ... */ }
-    
-    let resizeTimeout;
-    function handleResize() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            initVisualization();
-        }, 250);
-    }
-    
-    // --- Entry Point ---
-    initializeApp();
-});
-
-(Note: The detailed implementation of the D3 functions is omitted here for brevity, as the instruction is to copy them directly from the prototype.)
-
-
-
+This is the most critical part. Combine the data-fetching logic with the superior physics-based layout and interaction logic from keyword_constellation.html.
+Implementation Steps:
+Data Fetching:
+Start with an async function initializeApp() that is called on DOMContentLoaded.
+Inside this function, fetch('trends.json') to get the live trend data. Handle loading and error states gracefully.
+Data Preparation:
+The fetched JSON will contain a list of trend objects, each with a cluster_id.
+You need to transform this flat list into a data structure that the constellation logic can use, for example, grouping keywords by their cluster_id.
+Layout Algorithm (Port from keyword_constellation.html):
+Use the custom physics-based placement logic (positionKeywords, isOverlapping). Do not use d3.forceSimulation. The custom logic was smoother and more controllable.
+Position all keywords randomly, ensuring no overlaps.
+Rendering (Port and Adapt):
+Keywords (createKeywords): Dynamically create <div> elements for each keyword.
+Coloring: Use a d3.scaleOrdinal(d3.schemeCategory10) to create a color scale. Assign the text color of each keyword based on its cluster_id using this scale.
+Connections (drawConnections): Dynamically create SVG <line> elements.
+Logic: Draw lines only between keywords that share the same cluster_id.
+Styling: Apply the .connection-line class to these lines.
+Interactivity (Port and Enhance):
+Implement the hover effect from keyword_constellation.html: when a user hovers over a keyword, all other keywords in the same cluster and their connecting lines should be highlighted. Other clusters should fade out slightly.
+Component Logic:
+Integrate the tab switching logic (initTabs) from vibra-living-cloud.html. When a tab is clicked, the visualization should smoothly update to show only the keywords belonging to that genre/category.
+Final Instruction:
+Your implementation must result in a single, cohesive frontend that embodies the best of both prototypes: the elegant, white-themed UI framework, and the fluid, interactive, physics-based constellation visualization. Please generate the implementation_plan.md first.
 
 
 

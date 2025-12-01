@@ -24,11 +24,14 @@ def _load_previous_scores() -> Dict[str, int]:
     except (json.JSONDecodeError, FileNotFoundError):
         return {}
 
-def enrich_trends(trends: List[Dict]) -> List[EnrichedTrendItem]:
+def enrich_trends(trends: List[Dict], cluster_mapping: Dict[str, int] = None) -> List[EnrichedTrendItem]:
     """
     Adds score, heatLevel, google_search_url, and affiliate links.
     Returns a list of EnrichedTrendItem objects.
     """
+    if cluster_mapping is None:
+        cluster_mapping = {}
+
     mercari_affiliate_id = os.environ.get('MERCARI_AFFILIATE_ID', '')
     
     previous_scores = _load_previous_scores()
@@ -91,6 +94,9 @@ def enrich_trends(trends: List[Dict]) -> List[EnrichedTrendItem]:
         # Assign random category for demo
         category = random.choice(CATEGORIES)
         
+        # Get Cluster ID
+        cluster_id = cluster_mapping.get(keyword, 0)
+        
         item = EnrichedTrendItem(
             title=keyword,
             posts_num=trend.get('posts_num', 0),
@@ -101,7 +107,8 @@ def enrich_trends(trends: List[Dict]) -> List[EnrichedTrendItem]:
             category=category,
             rank=trend.get('rank', i+1),
             google_search_url=google_search_url,
-            mercari_url=mercari_url
+            mercari_url=mercari_url,
+            cluster_id=cluster_id
         )
         enriched_list.append(item)
              

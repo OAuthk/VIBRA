@@ -3,7 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Global State ---
     let allTrends = [];
     let currentGenre = 'all';
-    let svg, simulation;
+    let container, svgLines, keywordsContainer;
+    let width, height;
+
+    // Color scale for clusters
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
     // --- Main Initialization Function ---
     async function initializeApp() {
@@ -28,14 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } catch (error) {
             console.error("Initialization failed:", error);
-            // You can display an error message to the user here
         }
     }
 
     function populateMetaInfo(lastUpdated) {
         const timeDisplay = document.querySelector('.time-display');
         if (timeDisplay && lastUpdated) {
-            // Format the date/time nicely (optional, but good practice)
             try {
                 const date = new Date(lastUpdated.replace(' JST', ''));
                 timeDisplay.textContent = date.toLocaleString('ja-JP', {
@@ -53,75 +55,264 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // --- Visualization & UI Logic ---
+    // --- Visualization Logic ---
 
     function initVisualization() {
-        const container = document.querySelector('.trend-cloud-container');
+        container = document.querySelector('.trend-cloud-container');
         if (!container) return;
 
-        svg = d3.select("#trend-cloud");
+        svgLines = d3.select("#connection-lines");
+        keywordsContainer = document.getElementById("keywords-container");
 
-        // Set initial size
-        const width = container.offsetWidth;
-        const height = container.offsetHeight;
-        svg.attr("width", width).attr("height", height);
-
-        updateVisualization();
+        updateDimensions();
+        renderScene();
     }
 
-    function updateVisualization() {
-        const container = document.querySelector('.trend-cloud-container');
+    function updateDimensions() {
         if (!container) return;
+        width = container.offsetWidth;
+        height = container.offsetHeight;
+        svgLines.attr("width", width).attr("height", height);
+    }
 
-        const width = container.offsetWidth;
-        const height = container.offsetHeight;
+    function renderScene() {
+        // Clear previous elements
+        keywordsContainer.innerHTML = '';
+        svgLines.selectAll("*").remove();
 
+        // Filter trends
         const filteredTrends = currentGenre === 'all'
             ? allTrends
             : allTrends.filter(t => t.category === currentGenre);
 
-        svg.attr("width", width).attr("height", height);
-        svg.selectAll("*").remove();
-
         if (filteredTrends.length === 0) return;
 
-        // Scale for font size based on score
-        const sizeScale = d3.scaleLinear()
-            .domain([0, 100])
-            .range([16, 64]);
+        // 1. Calculate Positions (Custom Physics Layout)
+        const positionedTrends = calculatePositions(filteredTrends);
 
-        simulation = d3.forceSimulation(filteredTrends)
-            .force("charge", d3.forceManyBody().strength(-30))
-            .force("center", d3.forceCenter(width / 2, height / 2))
-            .force("collision", d3.forceCollide().radius(d => sizeScale(d.score) * 0.7))
-            .stop();
+        // 2. Render Keywords
+        createKeywords(positionedTrends);
 
-        // Run simulation
-        for (let i = 0; i < 300; ++i) simulation.tick();
-
-        const trendElements = svg.selectAll(".trend-group")
-            .data(filteredTrends, d => d.text)
-            .enter()
-            .append("g")
-            .attr("class", "trend-group")
-            .attr("transform", d => `translate(${d.x},${d.y})`);
-
-        trendElements.append("a")
-            .attr("xlink:href", d => d.detail_url)
-            .attr("target", "_blank")
-            .append("text")
-            .attr("class", d => `trend-text heat-${d.heatLevel} stage-${d.stage}`)
-            .attr("text-anchor", "middle")
-            .style("font-size", d => `${sizeScale(d.score)}px`)
-            .text(d => d.text)
-            .on("mouseover", function (event, d) {
-                d3.select(this).transition().duration(200).style("opacity", 0.7);
-            })
-            .on("mouseout", function (event, d) {
-                d3.select(this).transition().duration(200).style("opacity", 1);
-            });
+        // 3. Render Connections
+        drawConnections(positionedTrends);
     }
 
+    // --- Custom Layout Algorithm ---
+    function calculatePositions(trends) {
+        const placedItems = [];
+        // Sort by score descending to place largest items first
+        const sortedTrends = [...trends].sort((a, b) => b.score - a.score);
+
+        // Scale for font size
+        const sizeScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([16, 48]); // Adjusted range for better fit
+
+        sortedTrends.forEach(trend => {
+            const fontSize = sizeScale(trend.score);
+            // Estimate dimensions (approximate width based on char count)
+            // A better way would be to create a hidden element to measure, 
+            // but estimation is faster and sufficient here.
+            const estimatedWidth = trend.text.length * fontSize * 1.2 + 40; // +padding
+            const estimatedHeight = fontSize * 1.5 + 20;
+
+            let x, y, overlapping;
+            let attempts = 0;
+            const maxAttempts = 100;
+
+            do {
+                overlapping = false;
+                // Random position within container (with padding)
+                x = Math.random() * (width - estimatedWidth - 40) + 20;
+                y = Math.random() * (height - estimatedHeight - 40) + 20;
+
+                // Check collision with already placed items
+                for (const item of placedItems) {
+                    if (isOverlapping(
+                        x, y, estimatedWidth, estimatedHeight,
+                        item.x, item.y, item.width, item.height
+                    )) {
+                        overlapping = true;
+                        break;
+                    }
+                }
+                attempts++;
+            } while (overlapping && attempts < maxAttempts);
+
+            // If we couldn't find a spot, place it anyway (or skip it, but better to show it)
+            // Ideally we might push it to a list of "failed" items or try a different strategy.
+            // For now, we accept the last position even if overlapping slightly.
+
+            const item = {
+                ...trend,
+                x: x,
+                y: y,
+                width: estimatedWidth,
+                height: estimatedHeight,
+                fontSize: fontSize
+            };
+            placedItems.push(item);
+        });
+
+        return placedItems;
+    }
+
+    function isOverlapping(x1, y1, w1, h1, x2, y2, w2, h2) {
+        // Add some buffer for spacing
+        const buffer = 20;
+        return x1 < x2 + w2 + buffer &&
+            x1 + w1 + buffer > x2 &&
+            y1 < y2 + h2 + buffer &&
+            y1 + h1 + buffer > y2;
+    }
+
+    // --- Rendering Functions ---
+
+    function createKeywords(trends) {
+        trends.forEach((trend, index) => {
+            const el = document.createElement('div');
+            el.className = 'keyword';
+            el.textContent = trend.text;
+
+            // Styles
+            el.style.left = `${trend.x}px`;
+            el.style.top = `${trend.y}px`;
+            el.style.fontSize = `${trend.fontSize}px`;
+            el.style.color = colorScale(trend.cluster_id);
+
+            // Animation delay for "organic" feel
+            el.style.animation = `float ${3 + Math.random() * 2}s ease-in-out infinite`;
+            el.style.animationDelay = `${Math.random() * 2}s`;
+
+            // Data attributes for interactivity
+            el.dataset.clusterId = trend.cluster_id;
+            el.dataset.url = trend.detail_url;
+
+            // Events
+            el.addEventListener('click', () => {
+                window.open(trend.detail_url, '_blank');
+            });
+
+            el.addEventListener('mouseenter', () => handleMouseEnter(trend.cluster_id));
+            el.addEventListener('mouseleave', handleMouseLeave);
+
+            keywordsContainer.appendChild(el);
+        });
+    }
+
+    function drawConnections(trends) {
+        // Create links between items in the same cluster
+        // To avoid too many lines, we can link each item to the "hub" (highest score in cluster)
+        // or link nearest neighbors. 
+        // For visual "constellation" effect, linking to 2-3 random peers in the same cluster works well.
+
+        const clusterGroups = {};
+        trends.forEach(t => {
+            if (!clusterGroups[t.cluster_id]) clusterGroups[t.cluster_id] = [];
+            clusterGroups[t.cluster_id].push(t);
+        });
+
+        const links = [];
+
+        Object.values(clusterGroups).forEach(group => {
+            if (group.length < 2) return;
+
+            // Strategy: Link each node to the next one in the list (chain) 
+            // plus one random other node for triangulation
+            for (let i = 0; i < group.length; i++) {
+                const source = group[i];
+                // Link to next (loop back to start)
+                const target = group[(i + 1) % group.length];
+
+                links.push({
+                    x1: source.x + source.width / 2,
+                    y1: source.y + source.height / 2,
+                    x2: target.x + target.width / 2,
+                    y2: target.y + target.height / 2,
+                    cluster_id: source.cluster_id
+                });
+
+                // Optional: Add extra random link for density if group is large
+                if (group.length > 4) {
+                    const randomIdx = Math.floor(Math.random() * group.length);
+                    if (randomIdx !== i && randomIdx !== (i + 1) % group.length) {
+                        const target2 = group[randomIdx];
+                        links.push({
+                            x1: source.x + source.width / 2,
+                            y1: source.y + source.height / 2,
+                            x2: target2.x + target2.width / 2,
+                            y2: target2.y + target2.height / 2,
+                            cluster_id: source.cluster_id
+                        });
+                    }
+                }
+            }
+        });
+
+        svgLines.selectAll("line")
+            .data(links)
+            .enter()
+            .append("line")
+            .attr("class", "connection-line")
+            .attr("x1", d => d.x1)
+            .attr("y1", d => d.y1)
+            .attr("x2", d => d.x2)
+            .attr("y2", d => d.y2)
+            .attr("stroke", d => colorScale(d.cluster_id)) // Use cluster color for lines too?
+            // Actually, style.css sets stroke color. 
+            // If we want colored lines, we override here.
+            // Let's use the cluster color but with low opacity for a nice effect.
+            .style("stroke", d => colorScale(d.cluster_id))
+            .style("stroke-opacity", 0.3)
+            .attr("data-cluster-id", d => d.cluster_id);
+    }
+
+    // --- Interaction Logic ---
+
+    function handleMouseEnter(clusterId) {
+        // Fade out everything
+        const allKeywords = document.querySelectorAll('.keyword');
+        const allLines = document.querySelectorAll('.connection-line');
+
+        allKeywords.forEach(el => {
+            if (parseInt(el.dataset.clusterId) === clusterId) {
+                el.style.opacity = 1;
+                el.style.transform = 'scale(1.1)';
+                el.style.zIndex = 10;
+            } else {
+                el.style.opacity = 0.2;
+                el.style.zIndex = 1;
+            }
+        });
+
+        allLines.forEach(line => {
+            if (parseInt(line.getAttribute('data-cluster-id')) === clusterId) {
+                line.style.opacity = 0.8;
+                line.style.strokeWidth = 2;
+            } else {
+                line.style.opacity = 0.05;
+            }
+        });
+    }
+
+    function handleMouseLeave() {
+        // Reset
+        const allKeywords = document.querySelectorAll('.keyword');
+        const allLines = document.querySelectorAll('.connection-line');
+
+        allKeywords.forEach(el => {
+            el.style.opacity = 1;
+            el.style.transform = 'scale(1)';
+            el.style.zIndex = '';
+        });
+
+        allLines.forEach(line => {
+            line.style.opacity = 0.3; // Default opacity
+            line.style.strokeWidth = '';
+        });
+    }
+
+    // --- Tabs Logic ---
     function initTabs() {
         const tabs = document.querySelectorAll('.tab');
         tabs.forEach(tab => {
@@ -130,40 +321,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 tabs.forEach(t => t.classList.remove('active'));
                 e.target.classList.add('active');
 
-                // Map genre
                 const genre = e.target.getAttribute('data-genre');
-
-                // Map frontend genre to backend category if needed
-                // Backend categories: '総合', 'エンタメ', 'ニュース', 'スポーツ', 'IT'
-                // Frontend genres: 'all', 'technology', 'entertainment', 'business', 'lifestyle', 'sports', 'politics'
                 // Simple mapping for demo:
                 const genreMap = {
                     'all': 'all',
                     'technology': 'IT',
                     'entertainment': 'エンタメ',
-                    'business': 'ニュース', // Approximation
-                    'lifestyle': '総合', // Approximation
+                    'business': 'ニュース',
+                    'lifestyle': '総合',
                     'sports': 'スポーツ',
                     'politics': 'ニュース'
                 };
 
                 currentGenre = genreMap[genre] || 'all';
-                updateVisualization();
+                renderScene(); // Re-render with new filter
             });
         });
     }
 
+    // --- Resize Logic ---
     let resizeTimeout;
     function handleResize() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            const container = document.querySelector('.trend-cloud-container');
-            if (container) {
-                const width = container.offsetWidth;
-                const height = container.offsetHeight;
-                svg.attr("width", width).attr("height", height);
-                updateVisualization();
-            }
+            updateDimensions();
+            renderScene();
         }, 250);
     }
 

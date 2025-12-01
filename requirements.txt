@@ -1,4 +1,6 @@
 requests
 beautifulsoup4
-janome
+jinja2
+networkx
+python-louvain
 jinja2

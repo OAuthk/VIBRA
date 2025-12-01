@@ -1,1 +1,10 @@
-{}
+{
+  "Election": 100,
+  "Vote": 92,
+  "Candidate": 86,
+  "AI": 80,
+  "Python": 74,
+  "Code": 69,
+  "Gundam": 63,
+  "Anime": 58
+}
