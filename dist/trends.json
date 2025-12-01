@@ -1,105 +1,82 @@
-{
-  "last_updated": "2025-12-02 03:09:04 JST",
-  "trends": [
-    {
-      "text": "Election",
-      "category": "スポーツ",
-      "stage": "peak",
-      "score": 100,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Election",
-      "related_words": [
-        "use",
-        "in",
-        "This"
-      ],
-      "cluster_id": 0
-    },
-    {
-      "text": "Vote",
-      "category": "IT",
-      "stage": "peak",
-      "score": 92,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Vote",
-      "related_words": [
-        "use",
-        "in",
-        "This"
-      ],
-      "cluster_id": 0
-    },
-    {
-      "text": "Candidate",
-      "category": "ニュース",
-      "stage": "peak",
-      "score": 86,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Candidate",
-      "related_words": [
-        "use",
-        "in",
-        "This"
-      ],
-      "cluster_id": 0
-    },
-    {
-      "text": "AI",
-      "category": "総合",
-      "stage": "newborn",
-      "score": 80,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=AI",
-      "related_words": [
-        "use",
-        "in",
-        "This"
-      ],
-      "cluster_id": 0
-    },
-    {
-      "text": "Python",
-      "category": "総合",
-      "stage": "newborn",
-      "score": 74,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Python",
-      "related_words": [
-        "use",
-        "in",
-        "This"
-      ],
-      "cluster_id": 0
-    },
-    {
-      "text": "Code",
-      "category": "ニュース",
-      "stage": "newborn",
-      "score": 69,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Code",
-      "related_words": [],
-      "cluster_id": 3
-    },
-    {
-      "text": "Gundam",
-      "category": "ニュース",
-      "stage": "newborn",
-      "score": 63,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Gundam",
-      "related_words": [],
-      "cluster_id": 1
-    },
-    {
-      "text": "Anime",
-      "category": "ニュース",
-      "stage": "newborn",
-      "score": 58,
-      "heatLevel": "high",
-      "detail_url": "https://www.google.com/search?q=Anime",
-      "related_words": [],
-      "cluster_id": 2
-    }
-  ]
-}
+[
+  {
+    "text": "Election",
+    "category": "IT",
+    "stage": "peak",
+    "score": 100,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Election",
+    "related_words": [],
+    "cluster_id": 0
+  },
+  {
+    "text": "Vote",
+    "category": "ニュース",
+    "stage": "peak",
+    "score": 92,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Vote",
+    "related_words": [],
+    "cluster_id": 1
+  },
+  {
+    "text": "Candidate",
+    "category": "総合",
+    "stage": "peak",
+    "score": 86,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Candidate",
+    "related_words": [],
+    "cluster_id": 2
+  },
+  {
+    "text": "AI",
+    "category": "ニュース",
+    "stage": "newborn",
+    "score": 80,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=AI",
+    "related_words": [],
+    "cluster_id": 3
+  },
+  {
+    "text": "Python",
+    "category": "総合",
+    "stage": "newborn",
+    "score": 74,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Python",
+    "related_words": [],
+    "cluster_id": 4
+  },
+  {
+    "text": "Code",
+    "category": "スポーツ",
+    "stage": "newborn",
+    "score": 69,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Code",
+    "related_words": [],
+    "cluster_id": 5
+  },
+  {
+    "text": "Gundam",
+    "category": "ニュース",
+    "stage": "newborn",
+    "score": 63,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Gundam",
+    "related_words": [],
+    "cluster_id": 6
+  },
+  {
+    "text": "Anime",
+    "category": "スポーツ",
+    "stage": "newborn",
+    "score": 58,
+    "heatLevel": "high",
+    "detail_url": "https://www.google.com/search?q=Anime",
+    "related_words": [],
+    "cluster_id": 7
+  }
+]

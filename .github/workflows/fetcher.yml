@@ -1,63 +1,46 @@
-name: Fetch Trends
-
+name: Fetch and Cache Trend Data
 on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   fetch-and-cache:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
-
+          python-version: '3.11'
+          cache: 'pip'
+      
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: 📥 Restore previous scores cache
-        id: scores-cache-restore
+      - name: 📥 Restore scores cache
         uses: actions/cache/restore@v4
         with:
           path: cache/previous_scores.json
           key: scores-cache-v1
 
-      - name: Run Data Pipeline
+      - name: 🐍 Run Data Pipeline
         env:
           MERCARI_AFFILIATE_ID: ${{ secrets.MERCARI_AFFILIATE_ID }}
+          GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
         run: python src/main.py
 
-      - name: 💾 Save current scores to cache
-        id: scores-cache-save
+      - name: 💾 Save scores cache
         uses: actions/cache/save@v4
         with:
           path: cache/scores_to_cache.json
-          key: ${{ steps.scores-cache-restore.outputs.cache-key || format('scores-cache-v1-{0}', github.run_id) }}
-
-      - name: Deploy to cache-branch
+          key: scores-cache-v1-${{ github.run_id }}
+      
+      - name: 🚀 Commit and Push to cache-branch
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Switch to orphan branch
           git checkout --orphan cache-branch
-          
-          # Remove everything except cache directory
           git rm -rf .
-          
-          # Add cache file
-          git add cache/latest_trends.json
-          
-          # Commit and force push
-          git commit -m "Update trends cache [skip ci]"
+          git add cache/latest_trends.json cache/scores_to_cache.json
+          git commit -m "chore: Update data cache"
           git push origin cache-branch --force

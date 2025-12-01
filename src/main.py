@@ -1,77 +1,47 @@
-import os
+import sys
 import json
-import time
-import datetime
-from scraper import fetch_trends, fetch_trend_details
-from analyzer import analyze_trends, detect_trend_clusters
-from enricher import enrich_trends
+import os
+import scraper
+import analyzer
+import enricher
 
-def main():
-    print("Starting VIBRA Data Pipeline...")
+def run_fetcher_pipeline():
+    """Executes the complete data pipeline from scraping to saving cache files."""
+    print("[INFO] Starting FETCHER pipeline...")
     
     # 1. Scrape
     print("Fetching trends...")
-    trends = fetch_trends()
-    print(f"Found {len(trends)} trends.")
-    
-    if not trends:
-        print("No trends found. Exiting.")
-        return
-
-    # Fetch details for top 5
-    print("Fetching details for top 5 trends...")
-    # For demo, limit details fetching to top 5 to save time/requests
-    trends_with_details = []
-    for trend in trends[:5]:
-        # Mock logic in scraper expects the URL string
-        posts = fetch_trend_details(trend['url'])
-        trend['post_texts'] = posts
-        trends_with_details.append(trend)
-    
-    # Combine with the rest (which won't have details but that's fine for now)
-    all_trends = trends_with_details + trends[5:]
+    raw_trends = scraper.fetch_trends()
+    if not raw_trends:
+        print("[CRITICAL] No raw trends acquired. Halting.", file=sys.stderr)
+        sys.exit(1)
     
     # 2. Analyze
     print("Analyzing trends...")
-    # Basic analysis
-    analyzed_trends = analyze_trends(all_trends)
+    analyzed_trends = analyzer.analyze_trends(raw_trends)
     
-    # Community Detection (Clustering)
+    # 2.5 Detect Clusters (Added step to match previous logic)
     print("Detecting trend clusters...")
-    cluster_mapping = detect_trend_clusters(analyzed_trends)
+    cluster_mapping = analyzer.detect_trend_clusters(analyzed_trends)
     print(f"Detected {len(set(cluster_mapping.values()))} clusters.")
-    
+
     # 3. Enrich
+    # This function must also generate 'scores_to_cache.json' internally
     print("Enriching data...")
-    enriched_trends = enrich_trends(analyzed_trends, cluster_mapping)
+    enriched_trends = enricher.enrich_trends(analyzed_trends, cluster_mapping)
     
-    # 4. Output
+    # 4. Save final data to cache file
     output_dir = "cache"
     os.makedirs(output_dir, exist_ok=True)
     
-    # Generate trends.json for Frontend
-    last_updated_str = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S JST')
-    
-    app_data = {
-        "last_updated": last_updated_str,
-        "trends": [item.to_dict_for_frontend() for item in enriched_trends]
-    }
-    
-    trends_json_path = os.path.join(output_dir, "trends.json")
-    with open(trends_json_path, 'w', encoding='utf-8') as f:
-        json.dump(app_data, f, ensure_ascii=False, indent=2)
+    # This is the primary artifact of this workflow
+    output_path = os.path.join(output_dir, "latest_trends.json")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        # Note: We are not calling the to_dict_for_frontend() method here,
+        # as the generator will handle that. We save the full enriched data.
+        json.dump([item.to_dict() for item in enriched_trends], f, ensure_ascii=False, indent=2)
         
-    # Save the same content to latest_trends.json for compatibility
-    latest_trends_path = os.path.join(output_dir, "latest_trends.json")
-    with open(latest_trends_path, 'w', encoding='utf-8') as f:
-        json.dump(app_data, f, ensure_ascii=False, indent=2)
-        
-    print(f"Data pipeline completed. Saved to {trends_json_path}")
-
-    # 5. Generate Site
-    print("Generating site...")
-    from generator import generate_site
-    generate_site()
+    print(f"[INFO] FETCHER pipeline complete. Saved data to {output_path}")
 
 if __name__ == "__main__":
-    main()
+    run_fetcher_pipeline()

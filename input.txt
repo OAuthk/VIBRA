@@ -1,56 +1,197 @@
-
-Antigravity用プロンプト：ディレクトリ構造の最終リファクタリング
+Antigravity用プロンプト：パイプライン分離とSecretsの再統合
 タスク名:
-Finalize Project Directory Structure for Consistency
+Refactor CI/CD Pipelines for Strict Separation of Concerns and Secret Management
 タスク説明 (Instructions):
-You are a meticulous Software Architect, responsible for ensuring the project structure is clean, logical, and maintainable.
-Our project "VIBRA" has a nearly perfect directory structure, but there are two minor inconsistencies that need to be corrected. Your task is to refactor the file and folder structure to the final, clean state.
-Please generate an implementation_plan.md first, then execute the following refactoring tasks.
-技術仕様 (Technical Specifications)
-Refactoring Task 1: Unify Static Asset Directory
-Problem: There are currently two static/ directories: one at the project root and one inside the src/ directory. This is redundant and confusing.
-Solution: Consolidate all frontend static assets into a single static/ directory at the project root.
-Action:
-Move all contents from src/static/ to the root static/ directory.
-Delete the now-empty src/static/ directory.
-Verify that all paths in templates/layout.html that reference CSS or JS files (e.g., href="css/style.css") are correct relative to the final output in the dist/ directory. (No changes should be needed if they are already relative paths).
-Refactoring Task 2: Rename Generator Script for Consistency
-Problem: The script responsible for generating the site is named src/generate_site.py. However, our established pipeline terminology (Scraper -> Analyzer -> Enricher -> Generator) refers to this module as "Generator".
-Solution: Rename the file to match the established terminology for better readability and consistency.
-Action:
-Rename the file src/generate_site.py to src/generator.py.
-Update the src/main.py script to import from and call the newly named generator.py.
-Review any other project files (e.g., walkthrough.md, .github/workflows/deploy.yml) that might reference the old filename and update them to generator.py.
-添付資料：最終的なディレクトリ構造 (Final Directory Structure)
-After completing these tasks, the project's directory structure must look exactly like this. Please use this as the definitive blueprint.
-code
-Code
-VIBRA/
-├── .github/
-│   └── workflows/
-│       └── ...
-├── cache/
-│   └── .gitkeep
-├── dist/
-│   └── (Generated files)
-├── src/
-│   ├── analyzer.py
-│   ├── enricher.py
-│   ├── generator.py  # <- Renamed
-│   ├── main.py
-│   ├── models.py
-│   └── scraper.py
-├── static/           # <- Unified
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── main.js
-├── templates/
-│   └── layout.html
-├── requirements.txt
-├── walkthrough.md
-└── visualization_strategies.md
-Final Instruction:
-Please generate the implementation plan to perform these two refactoring tasks. Upon my approval, proceed to modify the project structure to match the final blueprint provided above.
+You are a Principal DevOps Architect. Your previous implementation was a good first draft, but it critically failed to adhere to our core architectural principle: strict separation of concerns between the data-fetching pipeline and the site-deployment pipeline.
+Your new, urgent task is to refactor the entire CI/CD and Python script structure to enforce this separation, and to correctly re-integrate secret management.
+You must treat the following two workflows as completely independent systems that only communicate via the cache-branch.
+技術仕様1：fetcher.yml と main.py の修正 (データ取得パイプライン)
+Objective:
+This workflow's only responsibility is to fetch data and push a validated latest_trends.json to the cache-branch. It must not perform any site generation.
+1.1. scripts/main.py の修正:
+Action: The script must be refactored to only perform the data pipeline tasks. The site generation logic must be completely removed.
+Final Code for scripts/main.py:
 
+import sys
+import scraper
+import analyzer
+import enricher
+import json
+import os
+
+def run_fetcher_pipeline():
+    """Executes the complete data pipeline from scraping to saving cache files."""
+    print("[INFO] Starting FETCHER pipeline...")
+    
+    # 1. Scrape
+    raw_trends = scraper.fetch_raw_trends()
+    if not raw_trends:
+        print("[CRITICAL] No raw trends acquired. Halting.", file=sys.stderr)
+        sys.exit(1)
+    
+    # 2. Analyze
+    analyzed_trends = analyzer.analyze_trends(raw_trends)
+    
+    # 3. Enrich
+    # This function must also generate 'scores_to_cache.json' internally
+    enriched_trends = enricher.enrich_trends(analyzed_trends)
+    
+    # 4. Save final data to cache file
+    output_dir = "cache"
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # This is the primary artifact of this workflow
+    output_path = os.path.join(output_dir, "latest_trends.json")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        # Note: We are not calling the to_dict_for_frontend() method here,
+        # as the generator will handle that. We save the full enriched data.
+        json.dump([item.to_dict() for item in enriched_trends], f, ensure_ascii=False, indent=2)
+        
+    print(f"[INFO] FETCHER pipeline complete. Saved data to {output_path}")
+
+if __name__ == "__main__":
+    run_fetcher_pipeline()
+
+1.2. .github/workflows/fetcher.yml の修正:
+Action: Ensure this workflow correctly uses GitHub Actions Secrets and only executes the main.py script.
+Final Code for .github/workflows/fetcher.yml:
+
+name: Fetch and Cache Trend Data
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-and-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 📥 Restore scores cache
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/previous_scores.json
+          key: scores-cache-v1
+
+      - name: 🐍 Run Data Pipeline
+        env:
+          MERCARI_AFFILIATE_ID: ${{ secrets.MERCARI_AFFILIATE_ID }}
+          GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }} # Pass all necessary secrets
+        run: python scripts/main.py
+
+      - name: 💾 Save scores cache
+        uses: actions/cache/save@v4
+        with:
+          path: cache/scores_to_cache.json
+          key: scores-cache-v1-${{ github.run_id }}
+      
+      - name: 🚀 Commit and Push to cache-branch
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan cache-branch
+          git rm -rf .
+          git add cache/latest_trends.json cache/scores_to_cache.json
+          git commit -m "chore: Update data cache"
+          git push origin cache-branch --force
+
+技術仕様2：deploy.yml と generator.py の修正 (サイト生成パイプライン)
+Objective:
+This workflow's only responsibility is to fetch the cached data from cache-branch and generate the static site. It must not run any scraping or analysis.
+2.1. scripts/generator.py の修正:
+Action: The script must be converted into a standalone, executable script that reads from the cache file.
+Final Code for scripts/generator.py:
+
+import json
+import os
+from jinja2 import Environment, FileSystemLoader
+# ... other necessary imports like pytz, datetime
+
+def generate_site_from_cache():
+    """Reads data from the cache and generates all static site artifacts."""
+    print("[INFO] Starting DEPLOYER pipeline...")
+    
+    # 1. Load data from cache
+    cache_path = 'cache/latest_trends.json'
+    try:
+        with open(cache_path, 'r', encoding='utf-8') as f:
+            trends_data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"[CRITICAL] Failed to load cache file '{cache_path}'. Halting. Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # 2. Render templates (This is where to_dict_for_frontend() logic should live)
+    # The generator should know how to transform the full data into the frontend format
+    # For now, let's assume it's a direct pass-through
+    
+    # ... (Jinja2 rendering logic for index.html, sitemap.xml, OGP images etc.)
+    # ... (This logic will read GA4_TRACKING_ID from environment variables)
+    
+    print("[INFO] DEPLOYER pipeline complete. Site generated in 'dist/'.")
+
+if __name__ == "__main__":
+    generate_site_from_cache()
+
+2.2. .github/workflows/deploy.yml の修正:
+Action: The workflow must be simplified to only checkout the cache and run the generator.py script.
+Final Code for .github/workflows/deploy.yml:
+
+name: Build and Deploy Site
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions: # Required for GitHub Pages deployment
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
+    steps:
+      - name: Checkout main branch (for templates and scripts)
+        uses: actions/checkout@v4
+
+      - name: ⬇️ Fetch latest data from cache-branch
+        uses: actions/checkout@v4
+        with:
+          ref: cache-branch
+          path: .cache-temp # Checkout to a temporary directory
+
+      - name: Move cache file to expected location
+        run: |
+          mkdir -p cache
+          mv .cache-temp/cache/latest_trends.json cache/latest_trends.json
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: 🏗️ Generate Static Site
+        run: python scripts/generator.py
+        
+      - name: 🚀 Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+Final Instruction:
+Your previous implementation mixed the concerns of these two pipelines. Please generate an implementation_plan.md to refactor the project according to these exact specifications, ensuring the fetcher and deployer are completely independent. I will not approve any plan that has main.py calling generator.py.
 

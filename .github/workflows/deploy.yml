@@ -1,11 +1,10 @@
-name: Deploy Site
-
+name: Build and Deploy Site
 on:
-  schedule:
-    - cron: '0 * * * *'
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -13,43 +12,36 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
     steps:
-      - name: Checkout main branch
+      - name: Checkout main branch (for templates and scripts)
         uses: actions/checkout@v4
 
-      - name: Checkout cache-branch
+      - name: ⬇️ Fetch latest data from cache-branch
         uses: actions/checkout@v4
         with:
           ref: cache-branch
-          path: cache-data
+          path: .cache-temp
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Move cache file to expected location
+        run: |
+          mkdir -p cache
+          mv .cache-temp/cache/latest_trends.json cache/latest_trends.json
+      
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Generate Site
-        env:
-          GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
-        run: |
-          # Move cache file to expected location if needed, or adjust script
-          mkdir -p cache
-          cp cache-data/cache/latest_trends.json cache/latest_trends.json
-          
-          python src/generator.py
-
-      - name: Setup Pages
-        id: deployment
+        run: pip install -r requirements.txt
+        
+      - name: 🏗️ Generate Static Site
+        run: python src/generator.py
+        
+      - name: 🚀 Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
