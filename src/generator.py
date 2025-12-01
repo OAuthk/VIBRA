@@ -3,6 +3,7 @@ import json
 import shutil
 import sys
 from jinja2 import Environment, FileSystemLoader
+from models import EnrichedTrendItem
 
 def generate_site_from_cache():
     """Reads data from the cache and generates all static site artifacts."""
@@ -13,16 +14,16 @@ def generate_site_from_cache():
     cache_dir = os.path.join(base_dir, 'cache')
     dist_dir = os.path.join(base_dir, 'dist')
     templates_dir = os.path.join(base_dir, 'templates')
-    static_dir = os.path.join(base_dir, 'static')
     
-    # 2. Load data from cache
+    # 2. Load and Deserialize data from cache
     cache_path = os.path.join(cache_dir, 'latest_trends.json')
     try:
         with open(cache_path, 'r', encoding='utf-8') as f:
-            full_trends_data = json.load(f)
-            print(f"Loaded {len(full_trends_data)} trends from cache.")
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"[CRITICAL] Failed to load cache file '{cache_path}'. Halting. Error: {e}", file=sys.stderr)
+            # Deserialize JSON dicts into EnrichedTrendItem objects
+            full_trends_data = [EnrichedTrendItem(**item) for item in json.load(f)]
+            print(f"Loaded and deserialized {len(full_trends_data)} trends from cache.")
+    except (FileNotFoundError, json.JSONDecodeError, TypeError) as e:
+        print(f"[CRITICAL] Failed to load or deserialize cache file '{cache_path}'. Halting. Error: {e}", file=sys.stderr)
         sys.exit(1)
 
     # 3. Prepare dist directory
@@ -30,34 +31,8 @@ def generate_site_from_cache():
         shutil.rmtree(dist_dir)
     os.makedirs(dist_dir)
     
-    # 4. Transform data for frontend
-    # We replicate the logic from models.py's to_dict_for_frontend here
-    # or we could import models.py if we wanted to deserialize.
-    # Working with dicts is sufficient here.
-    frontend_trends = []
-    for item in full_trends_data:
-        # Determine 'stage' based on heatLevel and score
-        heatLevel = item.get('heatLevel', 'low')
-        score = item.get('score', 0)
-        
-        if heatLevel == 'high' and score > 80:
-            stage = 'peak'
-        elif score < 30:
-            stage = 'fading'
-        else:
-            stage = 'newborn'
-
-        frontend_item = {
-            "text": item.get('title'),
-            "category": item.get('category'),
-            "stage": stage,
-            "score": score,
-            "heatLevel": heatLevel,
-            "detail_url": item.get('google_search_url'),
-            "related_words": item.get('co_occurring_words', []),
-            "cluster_id": item.get('cluster_id', 0)
-        }
-        frontend_trends.append(frontend_item)
+    # 4. Transform data for frontend using the single source of truth
+    frontend_trends = [item.to_dict_for_frontend() for item in full_trends_data]
 
     # 5. Save frontend data
     trends_json_dst = os.path.join(dist_dir, 'trends.json')
@@ -65,14 +40,7 @@ def generate_site_from_cache():
         json.dump(frontend_trends, f, ensure_ascii=False, indent=2)
     print(f"Generated frontend data at {trends_json_dst}")
 
-    # 6. Copy static assets
-    if os.path.exists(static_dir):
-        shutil.copytree(static_dir, os.path.join(dist_dir, 'static'))
-        print("Copied static assets.")
-    else:
-        print("Warning: static directory not found.")
-
-    # 7. Render HTML
+    # 6. Render HTML
     env = Environment(loader=FileSystemLoader(templates_dir))
     template = env.get_template('layout.html')
     

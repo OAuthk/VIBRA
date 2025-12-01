@@ -40,8 +40,27 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: 🏗️ Generate Static Site
+      - name: 🏗️ Generate Site Logic
         run: python src/generator.py
-        
+      
+      - name: 📂 Copy Static Assets
+        run: cp -r static dist/
+
+      - name: 📦 Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  deploy:
+    needs: build-and-deploy
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: 🚀 Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

@@ -1,197 +1,124 @@
-Antigravity用プロンプト：パイプライン分離とSecretsの再統合
+Antigravity用プロンプト：generator.pyの最終リファクタリング
 タスク名:
-Refactor CI/CD Pipelines for Strict Separation of Concerns and Secret Management
+Final Refactoring of generator.py for DRY Principle and Modern Asset Handling
 タスク説明 (Instructions):
-You are a Principal DevOps Architect. Your previous implementation was a good first draft, but it critically failed to adhere to our core architectural principle: strict separation of concerns between the data-fetching pipeline and the site-deployment pipeline.
-Your new, urgent task is to refactor the entire CI/CD and Python script structure to enforce this separation, and to correctly re-integrate secret management.
-You must treat the following two workflows as completely independent systems that only communicate via the cache-branch.
-技術仕様1：fetcher.yml と main.py の修正 (データ取得パイプライン)
+You are a Principal Software Architect performing a final code review. Your previous implementation of the separated pipelines was excellent. However, there are two minor areas in generator.py that can be improved to better adhere to software engineering best practices.
+Your task is to refactor generator.py and the CI/CD workflow based on the following precise specifications.
+技術仕様1：データ変換ロジックの重複排除 (Adherence to DRY Principle)
 Objective:
-This workflow's only responsibility is to fetch data and push a validated latest_trends.json to the cache-branch. It must not perform any site generation.
-1.1. scripts/main.py の修正:
-Action: The script must be refactored to only perform the data pipeline tasks. The site generation logic must be completely removed.
-Final Code for scripts/main.py:
+Eliminate the redundant data transformation logic in generator.py. The single source of truth for data structures is models.py, and we must reuse it.
+Problem: generator.py currently re-implements the logic to determine the stage and format the data for the frontend. This violates the DRY (Don't Repeat Yourself) principle. If we change the logic in models.py in the future, we would have to remember to change it in generator.py as well, which is error-prone.
+Solution: generator.py must deserialize the JSON data back into a list of EnrichedTrendItem objects and then call the existing to_dict_for_frontend() method.
+scripts/generator.py の修正:
 
+# scripts/generator.py
+import json
+import os
+import shutil
 import sys
-import scraper
-import analyzer
-import enricher
-import json
-import os
-
-def run_fetcher_pipeline():
-    """Executes the complete data pipeline from scraping to saving cache files."""
-    print("[INFO] Starting FETCHER pipeline...")
-    
-    # 1. Scrape
-    raw_trends = scraper.fetch_raw_trends()
-    if not raw_trends:
-        print("[CRITICAL] No raw trends acquired. Halting.", file=sys.stderr)
-        sys.exit(1)
-    
-    # 2. Analyze
-    analyzed_trends = analyzer.analyze_trends(raw_trends)
-    
-    # 3. Enrich
-    # This function must also generate 'scores_to_cache.json' internally
-    enriched_trends = enricher.enrich_trends(analyzed_trends)
-    
-    # 4. Save final data to cache file
-    output_dir = "cache"
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # This is the primary artifact of this workflow
-    output_path = os.path.join(output_dir, "latest_trends.json")
-    with open(output_path, 'w', encoding='utf-8') as f:
-        # Note: We are not calling the to_dict_for_frontend() method here,
-        # as the generator will handle that. We save the full enriched data.
-        json.dump([item.to_dict() for item in enriched_trends], f, ensure_ascii=False, indent=2)
-        
-    print(f"[INFO] FETCHER pipeline complete. Saved data to {output_path}")
-
-if __name__ == "__main__":
-    run_fetcher_pipeline()
-
-1.2. .github/workflows/fetcher.yml の修正:
-Action: Ensure this workflow correctly uses GitHub Actions Secrets and only executes the main.py script.
-Final Code for .github/workflows/fetcher.yml:
-
-name: Fetch and Cache Trend Data
-on:
-  schedule:
-    - cron: '*/15 * * * *'
-  workflow_dispatch:
-
-jobs:
-  fetch-and-cache:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: 📥 Restore scores cache
-        uses: actions/cache/restore@v4
-        with:
-          path: cache/previous_scores.json
-          key: scores-cache-v1
-
-      - name: 🐍 Run Data Pipeline
-        env:
-          MERCARI_AFFILIATE_ID: ${{ secrets.MERCARI_AFFILIATE_ID }}
-          GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }} # Pass all necessary secrets
-        run: python scripts/main.py
-
-      - name: 💾 Save scores cache
-        uses: actions/cache/save@v4
-        with:
-          path: cache/scores_to_cache.json
-          key: scores-cache-v1-${{ github.run_id }}
-      
-      - name: 🚀 Commit and Push to cache-branch
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout --orphan cache-branch
-          git rm -rf .
-          git add cache/latest_trends.json cache/scores_to_cache.json
-          git commit -m "chore: Update data cache"
-          git push origin cache-branch --force
-
-技術仕様2：deploy.yml と generator.py の修正 (サイト生成パイプライン)
-Objective:
-This workflow's only responsibility is to fetch the cached data from cache-branch and generate the static site. It must not run any scraping or analysis.
-2.1. scripts/generator.py の修正:
-Action: The script must be converted into a standalone, executable script that reads from the cache file.
-Final Code for scripts/generator.py:
-
-import json
-import os
 from jinja2 import Environment, FileSystemLoader
-# ... other necessary imports like pytz, datetime
+from models import EnrichedTrendItem # ★ 1. Import the dataclass
 
 def generate_site_from_cache():
     """Reads data from the cache and generates all static site artifacts."""
     print("[INFO] Starting DEPLOYER pipeline...")
     
-    # 1. Load data from cache
-    cache_path = 'cache/latest_trends.json'
+    # ... (Path setup is the same) ...
+    
+    # 2. Load and Deserialize data from cache
+    cache_path = os.path.join(cache_dir, 'latest_trends.json')
     try:
         with open(cache_path, 'r', encoding='utf-8') as f:
-            trends_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"[CRITICAL] Failed to load cache file '{cache_path}'. Halting. Error: {e}", file=sys.stderr)
+            # ★ 2. Deserialize JSON dicts into EnrichedTrendItem objects
+            full_trends_data = [EnrichedTrendItem(**item) for item in json.load(f)]
+            print(f"Loaded and deserialized {len(full_trends_data)} trends from cache.")
+    except (FileNotFoundError, json.JSONDecodeError, TypeError) as e:
+        print(f"[CRITICAL] Failed to load or deserialize cache file '{cache_path}'. Halting. Error: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # 2. Render templates (This is where to_dict_for_frontend() logic should live)
-    # The generator should know how to transform the full data into the frontend format
-    # For now, let's assume it's a direct pass-through
+    # 3. Prepare dist directory
+    # ... (Same as before) ...
     
-    # ... (Jinja2 rendering logic for index.html, sitemap.xml, OGP images etc.)
-    # ... (This logic will read GA4_TRACKING_ID from environment variables)
-    
-    print("[INFO] DEPLOYER pipeline complete. Site generated in 'dist/'.")
+    # ★ 4. Transform data for frontend using the single source of truth
+    # The redundant logic is now removed.
+    frontend_trends = [item.to_dict_for_frontend() for item in full_trends_data]
 
-if __name__ == "__main__":
-    generate_site_from_cache()
+    # 5. Save frontend data
+    # ... (Same as before) ...
 
-2.2. .github/workflows/deploy.yml の修正:
-Action: The workflow must be simplified to only checkout the cache and run the generator.py script.
-Final Code for .github/workflows/deploy.yml:
+    # ... (The rest of the file remains the same)
 
-name: Build and Deploy Site
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+技術仕様2：静的アセットの管理方法のモダン化
+Objective:
+Separate the concern of copying static assets from the Python script and delegate it to a more appropriate tool within the CI/CD workflow.
+Problem: generator.py currently contains logic (shutil.copytree) to copy the static/ directory. While functional, this mixes Python's data processing role with a simple file operation task that is better handled by the workflow itself.
+Solution: Remove the file-copying logic from Python and use a standard shell command (cp) within the deploy.yml workflow.
+scripts/generator.py の修正:
 
-permissions: # Required for GitHub Pages deployment
-  contents: read
-  pages: write
-  id-token: write
+# scripts/generator.py
+# ... in generate_site_from_cache():
+    # ...
+    # 6. Copy static assets  <- ★ REMOVE THIS ENTIRE BLOCK
+    # if os.path.exists(static_dir):
+    #     shutil.copytree(static_dir, os.path.join(dist_dir, 'static'))
+    #     print("Copied static assets.")
+    # else:
+    #     print("Warning: static directory not found.")
+    # ...
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    env:
-      GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
-    steps:
-      - name: Checkout main branch (for templates and scripts)
-        uses: actions/checkout@v4
+.github/workflows/deploy.yml の修正:
 
-      - name: ⬇️ Fetch latest data from cache-branch
-        uses: actions/checkout@v4
-        with:
-          ref: cache-branch
-          path: .cache-temp # Checkout to a temporary directory
-
-      - name: Move cache file to expected location
-        run: |
-          mkdir -p cache
-          mv .cache-temp/cache/latest_trends.json cache/latest_trends.json
-      
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-        
+# .github/workflows/deploy.yml
+# ... in build-and-deploy job:
+      # ...
       - name: 🏗️ Generate Static Site
         run: python scripts/generator.py
-        
+      
+      - name: 📂 Copy Static Assets
+        # ★ ADD THIS NEW STEP
+        run: cp -r static dist/
+
       - name: 🚀 Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        # Note: The 'actions/deploy-pages' action might need configuration
+        # to know that it should deploy the 'dist' folder.
+        # This is usually handled by a 'actions/upload-pages-artifact' step before.
+        # Let's refine this part as well.
+
+deploy.yml のデプロイステップの最終的な洗練:
+For the most robust GitHub Pages deployment, we should use the upload-pages-artifact and deploy-pages actions together.
+
+# .github/workflows/deploy.yml
+# ...
+    jobs:
+      build-and-deploy:
+        # ...
+        steps:
+          # ... (checkout, setup python, etc.)
+          - name: 🏗️ Generate Site Logic
+            run: python scripts/generator.py
+          
+          - name: 📂 Copy Static Assets
+            run: cp -r static dist/
+
+          - name: 📦 Upload artifact
+            uses: actions/upload-pages-artifact@v3
+            with:
+              path: './dist'
+
+      deploy:
+        needs: build-and-deploy
+        permissions:
+          pages: write
+          id-token: write
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+          - name: 🚀 Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
 
 Final Instruction:
-Your previous implementation mixed the concerns of these two pipelines. Please generate an implementation_plan.md to refactor the project according to these exact specifications, ensuring the fetcher and deployer are completely independent. I will not approve any plan that has main.py calling generator.py.
-
+Please generate an implementation_plan.md for these two refactoring tasks. The goal is to make our generator.py script cleaner and more focused, while making our CI/CD workflow more explicit and robust. I will approve the plan before you proceed.
