@@ -175,15 +175,20 @@ class VIBRAApp {
         this.createTooltip();
     }
 
+    isMobile() {
+        return window.innerWidth <= 768;
+    }
+
     calculateRadius(score) {
-        // Scale score (0-100) to radius (20-60)
-        const minRadius = 25;
-        const maxRadius = 65;
+        // Scale score (0-100) to radius
+        const isMobile = this.isMobile();
+        const minRadius = isMobile ? 35 : 25; // モバイルは大きく
+        const maxRadius = isMobile ? 75 : 65;
         return minRadius + (score / 100) * (maxRadius - minRadius);
     }
 
     truncateText(text, radius) {
-        const maxChars = Math.floor(radius / 6);
+        const maxChars = Math.floor(radius / (this.isMobile() ? 5 : 6));
         if (text.length > maxChars) {
             return text.substring(0, maxChars - 1) + '…';
         }
@@ -206,6 +211,9 @@ class VIBRAApp {
     }
 
     onBubbleHover(event, d, isEnter) {
+        if (this.isMobile()) return;
+
+        // 以下PC用レガシー実装継続（showTooltipへの移行はonBubbleClickでのみ実施）
         const tooltip = d3.select('.tooltip');
         const bubble = d3.select(event.currentTarget);
 
@@ -259,9 +267,83 @@ class VIBRAApp {
         }
     }
 
-    onBubbleClick(d) {
-        if (d.detail_url) {
-            window.open(d.detail_url, '_blank');
+    onBubbleClick(event, d) {
+        if (this.isMobile()) {
+            // モバイル: ボトムシート表示のトグル
+            this.showTooltip(event, d, true, true);
+        } else {
+            // PC: 直接遷移
+            if (d.detail_url) {
+                window.open(d.detail_url, '_blank');
+            }
+        }
+    }
+
+    showTooltip(event, d, show, isClick = false) {
+        const tooltip = d3.select('.tooltip');
+        // event.currentTargetが使えない場合（click時など）のフォールバック
+        const target = event.currentTarget || event.target;
+        const bubble = d3.select(target).closest('.bubble').size() ? d3.select(target).closest('.bubble') : d3.select(target);
+
+        if (show) {
+            // バブル強調エフェクト
+            bubble.select('circle')
+                .transition()
+                .duration(200)
+                .attr('r', d.radius * 1.1)
+                .attr('opacity', 1)
+                .style('filter', 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3))');
+
+            bubble.select('text')
+                .transition()
+                .duration(200)
+                .attr('font-size', Math.max(12, d.radius / 2.5));
+
+            // ツールチップ表示
+            if (this.isMobile()) {
+                tooltip.classed('visible', true); // CSSでボトムシートアニメーション
+                tooltip.style('opacity', 1);      // 確実に表示
+            } else {
+                tooltip.transition().duration(200).style('opacity', 1);
+            }
+
+            // コンテンツ生成
+            const linkHtml = d.detail_url ? `<br><a href="${d.detail_url}" class="tooltip-link" target="_blank" style="color:#60a5fa; display:inline-block; margin-top:8px; padding:8px 0; width:100%; text-align:center; border:1px solid #60a5fa; border-radius:4px;">詳しく見る &rarr;</a>` : '';
+
+            tooltip.html(`
+                <strong>${d.text}</strong>
+                <div style="font-size:0.9em; color:#ddd; margin:4px 0; max-width:${this.isMobile() ? '100%' : '200px'}; white-space:normal; line-height:1.5;">${d.summary || '詳細情報なし'}</div>
+                <div style="font-size:0.85em; opacity:0.8; margin-top:8px; border-top:1px solid rgba(255,255,255,0.1); padding-top:4px;">
+                    カテゴリ: ${d.category} | スコア: ${d.score}
+                </div>
+                ${this.isMobile() ? linkHtml : ''}
+            `);
+
+            // PC位置調整
+            if (!this.isMobile()) {
+                tooltip.style('left', (event.pageX + 15) + 'px')
+                    .style('top', (event.pageY - 10) + 'px');
+            }
+
+        } else {
+            // 非表示処理
+            bubble.select('circle')
+                .transition()
+                .duration(300)
+                .attr('r', d.radius)
+                .attr('opacity', 0.85)
+                .style('filter', null);
+
+            bubble.select('text')
+                .transition()
+                .duration(300)
+                .attr('font-size', Math.max(10, d.radius / 3));
+
+            if (this.isMobile()) {
+                tooltip.classed('visible', false);
+            } else {
+                tooltip.transition().duration(300).style('opacity', 0);
+            }
         }
     }
 
