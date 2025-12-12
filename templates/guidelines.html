@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIBRA - AI機能利用に関するガイドライン。トレンド可視化におけるAI技術の活用方針と注意事項。">
+    <meta name="robots" content="noindex">
+    <title>AI機能ガイドライン | VIBRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .guidelines-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .guidelines-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .guidelines-header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .guidelines-header .last-updated {
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+        }
+
+        .guidelines-section {
+            margin-bottom: 2rem;
+        }
+
+        .guidelines-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+            padding-left: 0.75rem;
+            border-left: 3px solid #667eea;
+        }
+
+        .guidelines-section p,
+        .guidelines-section li {
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .guidelines-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .guidelines-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border: 1px solid #F59E0B;
+            border-radius: 0.5rem;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box p {
+            color: #92400E;
+            margin: 0;
+        }
+
+        .info-box {
+            background: #EEF2FF;
+            border: 1px solid #6366F1;
+            border-radius: 0.5rem;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box p {
+            color: #3730A3;
+            margin: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .back-link::before {
+            content: "←";
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="index.html" class="brand" style="text-decoration: none;">VIBRA</a>
+        <div class="header-meta">
+            <div class="time-display"></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="guidelines-container">
+            <a href="index.html" class="back-link">トップページに戻る</a>
+
+            <div class="guidelines-header">
+                <h1>AI機能利用ガイドライン</h1>
+                <p class="last-updated">最終更新: {{ current_year }}年12月</p>
+            </div>
+
+            <section class="guidelines-section">
+                <h2>本ガイドラインについて</h2>
+                <p>
+                    VIBRAは、トレンドデータの収集・分析・可視化において、機械学習およびAI技術を活用しています。
+                    本ガイドラインは、これらの技術の利用に関する方針と、ユーザーの皆様へのお願い事項をまとめたものです。
+                </p>
+            </section>
+
+            <section class="guidelines-section">
+                <h2>AI技術の活用範囲</h2>
+                <p>VIBRAでは、以下の機能においてAI・機械学習技術を活用しています：</p>
+                <ul>
+                    <li><strong>トレンドクラスタリング</strong> - 関連するトレンドワードのグループ化</li>
+                    <li><strong>カテゴリ自動分類</strong> - トレンドの適切なカテゴリへの振り分け</li>
+                    <li><strong>ヒートレベル算出</strong> - トレンドの盛り上がり度合いの数値化</li>
+                    <li><strong>関連ワード抽出</strong> - 共起語や関連キーワードの特定</li>
+                </ul>
+            </section>
+
+            <section class="guidelines-section">
+                <h2>データの取り扱いについて</h2>
+                <p>
+                    VIBRAが表示するトレンド情報は、公開されているウェブデータを収集・分析したものです。
+                    以下の点についてご理解ください：
+                </p>
+                <div class="warning-box">
+                    <p>
+                        <strong>⚠️ 免責事項:</strong>
+                        AI技術により生成・分類された情報の正確性、最新性、完全性について、VIBRAは保証いたしません。
+                        表示される情報は参考としてご利用いただき、重要な判断には公式情報をご確認ください。
+                    </p>
+                </div>
+            </section>
+
+            <section class="guidelines-section">
+                <h2>禁止される利用方法</h2>
+                <p>VIBRAのサービスおよび表示される情報を、以下の目的で利用することは禁止されています：</p>
+                <ul>
+                    <li>他者の権利（著作権、プライバシー権、名誉権等）を侵害する行為</li>
+                    <li>虚偽情報や誤解を招く情報の作成・拡散</li>
+                    <li>違法行為や公序良俗に反する活動の助長</li>
+                    <li>差別、ヘイトスピーチ、暴力を促進するコンテンツの作成</li>
+                    <li>スパム、フィッシング、マルウェア配布等のサイバー攻撃</li>
+                    <li>サービスへの過度なアクセスやスクレイピングによるシステム妨害</li>
+                </ul>
+            </section>
+
+            <section class="guidelines-section">
+                <h2>AI生成コンテンツの特性</h2>
+                <div class="info-box">
+                    <p>
+                        <strong>ℹ️ ご留意ください:</strong>
+                        AI技術を用いた分析結果には、データソースに起因するバイアスや、
+                        アルゴリズムの特性による偏りが含まれる場合があります。
+                        多角的な視点からの情報収集をお勧めします。
+                    </p>
+                </div>
+                <p>
+                    表示されるトレンド情報やカテゴリ分類は、統計的な分析に基づくものであり、
+                    すべての文脈において正確であることを保証するものではありません。
+                </p>
+            </section>
+
+            <section class="guidelines-section">
+                <h2>サービスの変更について</h2>
+                <p>
+                    VIBRAは、サービス品質の向上やセキュリティ確保のため、
+                    AI機能を含むサービス内容を予告なく変更、一時停止、または終了する場合があります。
+                    本ガイドラインも、サービスの変更に伴い更新される可能性がありますので、
+                    定期的にご確認ください。
+                </p>
+            </section>
+
+            <section class="guidelines-section">
+                <h2>お問い合わせ</h2>
+                <p>
+                    本ガイドラインに関するご質問や、サービスに関するお問い合わせは、
+                    GitHubリポジトリのIssueにてお受けしております。
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="copyright-year">2025</span> VIBRA. Powered by D3.js</p>
+        <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+    </footer>
+</body>
+
+</html>

@@ -1,13 +1,44 @@
-from dataclasses import dataclass, asdict
+# src/models.py
+"""
+VIBRAデータモデル定義
+パイプライン全体で使用するdataclass
+"""
+from dataclasses import dataclass, asdict, field
 from typing import List, Dict
+
 
 @dataclass(frozen=True)
 class Link:
-    provider: str
+    """外部リンク情報"""
+    type: str           # 'search', 'shop', etc.
+    provider: str       # 'Google', 'Mercari', etc.
+    display_text: str   # 表示テキスト
     url: str
+
+
+@dataclass(frozen=True)
+class RawTrendItem:
+    """スクレイパーから返される生データ"""
+    title: str
+    posts_num: int
+    detail_url: str
+    related_posts: List[str] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class AnalyzedTrendItem:
+    """分析済みトレンドデータ"""
+    title: str
+    posts_num: int
+    detail_url: str
+    related_posts: List[str]
+    co_occurring_words: List[str]
+    cluster_id: int
+
 
 @dataclass(frozen=True)
 class EnrichedTrendItem:
+    """エンリッチメント済みトレンドデータ（最終形）"""
     title: str
     posts_num: int
     score: int
@@ -15,35 +46,8 @@ class EnrichedTrendItem:
     co_occurring_words: List[str]
     links: List[Link]
     category: str
-    rank: int
-    google_search_url: str
-    mercari_url: str
-    cluster_id: int = 0  # Default to 0
+    cluster_id: int
 
     def to_dict(self) -> Dict:
-        """Returns a dictionary representation of the object."""
+        """JSON保存用の辞書変換"""
         return asdict(self)
-
-    def to_dict_for_frontend(self) -> Dict:
-        """
-        Generates a dictionary specifically for the frontend JavaScript,
-        mapping our backend names to the expected frontend names.
-        """
-        # Determine 'stage' based on heatLevel and score
-        if self.heatLevel == 'high' and self.score > 80:
-            stage = 'peak'
-        elif self.score < 30:
-            stage = 'fading'
-        else:
-            stage = 'newborn' # Default for medium or new items
-
-        return {
-            "text": self.title,
-            "category": self.category,
-            "stage": stage,
-            "score": self.score,
-            "heatLevel": self.heatLevel,
-            "detail_url": self.google_search_url, # Using Google Search as detail URL for now
-            "related_words": self.co_occurring_words,
-            "cluster_id": self.cluster_id
-        }

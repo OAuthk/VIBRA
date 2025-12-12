@@ -1,7 +1,7 @@
 [
   {
     "text": "Election",
-    "category": "IT",
+    "category": "technology",
     "stage": "peak",
     "score": 100,
     "heatLevel": "high",
@@ -11,7 +11,7 @@
   },
   {
     "text": "Vote",
-    "category": "ニュース",
+    "category": "business",
     "stage": "peak",
     "score": 92,
     "heatLevel": "high",
@@ -21,7 +21,7 @@
   },
   {
     "text": "Candidate",
-    "category": "総合",
+    "category": "all",
     "stage": "peak",
     "score": 86,
     "heatLevel": "high",
@@ -31,7 +31,7 @@
   },
   {
     "text": "AI",
-    "category": "ニュース",
+    "category": "business",
     "stage": "newborn",
     "score": 80,
     "heatLevel": "high",
@@ -41,7 +41,7 @@
   },
   {
     "text": "Python",
-    "category": "総合",
+    "category": "all",
     "stage": "newborn",
     "score": 74,
     "heatLevel": "high",
@@ -51,7 +51,7 @@
   },
   {
     "text": "Code",
-    "category": "スポーツ",
+    "category": "entertainment",
     "stage": "newborn",
     "score": 69,
     "heatLevel": "high",
@@ -61,7 +61,7 @@
   },
   {
     "text": "Gundam",
-    "category": "ニュース",
+    "category": "business",
     "stage": "newborn",
     "score": 63,
     "heatLevel": "high",
@@ -71,7 +71,7 @@
   },
   {
     "text": "Anime",
-    "category": "スポーツ",
+    "category": "entertainment",
     "stage": "newborn",
     "score": 58,
     "heatLevel": "high",

@@ -1,20 +1,101 @@
+# src/enricher.py
+"""
+VIBRAエンリッチメントモジュール
+スコア計算、ヒートレベル判定、リンク生成
+"""
 import os
 import json
 import math
-import random
 import urllib.parse
 from typing import List, Dict
-from models import EnrichedTrendItem, Link
 
-# --- 1. 定数と重みの定義 ---
+import category_classifier
+from models import AnalyzedTrendItem, EnrichedTrendItem, Link
+
+
+# スコア計算の重み
 W1_RANK = 0.4
 W2_POSTS = 0.3
 W3_VELOCITY = 0.3
 VELOCITY_THRESHOLD_HIGH = 20
 
-# --- 2. 前回のスコアを読み込むヘルパー関数 ---
+# カテゴリリストは category_classifier.py に移動
+
+
+def enrich_trends(analyzed_trends: List[AnalyzedTrendItem]) -> List[EnrichedTrendItem]:
+    """
+    分析済みトレンドにスコア、ヒートレベル、リンク等を付与する。
+    
+    Args:
+        analyzed_trends: 分析済みトレンドリスト
+        
+    Returns:
+        List[EnrichedTrendItem]: エンリッチメント済みトレンドリスト
+    """
+    print(f"[INFO][enricher] Enriching {len(analyzed_trends)} trends...")
+    
+    # 前回スコアの読み込み
+    previous_scores = _load_previous_scores()
+    current_scores: Dict[str, int] = {}
+    
+    # 最大投稿数（正規化用）
+    max_posts = max((t.posts_num for t in analyzed_trends), default=1) or 1
+    total_trends = len(analyzed_trends)
+    
+    enriched_list: List[EnrichedTrendItem] = []
+    
+    for i, trend in enumerate(analyzed_trends):
+        # スコア計算
+        rank_metric = (1 - (i / total_trends)) * 100 if total_trends > 0 else 50
+        post_metric = (math.log1p(trend.posts_num) / math.log1p(max_posts)) * 100
+        
+        previous_score = previous_scores.get(trend.title, 0)
+        velocity_metric = max(0, 100 - previous_score)
+        
+        score = int(
+            W1_RANK * rank_metric +
+            W2_POSTS * post_metric +
+            W3_VELOCITY * velocity_metric
+        )
+        score = min(100, max(0, score))
+        current_scores[trend.title] = score
+        
+        # ヒートレベル判定
+        velocity_diff = score - previous_score
+        if velocity_diff >= VELOCITY_THRESHOLD_HIGH and score > 50:
+            heat_level = 'high'
+        elif score > 60:
+            heat_level = 'medium'
+        else:
+            heat_level = 'low'
+        
+        # リンク生成
+        links = _generate_links(trend.title)
+        
+        # カテゴリ分類（キーワードマッチング戦略）
+        category = category_classifier.classify_category(trend)
+        
+        # EnrichedTrendItem生成
+        enriched_list.append(EnrichedTrendItem(
+            title=trend.title,
+            posts_num=trend.posts_num,
+            score=score,
+            heatLevel=heat_level,
+            co_occurring_words=trend.co_occurring_words,
+            links=links,
+            category=category,
+            cluster_id=trend.cluster_id
+        ))
+    
+    # 現在スコアを保存（次回実行用）
+    _save_current_scores(current_scores)
+    
+    print(f"[INFO][enricher] Enrichment complete.")
+    return enriched_list
+
+
 def _load_previous_scores() -> Dict[str, int]:
-    """GitHub Actions Cacheから復元された前回のスコアデータを読み込む"""
+    """前回のスコアデータを読み込む"""
     path = 'cache/previous_scores.json'
     if not os.path.exists(path):
         return {}
@@ -24,98 +105,33 @@ def _load_previous_scores() -> Dict[str, int]:
     except (json.JSONDecodeError, FileNotFoundError):
         return {}
 
-def enrich_trends(trends: List[Dict], cluster_mapping: Dict[str, int] = None) -> List[EnrichedTrendItem]:
-    """
-    Adds score, heatLevel, google_search_url, and affiliate links.
-    Returns a list of EnrichedTrendItem objects.
-    """
-    if cluster_mapping is None:
-        cluster_mapping = {}
 
+def _save_current_scores(scores: Dict[str, int]) -> None:
+    """現在のスコアを保存"""
+    os.makedirs('cache', exist_ok=True)
+    with open('cache/scores_to_cache.json', 'w', encoding='utf-8') as f:
+        json.dump(scores, f, ensure_ascii=False, indent=2)
+
+
+def _generate_links(keyword: str) -> List[Link]:
+    """キーワードに基づくリンクを生成"""
+    query = urllib.parse.quote(keyword)
     mercari_affiliate_id = os.environ.get('MERCARI_AFFILIATE_ID', '')
     
-    previous_scores = _load_previous_scores()
-    current_scores: Dict[str, int] = {}
-    enriched_list: List[EnrichedTrendItem] = []
-    
-    # Mock categories for now since scraper doesn't provide them
-    CATEGORIES = ['総合', 'エンタメ', 'ニュース', 'スポーツ', 'IT']
-    
-    # Calculate max posts for normalization
-    for i, trend in enumerate(trends):
-        if 'posts_num' not in trend:
-             # Mock post volume: Rank 1 has ~10000, Rank 20 has ~100
-             trend['posts_num'] = int(10000 / (i + 1))
-
-    max_posts_num = max([t.get('posts_num', 1) for t in trends] or [1])
-    total_trends = len(trends)
-    
-    for i, trend in enumerate(trends):
-        # --- 各指標の正規化 (0-100) ---
-        rank_metric = (1 - (i / total_trends)) * 100
-        post_volume_metric = (math.log1p(trend.get('posts_num', 0)) / math.log1p(max_posts_num)) * 100
-        
-        keyword = trend['keyword']
-        previous_score = previous_scores.get(keyword, 0)
-        velocity_metric = max(0, 100 - previous_score)
-
-        # --- 最終スコアの計算 ---
-        score = int(
-            W1_RANK * rank_metric +
-            W2_POSTS * post_volume_metric +
-            W3_VELOCITY * velocity_metric
+    links = [
+        Link(
+            type='search',
+            provider='Google',
+            display_text='Google検索',
+            url=f"https://www.google.com/search?q={query}"
+        ),
+        Link(
+            type='shop',
+            provider='Mercari',
+            display_text='メルカリ',
+            url=f"https://jp.mercari.com/search?keyword={query}" + 
+                (f"&afid={mercari_affiliate_id}" if mercari_affiliate_id else "")
         )
-        score = min(100, max(0, score))
-        current_scores[keyword] = score
-        
-        # --- velocityに基づくheatLevelの決定 ---
-        velocity_diff = score - previous_score
-        
-        if velocity_diff >= VELOCITY_THRESHOLD_HIGH and score > 50:
-            heatLevel = 'high'
-        elif score > 60:
-            heatLevel = 'medium'
-        else:
-            heatLevel = 'low'
-            
-        # URLs
-        query = urllib.parse.quote(keyword)
-        google_search_url = f"https://www.google.com/search?q={query}"
-        mercari_url = f"https://jp.mercari.com/search?keyword={query}"
-        if mercari_affiliate_id:
-             mercari_url += f"&afid={mercari_affiliate_id}"
-        
-        # Create Link objects
-        links = [
-            Link(provider='Google', url=google_search_url),
-            Link(provider='Mercari', url=mercari_url)
-        ]
-        
-        # Assign random category for demo
-        category = random.choice(CATEGORIES)
-        
-        # Get Cluster ID
-        cluster_id = cluster_mapping.get(keyword, 0)
-        
-        item = EnrichedTrendItem(
-            title=keyword,
-            posts_num=trend.get('posts_num', 0),
-            score=score,
-            heatLevel=heatLevel,
-            co_occurring_words=trend.get('related_nouns', []),
-            links=links,
-            category=category,
-            rank=trend.get('rank', i+1),
-            google_search_url=google_search_url,
-            mercari_url=mercari_url,
-            cluster_id=cluster_id
-        )
-        enriched_list.append(item)
-             
-    # --- 4. 次回実行のために現在のスコアをファイルに保存 ---
-    if not os.path.exists('cache'):
-        os.makedirs('cache')
-    with open('cache/scores_to_cache.json', 'w', encoding='utf-8') as f:
-        json.dump(current_scores, f, ensure_ascii=False, indent=2)
-             
-    return enriched_list
+    ]
+    
+    return links

@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIBRA - リアルタイムトレンドを美しく可視化。今何が話題になっているかを一目で確認できます。">
+    <meta name="keywords" content="トレンド, リアルタイム, 可視化, VIBRA">
+    <meta property="og:title" content="VIBRA - Living Cloud">
+    <meta property="og:description" content="リアルタイムトレンドを美しく可視化">
+    <meta property="og:type" content="website">
     <title>VIBRA - Living Cloud</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,20 +22,31 @@
 
 <body>
     <header class="header">
-        <div class="brand">VIBRA</div>
+        <h1 class="brand">VIBRA</h1>
         <div class="header-meta">
-            <!-- This will be populated by main.js -->
-            <div class="time-display"></div>
+            <div class="time-display" aria-live="polite"></div>
         </div>
     </header>
 
-    <nav class="tabs-container">
-        <div class="tabs">
-            <button class="tab active" data-genre="all">すべて</button>
-            <button class="tab" data-genre="technology">テクノロジー</button>
-            <button class="tab" data-genre="entertainment">エンタメ</button>
-            <button class="tab" data-genre="business">ビジネス</button>
-            <script src="static/js/main.js"></script>
+    <nav class="tabs-container" role="navigation" aria-label="カテゴリフィルター">
+        <div class="tabs" role="tablist">
+            <button class="tab active" data-genre="all" role="tab" aria-selected="true">すべて</button>
+            <button class="tab" data-genre="technology" role="tab" aria-selected="false">テクノロジー</button>
+            <button class="tab" data-genre="entertainment" role="tab" aria-selected="false">エンタメ</button>
+            <button class="tab" data-genre="business" role="tab" aria-selected="false">ビジネス</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div id="visualization" class="visualization-container" role="img" aria-label="トレンド可視化"></div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 VIBRA. Powered by D3.js</p>
+        <p class="footer-links"><a href="guidelines.html">AI機能ガイドライン</a></p>
+    </footer>
+
+    <script src="static/js/main.js"></script>
 </body>
 
 </html>
