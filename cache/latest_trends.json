@@ -1,178 +1,72 @@
 [
   {
-    "title": "Election",
-    "posts_num": 10000,
-    "score": 100,
+    "title": "ChatGPT",
+    "posts_num": 15000,
+    "score": 95,
     "heatLevel": "high",
-    "co_occurring_words": [],
+    "co_occurring_words": ["AI", "OpenAI", "GPT-4"],
     "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Election"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Election"
-      }
+      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=ChatGPT"},
+      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=ChatGPT"}
     ],
-    "category": "IT",
-    "rank": 1,
-    "google_search_url": "https://www.google.com/search?q=Election",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Election",
-    "cluster_id": 0
+    "category": "technology",
+    "cluster_id": 0,
+    "summary": "OpenAIがGPT-4搭載の新しいChatGPT機能を発表。API価格の改定や新モデルの性能について議論が活発化している。"
   },
   {
-    "title": "Vote",
+    "title": "大谷翔平",
+    "posts_num": 12000,
+    "score": 90,
+    "heatLevel": "high",
+    "co_occurring_words": ["ドジャース", "ホームラン", "MVP"],
+    "links": [
+      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E5%A4%A7%E8%B0%B7%E7%BF%94%E5%B9%B3"},
+      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E5%A4%A7%E8%B0%B7%E7%BF%94%E5%B9%B3"}
+    ],
+    "category": "sports",
+    "cluster_id": 1,
+    "summary": "大谷翔平選手がドジャースへの移籍を発表。契約金はプロスポーツ史上最高額となる見込みで、世界中から注目が集まっている。"
+  },
+  {
+    "title": "アニメ映画",
+    "posts_num": 8000,
+    "score": 75,
+    "heatLevel": "medium",
+    "co_occurring_words": ["興行収入", "声優", "スタジオ"],
+    "links": [
+      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E3%82%A2%E3%83%8B%E3%83%A1%E6%98%A0%E7%94%BB"},
+      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E3%82%A2%E3%83%8B%E3%83%A1%E6%98%A0%E7%94%BB"}
+    ],
+    "category": "entertainment",
+    "cluster_id": 2,
+    "summary": "新作アニメ映画の興行収入が公開初日で10億円を突破。豪華声優陣や制作スタジオのクオリティが話題に。"
+  },
+  {
+    "title": "日銀",
+    "posts_num": 6000,
+    "score": 65,
+    "heatLevel": "medium",
+    "co_occurring_words": ["金利", "円安", "政策"],
+    "links": [
+      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E6%97%A5%E9%8A%80"},
+      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E6%97%A5%E9%8A%80"}
+    ],
+    "category": "business",
+    "cluster_id": 3,
+    "summary": "日銀が金融緩和政策の修正を示唆。長期金利の上昇や円安への影響について市場関係者の注目が集まっている。"
+  },
+  {
+    "title": "選挙",
     "posts_num": 5000,
-    "score": 92,
-    "heatLevel": "high",
-    "co_occurring_words": [],
+    "score": 60,
+    "heatLevel": "medium",
+    "co_occurring_words": ["投票", "候補者", "政党"],
     "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Vote"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Vote"
-      }
+      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E9%81%B8%E6%8C%99"},
+      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E9%81%B8%E6%8C%99"}
     ],
-    "category": "ニュース",
-    "rank": 2,
-    "google_search_url": "https://www.google.com/search?q=Vote",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Vote",
-    "cluster_id": 1
-  },
-  {
-    "title": "Candidate",
-    "posts_num": 3333,
-    "score": 86,
-    "heatLevel": "high",
-    "co_occurring_words": [],
-    "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Candidate"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Candidate"
-      }
-    ],
-    "category": "総合",
-    "rank": 3,
-    "google_search_url": "https://www.google.com/search?q=Candidate",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Candidate",
-    "cluster_id": 2
-  },
-  {
-    "title": "AI",
-    "posts_num": 2500,
-    "score": 80,
-    "heatLevel": "high",
-    "co_occurring_words": [],
-    "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=AI"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=AI"
-      }
-    ],
-    "category": "ニュース",
-    "rank": 4,
-    "google_search_url": "https://www.google.com/search?q=AI",
-    "mercari_url": "https://jp.mercari.com/search?keyword=AI",
-    "cluster_id": 3
-  },
-  {
-    "title": "Python",
-    "posts_num": 2000,
-    "score": 74,
-    "heatLevel": "high",
-    "co_occurring_words": [],
-    "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Python"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Python"
-      }
-    ],
-    "category": "総合",
-    "rank": 5,
-    "google_search_url": "https://www.google.com/search?q=Python",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Python",
-    "cluster_id": 4
-  },
-  {
-    "title": "Code",
-    "posts_num": 1666,
-    "score": 69,
-    "heatLevel": "high",
-    "co_occurring_words": [],
-    "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Code"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Code"
-      }
-    ],
-    "category": "スポーツ",
-    "rank": 6,
-    "google_search_url": "https://www.google.com/search?q=Code",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Code",
-    "cluster_id": 5
-  },
-  {
-    "title": "Gundam",
-    "posts_num": 1428,
-    "score": 63,
-    "heatLevel": "high",
-    "co_occurring_words": [],
-    "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Gundam"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Gundam"
-      }
-    ],
-    "category": "ニュース",
-    "rank": 7,
-    "google_search_url": "https://www.google.com/search?q=Gundam",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Gundam",
-    "cluster_id": 6
-  },
-  {
-    "title": "Anime",
-    "posts_num": 1250,
-    "score": 58,
-    "heatLevel": "high",
-    "co_occurring_words": [],
-    "links": [
-      {
-        "provider": "Google",
-        "url": "https://www.google.com/search?q=Anime"
-      },
-      {
-        "provider": "Mercari",
-        "url": "https://jp.mercari.com/search?keyword=Anime"
-      }
-    ],
-    "category": "スポーツ",
-    "rank": 8,
-    "google_search_url": "https://www.google.com/search?q=Anime",
-    "mercari_url": "https://jp.mercari.com/search?keyword=Anime",
-    "cluster_id": 7
+    "category": "politics",
+    "cluster_id": 4,
+    "summary": "次期衆議院選挙の日程が調整段階に。各政党の候補者選びや公約発表が本格化している。"
   }
 ]

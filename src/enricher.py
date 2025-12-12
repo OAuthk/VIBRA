@@ -75,6 +75,14 @@ def enrich_trends(analyzed_trends: List[AnalyzedTrendItem]) -> List[EnrichedTren
         # カテゴリ分類（キーワードマッチング戦略）
         category = category_classifier.classify_category(trend)
         
+        # 概要（最初の関連投稿を使用）
+        summary = ""
+        if trend.related_posts and len(trend.related_posts) > 0:
+            summary = trend.related_posts[0]
+            # 長すぎる場合は切り詰め
+            if len(summary) > 100:
+                summary = summary[:100] + "..."
+
         # EnrichedTrendItem生成
         enriched_list.append(EnrichedTrendItem(
             title=trend.title,
@@ -84,7 +92,8 @@ def enrich_trends(analyzed_trends: List[AnalyzedTrendItem]) -> List[EnrichedTren
             co_occurring_words=trend.co_occurring_words,
             links=links,
             category=category,
-            cluster_id=trend.cluster_id
+            cluster_id=trend.cluster_id,
+            summary=summary
         ))
     
     # 現在スコアを保存（次回実行用）

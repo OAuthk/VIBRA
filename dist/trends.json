@@ -1,82 +1,77 @@
 [
   {
-    "text": "Election",
-    "category": "technology",
-    "stage": "peak",
-    "score": 100,
-    "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Election",
-    "related_words": [],
-    "cluster_id": 0
-  },
-  {
-    "text": "Vote",
-    "category": "business",
-    "stage": "peak",
-    "score": 92,
-    "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Vote",
-    "related_words": [],
-    "cluster_id": 1
-  },
-  {
-    "text": "Candidate",
+    "text": "ChatGPT",
     "category": "all",
     "stage": "peak",
-    "score": 86,
+    "score": 95,
     "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Candidate",
-    "related_words": [],
-    "cluster_id": 2
+    "detail_url": "https://www.google.com/search?q=ChatGPT",
+    "related_words": [
+      "AI",
+      "OpenAI",
+      "GPT-4"
+    ],
+    "cluster_id": 0,
+    "summary": "OpenAIがGPT-4搭載の新しいChatGPT機能を発表。API価格の改定や新モデルの性能について議論が活発化している。"
   },
   {
-    "text": "AI",
-    "category": "business",
-    "stage": "newborn",
-    "score": 80,
+    "text": "大谷翔平",
+    "category": "all",
+    "stage": "peak",
+    "score": 90,
     "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=AI",
-    "related_words": [],
-    "cluster_id": 3
+    "detail_url": "https://www.google.com/search?q=%E5%A4%A7%E8%B0%B7%E7%BF%94%E5%B9%B3",
+    "related_words": [
+      "ドジャース",
+      "ホームラン",
+      "MVP"
+    ],
+    "cluster_id": 1,
+    "summary": "大谷翔平選手がドジャースへの移籍を発表。契約金はプロスポーツ史上最高額となる見込みで、世界中から注目が集まっている。"
   },
   {
-    "text": "Python",
+    "text": "アニメ映画",
     "category": "all",
     "stage": "newborn",
-    "score": 74,
-    "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Python",
-    "related_words": [],
-    "cluster_id": 4
+    "score": 75,
+    "heatLevel": "medium",
+    "detail_url": "https://www.google.com/search?q=%E3%82%A2%E3%83%8B%E3%83%A1%E6%98%A0%E7%94%BB",
+    "related_words": [
+      "興行収入",
+      "声優",
+      "スタジオ"
+    ],
+    "cluster_id": 2,
+    "summary": "新作アニメ映画の興行収入が公開初日で10億円を突破。豪華声優陣や制作スタジオのクオリティが話題に。"
   },
   {
-    "text": "Code",
-    "category": "entertainment",
+    "text": "日銀",
+    "category": "all",
     "stage": "newborn",
-    "score": 69,
-    "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Code",
-    "related_words": [],
-    "cluster_id": 5
+    "score": 65,
+    "heatLevel": "medium",
+    "detail_url": "https://www.google.com/search?q=%E6%97%A5%E9%8A%80",
+    "related_words": [
+      "金利",
+      "円安",
+      "政策"
+    ],
+    "cluster_id": 3,
+    "summary": "日銀が金融緩和政策の修正を示唆。長期金利の上昇や円安への影響について市場関係者の注目が集まっている。"
   },
   {
-    "text": "Gundam",
-    "category": "business",
+    "text": "選挙",
+    "category": "all",
     "stage": "newborn",
-    "score": 63,
-    "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Gundam",
-    "related_words": [],
-    "cluster_id": 6
-  },
-  {
-    "text": "Anime",
-    "category": "entertainment",
-    "stage": "newborn",
-    "score": 58,
-    "heatLevel": "high",
-    "detail_url": "https://www.google.com/search?q=Anime",
-    "related_words": [],
-    "cluster_id": 7
+    "score": 60,
+    "heatLevel": "medium",
+    "detail_url": "https://www.google.com/search?q=%E9%81%B8%E6%8C%99",
+    "related_words": [
+      "投票",
+      "候補者",
+      "政党"
+    ],
+    "cluster_id": 4,
+    "summary": "次期衆議院選挙の日程が調整段階に。各政党の候補者選びや公約発表が本格化している。"
   }
 ]

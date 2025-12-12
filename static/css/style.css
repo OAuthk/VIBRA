@@ -176,15 +176,16 @@ body {
    Bubble Styles
    ================================ */
 .bubble {
-    transition: transform var(--transition-fast);
-}
-
-.bubble:hover {
-    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .bubble circle {
-    transition: opacity var(--transition-normal);
+    transition: r var(--transition-fast), opacity var(--transition-normal);
+}
+
+.bubble:hover circle {
+    opacity: 1;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
 }
 
 .bubble text {
@@ -192,31 +193,104 @@ body {
     user-select: none;
 }
 
-/* Heat Level Colors */
+/* Heat Level Colors - バズ感を視覚的に表現 */
 .heat-high circle {
-    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+    filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.7)) drop-shadow(0 0 30px rgba(239, 68, 68, 0.4));
+    animation: float 2.5s ease-in-out infinite, pulse 1.5s ease-in-out infinite !important;
+}
+
+.heat-high text {
+    animation: float 2.5s ease-in-out infinite !important;
 }
 
 .heat-medium circle {
-    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
 }
 
 .heat-low circle {
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
-/* Stage Animations */
+/* Stage Animations - 盛り上がり表現 */
 .stage-newborn {
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* ピーク状態のバブル - 最も目立つ演出 */
 .stage-peak circle {
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.6)) drop-shadow(0 0 40px rgba(255, 100, 0, 0.3));
+    animation: float 2s ease-in-out infinite, glow 2s ease-in-out infinite !important;
+}
+
+.stage-peak text {
+    animation: float 2s ease-in-out infinite !important;
+    font-weight: 700 !important;
 }
 
 .stage-fading {
     opacity: 0.5;
+}
+
+/* 常時浮遊アニメーション - グループ内の全要素（円+テキスト）が一緒に浮遊 */
+.bubble circle,
+.bubble text {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 各バブルに異なるアニメーション遅延を設定 */
+.bubble:nth-child(1) circle,
+.bubble:nth-child(1) text {
+    animation-delay: 0s;
+    animation-duration: 2.5s;
+}
+
+.bubble:nth-child(2) circle,
+.bubble:nth-child(2) text {
+    animation-delay: 0.5s;
+    animation-duration: 3s;
+}
+
+.bubble:nth-child(3) circle,
+.bubble:nth-child(3) text {
+    animation-delay: 1s;
+    animation-duration: 2.8s;
+}
+
+.bubble:nth-child(4) circle,
+.bubble:nth-child(4) text {
+    animation-delay: 0.3s;
+    animation-duration: 3.2s;
+}
+
+.bubble:nth-child(5) circle,
+.bubble:nth-child(5) text {
+    animation-delay: 0.7s;
+    animation-duration: 2.6s;
+}
+
+.bubble:nth-child(6) circle,
+.bubble:nth-child(6) text {
+    animation-delay: 0.2s;
+    animation-duration: 3.1s;
+}
+
+.bubble:nth-child(7) circle,
+.bubble:nth-child(7) text {
+    animation-delay: 0.8s;
+    animation-duration: 2.9s;
+}
+
+.bubble:nth-child(8) circle,
+.bubble:nth-child(8) text {
+    animation-delay: 0.4s;
+    animation-duration: 2.7s;
+}
+
+/* ホバー時はアニメーション一時停止＆フォーカス効果 */
+.bubble:hover circle,
+.bubble:hover text {
+    animation-play-state: paused;
 }
 
 @keyframes fadeIn {
@@ -225,15 +299,42 @@ body {
     }
 }
 
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
 @keyframes pulse {
 
     0%,
     100% {
         transform: scale(1);
+        opacity: 0.85;
     }
 
     50% {
-        transform: scale(1.02);
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* バズ感を表現するグローアニメーション */
+@keyframes glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.6)) drop-shadow(0 0 40px rgba(255, 100, 0, 0.3));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 30px rgba(255, 165, 0, 0.9)) drop-shadow(0 0 60px rgba(255, 100, 0, 0.5));
     }
 }
 

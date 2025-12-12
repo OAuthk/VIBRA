@@ -106,7 +106,8 @@ def _deserialize_trends(raw_data: List[Dict[str, Any]]) -> List[EnrichedTrendIte
             co_occurring_words=data.get('co_occurring_words', []),
             links=links,
             category=data['category'],
-            cluster_id=data.get('cluster_id', 0)
+            cluster_id=data.get('cluster_id', 0),
+            summary=data.get('summary', "")
         ))
     return items
 
@@ -139,7 +140,8 @@ def _transform_for_frontend(item: EnrichedTrendItem) -> Dict[str, Any]:
         "heatLevel": item.heatLevel,
         "detail_url": detail_url,
         "related_words": item.co_occurring_words,
-        "cluster_id": item.cluster_id
+        "cluster_id": item.cluster_id,
+        "summary": item.summary
     }
 
 

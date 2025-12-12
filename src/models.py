@@ -47,6 +47,7 @@ class EnrichedTrendItem:
     links: List[Link]
     category: str
     cluster_id: int
+    summary: str = ""
 
     def to_dict(self) -> Dict:
         """JSON保存用の辞書変換"""

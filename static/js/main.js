@@ -17,7 +17,7 @@ class VIBRAApp {
         this.setupEventListeners();
         this.updateTimeDisplay();
         this.renderVisualization();
-        
+
         // Update time every minute
         setInterval(() => this.updateTimeDisplay(), 60000);
     }
@@ -40,7 +40,7 @@ class VIBRAApp {
                 // Update active tab
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 e.target.classList.add('active');
-                
+
                 // Filter by genre
                 this.currentGenre = e.target.dataset.genre;
                 this.renderVisualization();
@@ -52,11 +52,11 @@ class VIBRAApp {
         const timeDisplay = document.querySelector('.time-display');
         if (timeDisplay) {
             const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
+            const options = {
+                year: 'numeric',
+                month: 'long',
                 day: 'numeric',
-                hour: '2-digit', 
+                hour: '2-digit',
                 minute: '2-digit',
                 weekday: 'short'
             };
@@ -131,12 +131,17 @@ class VIBRAApp {
             color: this.getHeatColor(trend.heatLevel, trend.score)
         }));
 
-        // Create force simulation
+        // Create force simulation - バブルを中央に強く密集させる
         this.simulation = d3.forceSimulation(nodes)
-            .force('charge', d3.forceManyBody().strength(5))
-            .force('center', d3.forceCenter(width / 2, height / 2))
-            .force('collision', d3.forceCollide().radius(d => d.radius + 5))
-            .on('tick', () => this.ticked(nodes));
+            .force('charge', d3.forceManyBody().strength(150))  // さらに強い引力
+            .force('center', d3.forceCenter(width / 2, height / 2).strength(0.5))  // 中央への引力
+            .force('collision', d3.forceCollide().radius(d => d.radius + 1).strength(0.9))  // 最小マージン
+            .force('x', d3.forceX(width / 2).strength(0.3))   // X方向中央へ
+            .force('y', d3.forceY(height / 2).strength(0.3))  // Y方向中央へ
+            .on('tick', () => this.ticked(nodes))
+            .on('end', () => {
+                console.log('Simulation ended');
+            });
 
         // Create bubble groups
         const bubbles = this.svg.selectAll('.bubble')
@@ -193,7 +198,7 @@ class VIBRAApp {
     createTooltip() {
         // Remove existing tooltip
         d3.select('.tooltip').remove();
-        
+
         d3.select('body')
             .append('div')
             .attr('class', 'tooltip')
@@ -202,23 +207,52 @@ class VIBRAApp {
 
     onBubbleHover(event, d, isEnter) {
         const tooltip = d3.select('.tooltip');
-        
+        const bubble = d3.select(event.currentTarget);
+
         if (isEnter) {
+            // バブルを浮かび上がらせる（サイズ拡大 + 影強調）
+            bubble.select('circle')
+                .transition()
+                .duration(200)
+                .attr('r', d.radius * 1.1)
+                .attr('opacity', 1)
+                .style('filter', 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3))');
+
+            // テキストも少し大きく
+            bubble.select('text')
+                .transition()
+                .duration(200)
+                .attr('font-size', Math.max(12, d.radius / 2.5));
+
             tooltip.transition()
                 .duration(200)
                 .style('opacity', 1);
-            
+
             tooltip.html(`
                 <strong>${d.text}</strong><br>
-                カテゴリ: ${d.category}<br>
-                スコア: ${d.score}<br>
-                ${d.related_words && d.related_words.length > 0 
-                    ? `関連: ${d.related_words.join(', ')}` 
-                    : ''}
+                <div style="font-size:0.85em; color:#ddd; margin:4px 0; max-width:200px; white-space:normal; line-height:1.4;">${d.summary || '詳細情報なし'}</div>
+                <div style="font-size:0.8em; opacity:0.8; margin-top:4px;">
+                    カテゴリ: ${d.category}<br>
+                    スコア: ${d.score}
+                </div>
             `)
-            .style('left', (event.pageX + 15) + 'px')
-            .style('top', (event.pageY - 10) + 'px');
+                .style('left', (event.pageX + 15) + 'px')
+                .style('top', (event.pageY - 10) + 'px');
         } else {
+            // 元のサイズに戻す
+            bubble.select('circle')
+                .transition()
+                .duration(300)
+                .attr('r', d.radius)
+                .attr('opacity', 0.85)
+                .style('filter', null);
+
+            // テキストも元に戻す
+            bubble.select('text')
+                .transition()
+                .duration(300)
+                .attr('font-size', Math.max(10, d.radius / 3));
+
             tooltip.transition()
                 .duration(300)
                 .style('opacity', 0);
@@ -243,7 +277,7 @@ class VIBRAApp {
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     window.vibraApp = new VIBRAApp();
-    
+
     // Handle window resize with debounce
     let resizeTimeout;
     window.addEventListener('resize', () => {
