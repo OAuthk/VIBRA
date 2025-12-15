@@ -15,25 +15,31 @@ on:
 
 jobs:
   fetch-and-cache:
+    # ★★★★★★★★★★
+    # ★ 変更点 1 ★
+    # ★★★★★★★★★★
+    # 実行環境を、通常の'ubuntu-latest'から、Playwright公式のDockerイメージに変更
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
+
     steps:
       - name: Checkout main branch for scripts
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
+      # ★★★★★★★★★★
+      # ★ 変更点 2 ★
+      # ★★★★★★★★★★
+      # Set up Pythonとplaywright installステップは、もはや不要。
+      # Dockerイメージの中に、適切なバージョンのPythonと、
+      # 全てのブラウザ、全ての依存関係が、既に完璧にインストールされている。
+      # - name: Set up Python
+      #   ...
+      # - name: Install Playwright Browsers
+      #   ...
       
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-
-      # ★★★★★★★★★★
-      # ★ 変更点 ★
-      # ★★★★★★★★★★
-      - name: 🎭 Install Playwright Browsers
-        run: playwright install --with-deps chromium
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
