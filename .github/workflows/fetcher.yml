@@ -20,7 +20,7 @@ jobs:
   fetch-and-cache:
     runs-on: ubuntu-latest
     steps:
-      - name:  checkout main branch for scripts
+      - name: Checkout main branch for scripts
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -29,8 +29,11 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
+
+      - name: 🎭 Install Playwright Browsers and dependencies
+        run: playwright install --with-deps chromium
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
@@ -69,7 +72,6 @@ jobs:
           git reset --hard
           
           # 3. 'main'ブランチから、必要なキャッシュファイル"だけ"を、現在のブランチに持ってくる
-          #    これにより、ソースコードを誤って含めるリスクを完全に排除する
           git checkout main -- cache/latest_trends.json cache/scores_to_cache.json
           
           # 4. 持ってきたキャッシュファイルをステージング
@@ -79,5 +81,4 @@ jobs:
           git commit -m "chore: Update data cache on $(date)"
           
           # 6. 'cache-branch-temp'ブランチを、リモートの'cache-branch'として強制プッシュ
-          #    これにより、リモートの'cache-branch'は常に最新のキャッシュのみを含む1コミットのブランチとなる
           git push origin HEAD:cache-branch --force
