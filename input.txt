@@ -1,9 +1,8 @@
-1s下記のコードからエラーの原因探して　改善策提示して
-1s
+1下記のコードからエラーの原因探して　改善策提示して
 Run python scripts/main.py
 Traceback (most recent call last):
-[INFO] Starting FETCHER pipeline...
   File "/home/runner/work/VIBRA/VIBRA/scripts/main.py", line 54, in <module>
+[INFO] Starting FETCHER pipeline...
     run_fetcher_pipeline()
   File "/home/runner/work/VIBRA/VIBRA/scripts/main.py", line 23, in run_fetcher_pipeline
     raw_trend_items: List[RawTrendItem] = scraper.fetch_raw_trends()
