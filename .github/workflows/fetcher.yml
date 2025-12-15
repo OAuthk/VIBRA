@@ -1,4 +1,3 @@
-# .github/workflows/fetcher.yml
 name: Fetch and Cache Trend Data
 
 on:
@@ -30,11 +29,15 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: 🎭 Install Playwright Browsers to a predictable path
-        run: playwright install --with-deps chromium
-        env:
-          # ブラウザのインストール先を、プロジェクトのディレクトリ内の 'pw-browsers' に強制する
-          PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
+      # ★★★★★★★★★★
+      # ★ 変更点 ★
+      # ★★★★★★★★★★
+      - name: 🎭 Install Playwright and its dependencies
+        # Playwright公式が提供するGitHub Actionを使用します。
+        # これが、GitHub Actions上でPlaywrightをセットアップする最も確実な方法です。
+        uses: microsoft/playwright-python@v1.4.0
+        with:
+          run: playwright install --with-deps chromium
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
@@ -43,23 +46,11 @@ jobs:
           path: cache/previous_scores.json
           key: scores-cache-v1
 
-      - name: 🐍 Run Data Pipeline with Debug Info
+      - name: 🐍 Run Data Pipeline
         env:
           MERCARI_AFFILIATE_ID: ${{ secrets.MERCARI_AFFILIATE_ID }}
           GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
-          # Pythonスクリプト実行時にも、同じカスタムパスを教える
-          PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
-        run: |
-          # --- デバッグ情報出力 ---
-          echo "--- Verifying environment and file structure ---"
-          echo "GitHub Workspace: ${{ github.workspace }}"
-          echo "PLAYWRIGHT_BROWSERS_PATH is set to: $PLAYWRIGHT_BROWSERS_PATH"
-          echo "--- Listing contents of PLAYWRIGHT_BROWSERS_PATH ---"
-          ls -lR $PLAYWRIGHT_BROWSERS_PATH
-          echo "--- End of debug info ---"
-          
-          # --- メインスクリプト実行 ---
-          python scripts/main.py
+        run: python scripts/main.py
 
       - name: 💾 Save current scores to cache for next run
         uses: actions/cache/save@v4
