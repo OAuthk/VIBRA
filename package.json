@@ -1,0 +1,11 @@
+{
+  "name": "vibra",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "optimize": "html-minifier --input-dir dist --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css true --minify-js true"
+  },
+  "devDependencies": {
+    "html-minifier": "^4.0.0"
+  }
+}

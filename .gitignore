@@ -1,37 +1,15 @@
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
+*.pyc
 .env
 .venv
-env/
 venv/
 
-# Build artifacts
+# Node.js
+node_modules/
 dist/
 cache/
-*.egg-info/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Local/temporary files
-input.txt
-gf.jpg
-*.log
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Project specific
-2.md
-AntigravityVIBRA.md
-VIBRA_Prompts.md
-visualization_strategies.md
-walkthrough.md

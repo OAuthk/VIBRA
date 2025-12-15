@@ -1,7 +1,20 @@
+# Core Web Scraping & Parsing
 requests
 beautifulsoup4
-jinja2
+
+# Template Engine
+Jinja2
+
+# Text Mining & Analysis
+janome
 networkx
 python-louvain
-janome
 
+# Data Validation & Modeling
+pydantic
+
+# Headless Browser for JavaScript Rendering
+playwright
+
+# Utility
+pytz

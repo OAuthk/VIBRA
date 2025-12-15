@@ -1,72 +1,2402 @@
 [
   {
-    "title": "ChatGPT",
-    "posts_num": 15000,
-    "score": 95,
+    "title": "アマド、先制ゴールでマンUファンを沸かせる！",
+    "posts_num": 333,
+    "score": 92,
     "heatLevel": "high",
-    "co_occurring_words": ["AI", "OpenAI", "GPT-4"],
+    "co_occurring_words": [],
     "links": [
-      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=ChatGPT"},
-      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=ChatGPT"}
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%A2%E3%83%9E%E3%83%89%E3%80%81%E5%85%88%E5%88%B6%E3%82%B4%E3%83%BC%E3%83%AB%E3%81%A7%E3%83%9E%E3%83%B3U%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E6%B2%B8%E3%81%8B%E3%81%9B%E3%82%8B%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%A2%E3%83%9E%E3%83%89%E3%80%81%E5%85%88%E5%88%B6%E3%82%B4%E3%83%BC%E3%83%AB%E3%81%A7%E3%83%9E%E3%83%B3U%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E6%B2%B8%E3%81%8B%E3%81%9B%E3%82%8B%EF%BC%81"
+      }
     ],
-    "category": "technology",
+    "category": "all",
     "cluster_id": 0,
-    "summary": "OpenAIがGPT-4搭載の新しいChatGPT機能を発表。API価格の改定や新モデルの性能について議論が活発化している。"
+    "summary": ""
   },
   {
-    "title": "大谷翔平",
-    "posts_num": 12000,
+    "title": "エンベウモとアマド、マンUファン熱狂！ アフコンでの不在は大きな痛手？",
+    "posts_num": 105,
+    "score": 87,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%A8%E3%83%B3%E3%83%99%E3%82%A6%E3%83%A2%E3%81%A8%E3%82%A2%E3%83%9E%E3%83%89%E3%80%81%E3%83%9E%E3%83%B3U%E3%83%95%E3%82%A1%E3%83%B3%E7%86%B1%E7%8B%82%EF%BC%81%20%E3%82%A2%E3%83%95%E3%82%B3%E3%83%B3%E3%81%A7%E3%81%AE%E4%B8%8D%E5%9C%A8%E3%81%AF%E5%A4%A7%E3%81%8D%E3%81%AA%E7%97%9B%E6%89%8B%EF%BC%9F"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%A8%E3%83%B3%E3%83%99%E3%82%A6%E3%83%A2%E3%81%A8%E3%82%A2%E3%83%9E%E3%83%89%E3%80%81%E3%83%9E%E3%83%B3U%E3%83%95%E3%82%A1%E3%83%B3%E7%86%B1%E7%8B%82%EF%BC%81%20%E3%82%A2%E3%83%95%E3%82%B3%E3%83%B3%E3%81%A7%E3%81%AE%E4%B8%8D%E5%9C%A8%E3%81%AF%E5%A4%A7%E3%81%8D%E3%81%AA%E7%97%9B%E6%89%8B%EF%BC%9F"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 1,
+    "summary": ""
+  },
+  {
+    "title": "マンチェスターユナイテッド、クーニャ＆エンベウモの活躍にファン興奮！",
+    "posts_num": 210,
     "score": 90,
     "heatLevel": "high",
-    "co_occurring_words": ["ドジャース", "ホームラン", "MVP"],
+    "co_occurring_words": [],
     "links": [
-      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E5%A4%A7%E8%B0%B7%E7%BF%94%E5%B9%B3"},
-      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E5%A4%A7%E8%B0%B7%E7%BF%94%E5%B9%B3"}
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%9E%E3%83%B3%E3%83%81%E3%82%A7%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89%E3%80%81%E3%82%AF%E3%83%BC%E3%83%8B%E3%83%A3%EF%BC%86%E3%82%A8%E3%83%B3%E3%83%99%E3%82%A6%E3%83%A2%E3%81%AE%E6%B4%BB%E8%BA%8D%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%9E%E3%83%B3%E3%83%81%E3%82%A7%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89%E3%80%81%E3%82%AF%E3%83%BC%E3%83%8B%E3%83%A3%EF%BC%86%E3%82%A8%E3%83%B3%E3%83%99%E3%82%A6%E3%83%A2%E3%81%AE%E6%B4%BB%E8%BA%8D%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81"
+      }
     ],
-    "category": "sports",
-    "cluster_id": 1,
-    "summary": "大谷翔平選手がドジャースへの移籍を発表。契約金はプロスポーツ史上最高額となる見込みで、世界中から注目が集まっている。"
+    "category": "all",
+    "cluster_id": 2,
+    "summary": ""
   },
   {
-    "title": "アニメ映画",
-    "posts_num": 8000,
-    "score": 75,
-    "heatLevel": "medium",
-    "co_occurring_words": ["興行収入", "声優", "スタジオ"],
+    "title": "火曜日 blues？SNSで「まだ火曜日」の声続出",
+    "posts_num": 44,
+    "score": 83,
+    "heatLevel": "high",
+    "co_occurring_words": [],
     "links": [
-      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E3%82%A2%E3%83%8B%E3%83%A1%E6%98%A0%E7%94%BB"},
-      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E3%82%A2%E3%83%8B%E3%83%A1%E6%98%A0%E7%94%BB"}
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E7%81%AB%E6%9B%9C%E6%97%A5%20blues%EF%BC%9FSNS%E3%81%A7%E3%80%8C%E3%81%BE%E3%81%A0%E7%81%AB%E6%9B%9C%E6%97%A5%E3%80%8D%E3%81%AE%E5%A3%B0%E7%B6%9A%E5%87%BA"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E7%81%AB%E6%9B%9C%E6%97%A5%20blues%EF%BC%9FSNS%E3%81%A7%E3%80%8C%E3%81%BE%E3%81%A0%E7%81%AB%E6%9B%9C%E6%97%A5%E3%80%8D%E3%81%AE%E5%A3%B0%E7%B6%9A%E5%87%BA"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 3,
+    "summary": ""
+  },
+  {
+    "title": "SNS投稿で議論される多様なテーマとユーザーの反応",
+    "posts_num": 63,
+    "score": 84,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=SNS%E6%8A%95%E7%A8%BF%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%95%E3%82%8C%E3%82%8B%E5%A4%9A%E6%A7%98%E3%81%AA%E3%83%86%E3%83%BC%E3%83%9E%E3%81%A8%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%8F%8D%E5%BF%9C"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=SNS%E6%8A%95%E7%A8%BF%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%95%E3%82%8C%E3%82%8B%E5%A4%9A%E6%A7%98%E3%81%AA%E3%83%86%E3%83%BC%E3%83%9E%E3%81%A8%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%8F%8D%E5%BF%9C"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 4,
+    "summary": ""
+  },
+  {
+    "title": "外国人労働者受け入れ拡大、議論が活発化",
+    "posts_num": 33,
+    "score": 81,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%A4%96%E5%9B%BD%E4%BA%BA%E5%8A%B4%E5%83%8D%E8%80%85%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E6%8B%A1%E5%A4%A7%E3%80%81%E8%AD%B0%E8%AB%96%E3%81%8C%E6%B4%BB%E7%99%BA%E5%8C%96"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%A4%96%E5%9B%BD%E4%BA%BA%E5%8A%B4%E5%83%8D%E8%80%85%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E6%8B%A1%E5%A4%A7%E3%80%81%E8%AD%B0%E8%AB%96%E3%81%8C%E6%B4%BB%E7%99%BA%E5%8C%96"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 5,
+    "summary": ""
+  },
+  {
+    "title": "脂っこいカルビに抵抗？SNSで「カルビだけは無理」の声続出",
+    "posts_num": 26,
+    "score": 80,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E8%84%82%E3%81%A3%E3%81%93%E3%81%84%E3%82%AB%E3%83%AB%E3%83%93%E3%81%AB%E6%8A%B5%E6%8A%97%EF%BC%9FSNS%E3%81%A7%E3%80%8C%E3%82%AB%E3%83%AB%E3%83%93%E3%81%A0%E3%81%91%E3%81%AF%E7%84%A1%E7%90%86%E3%80%8D%E3%81%AE%E5%A3%B0%E7%B6%9A%E5%87%BA"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E8%84%82%E3%81%A3%E3%81%93%E3%81%84%E3%82%AB%E3%83%AB%E3%83%93%E3%81%AB%E6%8A%B5%E6%8A%97%EF%BC%9FSNS%E3%81%A7%E3%80%8C%E3%82%AB%E3%83%AB%E3%83%93%E3%81%A0%E3%81%91%E3%81%AF%E7%84%A1%E7%90%86%E3%80%8D%E3%81%AE%E5%A3%B0%E7%B6%9A%E5%87%BA"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 6,
+    "summary": ""
+  },
+  {
+    "title": "Snow Man 佐久間大介、龍角散ダイレクト新CMでファンへの感謝",
+    "posts_num": 82,
+    "score": 84,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Snow%20Man%20%E4%BD%90%E4%B9%85%E9%96%93%E5%A4%A7%E4%BB%8B%E3%80%81%E9%BE%8D%E8%A7%92%E6%95%A3%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E6%96%B0CM%E3%81%A7%E3%83%95%E3%82%A1%E3%83%B3%E3%81%B8%E3%81%AE%E6%84%9F%E8%AC%9D"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Snow%20Man%20%E4%BD%90%E4%B9%85%E9%96%93%E5%A4%A7%E4%BB%8B%E3%80%81%E9%BE%8D%E8%A7%92%E6%95%A3%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E6%96%B0CM%E3%81%A7%E3%83%95%E3%82%A1%E3%83%B3%E3%81%B8%E3%81%AE%E6%84%9F%E8%AC%9D"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 7,
+    "summary": ""
+  },
+  {
+    "title": "石原さとみ発言に「奢るべき」 vs 「割り勘」論争勃発",
+    "posts_num": 152,
+    "score": 86,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E7%9F%B3%E5%8E%9F%E3%81%95%E3%81%A8%E3%81%BF%E7%99%BA%E8%A8%80%E3%81%AB%E3%80%8C%E5%A5%A2%E3%82%8B%E3%81%B9%E3%81%8D%E3%80%8D%20vs%20%E3%80%8C%E5%89%B2%E3%82%8A%E5%8B%98%E3%80%8D%E8%AB%96%E4%BA%89%E5%8B%83%E7%99%BA"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E7%9F%B3%E5%8E%9F%E3%81%95%E3%81%A8%E3%81%BF%E7%99%BA%E8%A8%80%E3%81%AB%E3%80%8C%E5%A5%A2%E3%82%8B%E3%81%B9%E3%81%8D%E3%80%8D%20vs%20%E3%80%8C%E5%89%B2%E3%82%8A%E5%8B%98%E3%80%8D%E8%AB%96%E4%BA%89%E5%8B%83%E7%99%BA"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 8,
+    "summary": ""
+  },
+  {
+    "title": "「何の意味があるのか」SNSユーザーが疑問を呈する投稿が多数",
+    "posts_num": 39,
+    "score": 80,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8C%E4%BD%95%E3%81%AE%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%E3%81%8B%E3%80%8DSNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E7%96%91%E5%95%8F%E3%82%92%E5%91%88%E3%81%99%E3%82%8B%E6%8A%95%E7%A8%BF%E3%81%8C%E5%A4%9A%E6%95%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8C%E4%BD%95%E3%81%AE%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%E3%81%8B%E3%80%8DSNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E7%96%91%E5%95%8F%E3%82%92%E5%91%88%E3%81%99%E3%82%8B%E6%8A%95%E7%A8%BF%E3%81%8C%E5%A4%9A%E6%95%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 9,
+    "summary": ""
+  },
+  {
+    "title": "働けない人々への理解と社会保障制度の課題",
+    "posts_num": 61,
+    "score": 82,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%83%8D%E3%81%91%E3%81%AA%E3%81%84%E4%BA%BA%E3%80%85%E3%81%B8%E3%81%AE%E7%90%86%E8%A7%A3%E3%81%A8%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%9A%9C%E5%88%B6%E5%BA%A6%E3%81%AE%E8%AA%B2%E9%A1%8C"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%83%8D%E3%81%91%E3%81%AA%E3%81%84%E4%BA%BA%E3%80%85%E3%81%B8%E3%81%AE%E7%90%86%E8%A7%A3%E3%81%A8%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%9A%9C%E5%88%B6%E5%BA%A6%E3%81%AE%E8%AA%B2%E9%A1%8C"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 10,
+    "summary": ""
+  },
+  {
+    "title": "火曜日の朝、Twitter上は「おはよう」の投稿で溢れる",
+    "posts_num": 31,
+    "score": 79,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E7%81%AB%E6%9B%9C%E6%97%A5%E3%81%AE%E6%9C%9D%E3%80%81Twitter%E4%B8%8A%E3%81%AF%E3%80%8C%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86%E3%80%8D%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%A7%E6%BA%A2%E3%82%8C%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E7%81%AB%E6%9B%9C%E6%97%A5%E3%81%AE%E6%9C%9D%E3%80%81Twitter%E4%B8%8A%E3%81%AF%E3%80%8C%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86%E3%80%8D%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%A7%E6%BA%A2%E3%82%8C%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 11,
+    "summary": ""
+  },
+  {
+    "title": "家具転倒防止グッズがSNSで話題に！防災意識の高まりを反映",
+    "posts_num": 32,
+    "score": 78,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%AE%B6%E5%85%B7%E8%BB%A2%E5%80%92%E9%98%B2%E6%AD%A2%E3%82%B0%E3%83%83%E3%82%BA%E3%81%8CSNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E9%98%B2%E7%81%BD%E6%84%8F%E8%AD%98%E3%81%AE%E9%AB%98%E3%81%BE%E3%82%8A%E3%82%92%E5%8F%8D%E6%98%A0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%AE%B6%E5%85%B7%E8%BB%A2%E5%80%92%E9%98%B2%E6%AD%A2%E3%82%B0%E3%83%83%E3%82%BA%E3%81%8CSNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E9%98%B2%E7%81%BD%E6%84%8F%E8%AD%98%E3%81%AE%E9%AB%98%E3%81%BE%E3%82%8A%E3%82%92%E5%8F%8D%E6%98%A0"
+      }
     ],
     "category": "entertainment",
-    "cluster_id": 2,
-    "summary": "新作アニメ映画の興行収入が公開初日で10億円を突破。豪華声優陣や制作スタジオのクオリティが話題に。"
+    "cluster_id": 12,
+    "summary": ""
   },
   {
-    "title": "日銀",
-    "posts_num": 6000,
-    "score": 65,
-    "heatLevel": "medium",
-    "co_occurring_words": ["金利", "円安", "政策"],
+    "title": "キタニタツヤ、mixiコミュニティを話題に！リスナーも懐かしむ",
+    "posts_num": 155,
+    "score": 84,
+    "heatLevel": "high",
+    "co_occurring_words": [],
     "links": [
-      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E6%97%A5%E9%8A%80"},
-      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E6%97%A5%E9%8A%80"}
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4%E3%80%81mixi%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%83%86%E3%82%A3%E3%82%92%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%82%82%E6%87%90%E3%81%8B%E3%81%97%E3%82%80"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4%E3%80%81mixi%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%83%86%E3%82%A3%E3%82%92%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%82%82%E6%87%90%E3%81%8B%E3%81%97%E3%82%80"
+      }
     ],
-    "category": "business",
-    "cluster_id": 3,
-    "summary": "日銀が金融緩和政策の修正を示唆。長期金利の上昇や円安への影響について市場関係者の注目が集まっている。"
+    "category": "all",
+    "cluster_id": 13,
+    "summary": ""
   },
   {
-    "title": "選挙",
-    "posts_num": 5000,
-    "score": 60,
-    "heatLevel": "medium",
-    "co_occurring_words": ["投票", "候補者", "政党"],
+    "title": "方向転換が話題に！ゲーム、ビジネス、人生観まで",
+    "posts_num": 40,
+    "score": 79,
+    "heatLevel": "high",
+    "co_occurring_words": [],
     "links": [
-      {"type": "search", "provider": "Google", "display_text": "Google検索", "url": "https://www.google.com/search?q=%E9%81%B8%E6%8C%99"},
-      {"type": "shop", "provider": "Mercari", "display_text": "メルカリ", "url": "https://jp.mercari.com/search?keyword=%E9%81%B8%E6%8C%99"}
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%96%B9%E5%90%91%E8%BB%A2%E6%8F%9B%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%82%B2%E3%83%BC%E3%83%A0%E3%80%81%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%80%81%E4%BA%BA%E7%94%9F%E8%A6%B3%E3%81%BE%E3%81%A7"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%96%B9%E5%90%91%E8%BB%A2%E6%8F%9B%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%82%B2%E3%83%BC%E3%83%A0%E3%80%81%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%80%81%E4%BA%BA%E7%94%9F%E8%A6%B3%E3%81%BE%E3%81%A7"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 14,
+    "summary": ""
+  },
+  {
+    "title": "テテ、コーヒー牛乳で癒される夜  ファンも笑顔に",
+    "posts_num": 254,
+    "score": 85,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%86%E3%83%86%E3%80%81%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E7%89%9B%E4%B9%B3%E3%81%A7%E7%99%92%E3%81%95%E3%82%8C%E3%82%8B%E5%A4%9C%20%20%E3%83%95%E3%82%A1%E3%83%B3%E3%82%82%E7%AC%91%E9%A1%94%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%86%E3%83%86%E3%80%81%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E7%89%9B%E4%B9%B3%E3%81%A7%E7%99%92%E3%81%95%E3%82%8C%E3%82%8B%E5%A4%9C%20%20%E3%83%95%E3%82%A1%E3%83%B3%E3%82%82%E7%AC%91%E9%A1%94%E3%81%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 15,
+    "summary": ""
+  },
+  {
+    "title": "中国のパンダ外交継続見送りに日本国内で議論",
+    "posts_num": 125,
+    "score": 82,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E4%B8%AD%E5%9B%BD%E3%81%AE%E3%83%91%E3%83%B3%E3%83%80%E5%A4%96%E4%BA%A4%E7%B6%99%E7%B6%9A%E8%A6%8B%E9%80%81%E3%82%8A%E3%81%AB%E6%97%A5%E6%9C%AC%E5%9B%BD%E5%86%85%E3%81%A7%E8%AD%B0%E8%AB%96"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E4%B8%AD%E5%9B%BD%E3%81%AE%E3%83%91%E3%83%B3%E3%83%80%E5%A4%96%E4%BA%A4%E7%B6%99%E7%B6%9A%E8%A6%8B%E9%80%81%E3%82%8A%E3%81%AB%E6%97%A5%E6%9C%AC%E5%9B%BD%E5%86%85%E3%81%A7%E8%AD%B0%E8%AB%96"
+      }
     ],
     "category": "politics",
-    "cluster_id": 4,
-    "summary": "次期衆議院選挙の日程が調整段階に。各政党の候補者選びや公約発表が本格化している。"
+    "cluster_id": 16,
+    "summary": ""
+  },
+  {
+    "title": "Stray Kids「Christmas Love」CDTVパフォーマンスにファン感動！",
+    "posts_num": 144,
+    "score": 82,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Stray%20Kids%E3%80%8CChristmas%20Love%E3%80%8DCDTV%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E6%84%9F%E5%8B%95%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Stray%20Kids%E3%80%8CChristmas%20Love%E3%80%8DCDTV%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E6%84%9F%E5%8B%95%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 17,
+    "summary": ""
+  },
+  {
+    "title": "パレスチナ情勢、加害構造を指摘する声",
+    "posts_num": 36,
+    "score": 77,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%91%E3%83%AC%E3%82%B9%E3%83%81%E3%83%8A%E6%83%85%E5%8B%A2%E3%80%81%E5%8A%A0%E5%AE%B3%E6%A7%8B%E9%80%A0%E3%82%92%E6%8C%87%E6%91%98%E3%81%99%E3%82%8B%E5%A3%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%91%E3%83%AC%E3%82%B9%E3%83%81%E3%83%8A%E6%83%85%E5%8B%A2%E3%80%81%E5%8A%A0%E5%AE%B3%E6%A7%8B%E9%80%A0%E3%82%92%E6%8C%87%E6%91%98%E3%81%99%E3%82%8B%E5%A3%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 18,
+    "summary": ""
+  },
+  {
+    "title": "育休もらい逃げ：制度の悪用か、社会の課題か？",
+    "posts_num": 291,
+    "score": 84,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E8%82%B2%E4%BC%91%E3%82%82%E3%82%89%E3%81%84%E9%80%83%E3%81%92%EF%BC%9A%E5%88%B6%E5%BA%A6%E3%81%AE%E6%82%AA%E7%94%A8%E3%81%8B%E3%80%81%E7%A4%BE%E4%BC%9A%E3%81%AE%E8%AA%B2%E9%A1%8C%E3%81%8B%EF%BC%9F"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E8%82%B2%E4%BC%91%E3%82%82%E3%82%89%E3%81%84%E9%80%83%E3%81%92%EF%BC%9A%E5%88%B6%E5%BA%A6%E3%81%AE%E6%82%AA%E7%94%A8%E3%81%8B%E3%80%81%E7%A4%BE%E4%BC%9A%E3%81%AE%E8%AA%B2%E9%A1%8C%E3%81%8B%EF%BC%9F"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 19,
+    "summary": ""
+  },
+  {
+    "title": "「擦るだけ脱毛器」がSNSで話題に！ランキング上位にランクイン",
+    "posts_num": 29,
+    "score": 75,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8C%E6%93%A6%E3%82%8B%E3%81%A0%E3%81%91%E8%84%B1%E6%AF%9B%E5%99%A8%E3%80%8D%E3%81%8CSNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E4%B8%8A%E4%BD%8D%E3%81%AB%E3%83%A9%E3%83%B3%E3%82%AF%E3%82%A4%E3%83%B3"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8C%E6%93%A6%E3%82%8B%E3%81%A0%E3%81%91%E8%84%B1%E6%AF%9B%E5%99%A8%E3%80%8D%E3%81%8CSNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E4%B8%8A%E4%BD%8D%E3%81%AB%E3%83%A9%E3%83%B3%E3%82%AF%E3%82%A4%E3%83%B3"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 20,
+    "summary": ""
+  },
+  {
+    "title": "Mrs. GREEN APPLEコラボ、ローソンで朝7時から発売！ファン大興奮",
+    "posts_num": 28,
+    "score": 74,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Mrs.%20GREEN%20APPLE%E3%82%B3%E3%83%A9%E3%83%9C%E3%80%81%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%E3%81%A7%E6%9C%9D7%E6%99%82%E3%81%8B%E3%82%89%E7%99%BA%E5%A3%B2%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E5%A4%A7%E8%88%88%E5%A5%AE"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Mrs.%20GREEN%20APPLE%E3%82%B3%E3%83%A9%E3%83%9C%E3%80%81%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%E3%81%A7%E6%9C%9D7%E6%99%82%E3%81%8B%E3%82%89%E7%99%BA%E5%A3%B2%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E5%A4%A7%E8%88%88%E5%A5%AE"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 21,
+    "summary": ""
+  },
+  {
+    "title": "スマホいじり、ゲーム、AIなどSNSユーザーの日常が投稿に",
+    "posts_num": 116,
+    "score": 79,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%84%E3%81%98%E3%82%8A%E3%80%81%E3%82%B2%E3%83%BC%E3%83%A0%E3%80%81AI%E3%81%AA%E3%81%A9SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E6%97%A5%E5%B8%B8%E3%81%8C%E6%8A%95%E7%A8%BF%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%84%E3%81%98%E3%82%8A%E3%80%81%E3%82%B2%E3%83%BC%E3%83%A0%E3%80%81AI%E3%81%AA%E3%81%A9SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E6%97%A5%E5%B8%B8%E3%81%8C%E6%8A%95%E7%A8%BF%E3%81%AB"
+      }
+    ],
+    "category": "technology",
+    "cluster_id": 22,
+    "summary": ""
+  },
+  {
+    "title": "BreakingDown選手、平手打ちでクモ膜下出血　運営への批判殺到",
+    "posts_num": 57,
+    "score": 76,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=BreakingDown%E9%81%B8%E6%89%8B%E3%80%81%E5%B9%B3%E6%89%8B%E6%89%93%E3%81%A1%E3%81%A7%E3%82%AF%E3%83%A2%E8%86%9C%E4%B8%8B%E5%87%BA%E8%A1%80%E3%80%80%E9%81%8B%E5%96%B6%E3%81%B8%E3%81%AE%E6%89%B9%E5%88%A4%E6%AE%BA%E5%88%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=BreakingDown%E9%81%B8%E6%89%8B%E3%80%81%E5%B9%B3%E6%89%8B%E6%89%93%E3%81%A1%E3%81%A7%E3%82%AF%E3%83%A2%E8%86%9C%E4%B8%8B%E5%87%BA%E8%A1%80%E3%80%80%E9%81%8B%E5%96%B6%E3%81%B8%E3%81%AE%E6%89%B9%E5%88%A4%E6%AE%BA%E5%88%B0"
+      }
+    ],
+    "category": "sports",
+    "cluster_id": 23,
+    "summary": ""
+  },
+  {
+    "title": "SNSユーザーが語る日常と想いの世界",
+    "posts_num": 204,
+    "score": 81,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E8%AA%9E%E3%82%8B%E6%97%A5%E5%B8%B8%E3%81%A8%E6%83%B3%E3%81%84%E3%81%AE%E4%B8%96%E7%95%8C"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E8%AA%9E%E3%82%8B%E6%97%A5%E5%B8%B8%E3%81%A8%E6%83%B3%E3%81%84%E3%81%AE%E4%B8%96%E7%95%8C"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 24,
+    "summary": ""
+  },
+  {
+    "title": "iPhone 17保護フィルム人気沸騰！アクキーやアクスタも話題に",
+    "posts_num": 324,
+    "score": 82,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=iPhone%2017%E4%BF%9D%E8%AD%B7%E3%83%95%E3%82%A3%E3%83%AB%E3%83%A0%E4%BA%BA%E6%B0%97%E6%B2%B8%E9%A8%B0%EF%BC%81%E3%82%A2%E3%82%AF%E3%82%AD%E3%83%BC%E3%82%84%E3%82%A2%E3%82%AF%E3%82%B9%E3%82%BF%E3%82%82%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=iPhone%2017%E4%BF%9D%E8%AD%B7%E3%83%95%E3%82%A3%E3%83%AB%E3%83%A0%E4%BA%BA%E6%B0%97%E6%B2%B8%E9%A8%B0%EF%BC%81%E3%82%A2%E3%82%AF%E3%82%AD%E3%83%BC%E3%82%84%E3%82%A2%E3%82%AF%E3%82%B9%E3%82%BF%E3%82%82%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      }
+    ],
+    "category": "technology",
+    "cluster_id": 25,
+    "summary": ""
+  },
+  {
+    "title": "- roとグレの癒やしな日常、飼い主の笑顔も",
+    "posts_num": 103,
+    "score": 77,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=-%20ro%E3%81%A8%E3%82%B0%E3%83%AC%E3%81%AE%E7%99%92%E3%82%84%E3%81%97%E3%81%AA%E6%97%A5%E5%B8%B8%E3%80%81%E9%A3%BC%E3%81%84%E4%B8%BB%E3%81%AE%E7%AC%91%E9%A1%94%E3%82%82"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=-%20ro%E3%81%A8%E3%82%B0%E3%83%AC%E3%81%AE%E7%99%92%E3%82%84%E3%81%97%E3%81%AA%E6%97%A5%E5%B8%B8%E3%80%81%E9%A3%BC%E3%81%84%E4%B8%BB%E3%81%AE%E7%AC%91%E9%A1%94%E3%82%82"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 26,
+    "summary": ""
+  },
+  {
+    "title": "孤独と人間関係の悩み、SNSユーザーが語る日常",
+    "posts_num": 47,
+    "score": 74,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%AD%A4%E7%8B%AC%E3%81%A8%E4%BA%BA%E9%96%93%E9%96%A2%E4%BF%82%E3%81%AE%E6%82%A9%E3%81%BF%E3%80%81SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E8%AA%9E%E3%82%8B%E6%97%A5%E5%B8%B8"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%AD%A4%E7%8B%AC%E3%81%A8%E4%BA%BA%E9%96%93%E9%96%A2%E4%BF%82%E3%81%AE%E6%82%A9%E3%81%BF%E3%80%81SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E8%AA%9E%E3%82%8B%E6%97%A5%E5%B8%B8"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 27,
+    "summary": ""
+  },
+  {
+    "title": "家政婦の話題で盛り上がり！「家政婦の見た！」再放送に注目",
+    "posts_num": 41,
+    "score": 73,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%AE%B6%E6%94%BF%E5%A9%A6%E3%81%AE%E8%A9%B1%E9%A1%8C%E3%81%A7%E7%9B%9B%E3%82%8A%E4%B8%8A%E3%81%8C%E3%82%8A%EF%BC%81%E3%80%8C%E5%AE%B6%E6%94%BF%E5%A9%A6%E3%81%AE%E8%A6%8B%E3%81%9F%EF%BC%81%E3%80%8D%E5%86%8D%E6%94%BE%E9%80%81%E3%81%AB%E6%B3%A8%E7%9B%AE"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%AE%B6%E6%94%BF%E5%A9%A6%E3%81%AE%E8%A9%B1%E9%A1%8C%E3%81%A7%E7%9B%9B%E3%82%8A%E4%B8%8A%E3%81%8C%E3%82%8A%EF%BC%81%E3%80%8C%E5%AE%B6%E6%94%BF%E5%A9%A6%E3%81%AE%E8%A6%8B%E3%81%9F%EF%BC%81%E3%80%8D%E5%86%8D%E6%94%BE%E9%80%81%E3%81%AB%E6%B3%A8%E7%9B%AE"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 28,
+    "summary": ""
+  },
+  {
+    "title": "Snow Man 佐久間大介、愛用中の「龍角散ダイレクト」のCMに起用！",
+    "posts_num": 33,
+    "score": 72,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Snow%20Man%20%E4%BD%90%E4%B9%85%E9%96%93%E5%A4%A7%E4%BB%8B%E3%80%81%E6%84%9B%E7%94%A8%E4%B8%AD%E3%81%AE%E3%80%8C%E9%BE%8D%E8%A7%92%E6%95%A3%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%80%8D%E3%81%AECM%E3%81%AB%E8%B5%B7%E7%94%A8%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Snow%20Man%20%E4%BD%90%E4%B9%85%E9%96%93%E5%A4%A7%E4%BB%8B%E3%80%81%E6%84%9B%E7%94%A8%E4%B8%AD%E3%81%AE%E3%80%8C%E9%BE%8D%E8%A7%92%E6%95%A3%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%80%8D%E3%81%AECM%E3%81%AB%E8%B5%B7%E7%94%A8%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 29,
+    "summary": ""
+  },
+  {
+    "title": "小学生が選ぶ「今年の漢字」は「楽」！ 楽しさ満載の投稿が話題に",
+    "posts_num": 113,
+    "score": 76,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%B0%8F%E5%AD%A6%E7%94%9F%E3%81%8C%E9%81%B8%E3%81%B6%E3%80%8C%E4%BB%8A%E5%B9%B4%E3%81%AE%E6%BC%A2%E5%AD%97%E3%80%8D%E3%81%AF%E3%80%8C%E6%A5%BD%E3%80%8D%EF%BC%81%20%E6%A5%BD%E3%81%97%E3%81%95%E6%BA%80%E8%BC%89%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%B0%8F%E5%AD%A6%E7%94%9F%E3%81%8C%E9%81%B8%E3%81%B6%E3%80%8C%E4%BB%8A%E5%B9%B4%E3%81%AE%E6%BC%A2%E5%AD%97%E3%80%8D%E3%81%AF%E3%80%8C%E6%A5%BD%E3%80%8D%EF%BC%81%20%E6%A5%BD%E3%81%97%E3%81%95%E6%BA%80%E8%BC%89%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 30,
+    "summary": ""
+  },
+  {
+    "title": "赤坂個室サウナ火災で男女2人死亡、原因究明へ",
+    "posts_num": 239,
+    "score": 79,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E8%B5%A4%E5%9D%82%E5%80%8B%E5%AE%A4%E3%82%B5%E3%82%A6%E3%83%8A%E7%81%AB%E7%81%BD%E3%81%A7%E7%94%B7%E5%A5%B32%E4%BA%BA%E6%AD%BB%E4%BA%A1%E3%80%81%E5%8E%9F%E5%9B%A0%E7%A9%B6%E6%98%8E%E3%81%B8"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E8%B5%A4%E5%9D%82%E5%80%8B%E5%AE%A4%E3%82%B5%E3%82%A6%E3%83%8A%E7%81%AB%E7%81%BD%E3%81%A7%E7%94%B7%E5%A5%B32%E4%BA%BA%E6%AD%BB%E4%BA%A1%E3%80%81%E5%8E%9F%E5%9B%A0%E7%A9%B6%E6%98%8E%E3%81%B8"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 31,
+    "summary": ""
+  },
+  {
+    "title": "キタニタツヤ、HOKAのスニーカーにハマる！リスナーも注目",
+    "posts_num": 101,
+    "score": 75,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4%E3%80%81HOKA%E3%81%AE%E3%82%B9%E3%83%8B%E3%83%BC%E3%82%AB%E3%83%BC%E3%81%AB%E3%83%8F%E3%83%9E%E3%82%8B%EF%BC%81%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%82%82%E6%B3%A8%E7%9B%AE"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4%E3%80%81HOKA%E3%81%AE%E3%82%B9%E3%83%8B%E3%83%BC%E3%82%AB%E3%83%BC%E3%81%AB%E3%83%8F%E3%83%9E%E3%82%8B%EF%BC%81%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%82%82%E6%B3%A8%E7%9B%AE"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 32,
+    "summary": ""
+  },
+  {
+    "title": "「ザ・ロイヤルファミリー」最終回、感動の結末に視聴者涙",
+    "posts_num": 385,
+    "score": 80,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8C%E3%82%B6%E3%83%BB%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%83%BC%E3%80%8D%E6%9C%80%E7%B5%82%E5%9B%9E%E3%80%81%E6%84%9F%E5%8B%95%E3%81%AE%E7%B5%90%E6%9C%AB%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E6%B6%99"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8C%E3%82%B6%E3%83%BB%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%83%BC%E3%80%8D%E6%9C%80%E7%B5%82%E5%9B%9E%E3%80%81%E6%84%9F%E5%8B%95%E3%81%AE%E7%B5%90%E6%9C%AB%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E6%B6%99"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 33,
+    "summary": ""
+  },
+  {
+    "title": "Vaundy新曲「ずっとラブソング」MV公開！ファン「胸熱」「かわいい」",
+    "posts_num": 138,
+    "score": 75,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Vaundy%E6%96%B0%E6%9B%B2%E3%80%8C%E3%81%9A%E3%81%A3%E3%81%A8%E3%83%A9%E3%83%96%E3%82%BD%E3%83%B3%E3%82%B0%E3%80%8DMV%E5%85%AC%E9%96%8B%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%80%8C%E8%83%B8%E7%86%B1%E3%80%8D%E3%80%8C%E3%81%8B%E3%82%8F%E3%81%84%E3%81%84%E3%80%8D"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Vaundy%E6%96%B0%E6%9B%B2%E3%80%8C%E3%81%9A%E3%81%A3%E3%81%A8%E3%83%A9%E3%83%96%E3%82%BD%E3%83%B3%E3%82%B0%E3%80%8DMV%E5%85%AC%E9%96%8B%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%80%8C%E8%83%B8%E7%86%B1%E3%80%8D%E3%80%8C%E3%81%8B%E3%82%8F%E3%81%84%E3%81%84%E3%80%8D"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 34,
+    "summary": ""
+  },
+  {
+    "title": "中谷育さん、誕生日祝いのメッセージが殺到！ファンは「おめでとう」と祝福",
+    "posts_num": 692,
+    "score": 81,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E4%B8%AD%E8%B0%B7%E8%82%B2%E3%81%95%E3%82%93%E3%80%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E3%81%84%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%8C%E6%AE%BA%E5%88%B0%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%AF%E3%80%8C%E3%81%8A%E3%82%81%E3%81%A7%E3%81%A8%E3%81%86%E3%80%8D%E3%81%A8%E7%A5%9D%E7%A6%8F"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E4%B8%AD%E8%B0%B7%E8%82%B2%E3%81%95%E3%82%93%E3%80%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E3%81%84%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%8C%E6%AE%BA%E5%88%B0%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%AF%E3%80%8C%E3%81%8A%E3%82%81%E3%81%A7%E3%81%A8%E3%81%86%E3%80%8D%E3%81%A8%E7%A5%9D%E7%A6%8F"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 35,
+    "summary": ""
+  },
+  {
+    "title": "酔っぱらい話題に沸くSNS投稿",
+    "posts_num": 156,
+    "score": 75,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%85%94%E3%81%A3%E3%81%B1%E3%82%89%E3%81%84%E8%A9%B1%E9%A1%8C%E3%81%AB%E6%B2%B8%E3%81%8FSNS%E6%8A%95%E7%A8%BF"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%85%94%E3%81%A3%E3%81%B1%E3%82%89%E3%81%84%E8%A9%B1%E9%A1%8C%E3%81%AB%E6%B2%B8%E3%81%8FSNS%E6%8A%95%E7%A8%BF"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 36,
+    "summary": ""
+  },
+  {
+    "title": "参院議員の生理痛疑似体験批判に、女性活躍議論が巻き起こる",
+    "posts_num": 93,
+    "score": 73,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%8F%82%E9%99%A2%E8%AD%B0%E5%93%A1%E3%81%AE%E7%94%9F%E7%90%86%E7%97%9B%E7%96%91%E4%BC%BC%E4%BD%93%E9%A8%93%E6%89%B9%E5%88%A4%E3%81%AB%E3%80%81%E5%A5%B3%E6%80%A7%E6%B4%BB%E8%BA%8D%E8%AD%B0%E8%AB%96%E3%81%8C%E5%B7%BB%E3%81%8D%E8%B5%B7%E3%81%93%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%8F%82%E9%99%A2%E8%AD%B0%E5%93%A1%E3%81%AE%E7%94%9F%E7%90%86%E7%97%9B%E7%96%91%E4%BC%BC%E4%BD%93%E9%A8%93%E6%89%B9%E5%88%A4%E3%81%AB%E3%80%81%E5%A5%B3%E6%80%A7%E6%B4%BB%E8%BA%8D%E8%AD%B0%E8%AB%96%E3%81%8C%E5%B7%BB%E3%81%8D%E8%B5%B7%E3%81%93%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 37,
+    "summary": ""
+  },
+  {
+    "title": "鴨そばの美味しさに感動！ゲームファンも心待ちに新コンテンツ",
+    "posts_num": 139,
+    "score": 74,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%B4%A8%E3%81%9D%E3%81%B0%E3%81%AE%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%95%E3%81%AB%E6%84%9F%E5%8B%95%EF%BC%81%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%95%E3%82%A1%E3%83%B3%E3%82%82%E5%BF%83%E5%BE%85%E3%81%A1%E3%81%AB%E6%96%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%B4%A8%E3%81%9D%E3%81%B0%E3%81%AE%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%95%E3%81%AB%E6%84%9F%E5%8B%95%EF%BC%81%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%95%E3%82%A1%E3%83%B3%E3%82%82%E5%BF%83%E5%BE%85%E3%81%A1%E3%81%AB%E6%96%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 38,
+    "summary": ""
+  },
+  {
+    "title": "SNSユーザー、様々なテーマで「分かり合えない」と感じている",
+    "posts_num": 78,
+    "score": 71,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%80%81%E6%A7%98%E3%80%85%E3%81%AA%E3%83%86%E3%83%BC%E3%83%9E%E3%81%A7%E3%80%8C%E5%88%86%E3%81%8B%E3%82%8A%E5%90%88%E3%81%88%E3%81%AA%E3%81%84%E3%80%8D%E3%81%A8%E6%84%9F%E3%81%98%E3%81%A6%E3%81%84%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%80%81%E6%A7%98%E3%80%85%E3%81%AA%E3%83%86%E3%83%BC%E3%83%9E%E3%81%A7%E3%80%8C%E5%88%86%E3%81%8B%E3%82%8A%E5%90%88%E3%81%88%E3%81%AA%E3%81%84%E3%80%8D%E3%81%A8%E6%84%9F%E3%81%98%E3%81%A6%E3%81%84%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 39,
+    "summary": ""
+  },
+  {
+    "title": "4時間後の起床に備え、ユーザーたちは…",
+    "posts_num": 37,
+    "score": 68,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=4%E6%99%82%E9%96%93%E5%BE%8C%E3%81%AE%E8%B5%B7%E5%BA%8A%E3%81%AB%E5%82%99%E3%81%88%E3%80%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%9F%E3%81%A1%E3%81%AF%E2%80%A6"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=4%E6%99%82%E9%96%93%E5%BE%8C%E3%81%AE%E8%B5%B7%E5%BA%8A%E3%81%AB%E5%82%99%E3%81%88%E3%80%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%9F%E3%81%A1%E3%81%AF%E2%80%A6"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 40,
+    "summary": ""
+  },
+  {
+    "title": "ミドルアイランド終了！参加者たちは「楽しかった」「またやりたい」",
+    "posts_num": 32,
+    "score": 67,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%9F%E3%83%89%E3%83%AB%E3%82%A2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89%E7%B5%82%E4%BA%86%EF%BC%81%E5%8F%82%E5%8A%A0%E8%80%85%E3%81%9F%E3%81%A1%E3%81%AF%E3%80%8C%E6%A5%BD%E3%81%97%E3%81%8B%E3%81%A3%E3%81%9F%E3%80%8D%E3%80%8C%E3%81%BE%E3%81%9F%E3%82%84%E3%82%8A%E3%81%9F%E3%81%84%E3%80%8D"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%9F%E3%83%89%E3%83%AB%E3%82%A2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89%E7%B5%82%E4%BA%86%EF%BC%81%E5%8F%82%E5%8A%A0%E8%80%85%E3%81%9F%E3%81%A1%E3%81%AF%E3%80%8C%E6%A5%BD%E3%81%97%E3%81%8B%E3%81%A3%E3%81%9F%E3%80%8D%E3%80%8C%E3%81%BE%E3%81%9F%E3%82%84%E3%82%8A%E3%81%9F%E3%81%84%E3%80%8D"
+      }
+    ],
+    "category": "business",
+    "cluster_id": 41,
+    "summary": ""
+  },
+  {
+    "title": "眠れない夜に寄せられる共感と、様々な対処法",
+    "posts_num": 2040,
+    "score": 83,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E7%9C%A0%E3%82%8C%E3%81%AA%E3%81%84%E5%A4%9C%E3%81%AB%E5%AF%84%E3%81%9B%E3%82%89%E3%82%8C%E3%82%8B%E5%85%B1%E6%84%9F%E3%81%A8%E3%80%81%E6%A7%98%E3%80%85%E3%81%AA%E5%AF%BE%E5%87%A6%E6%B3%95"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E7%9C%A0%E3%82%8C%E3%81%AA%E3%81%84%E5%A4%9C%E3%81%AB%E5%AF%84%E3%81%9B%E3%82%89%E3%82%8C%E3%82%8B%E5%85%B1%E6%84%9F%E3%81%A8%E3%80%81%E6%A7%98%E3%80%85%E3%81%AA%E5%AF%BE%E5%87%A6%E6%B3%95"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 42,
+    "summary": ""
+  },
+  {
+    "title": "マーベルレジェンド新作発表にファン興奮！期待の新キャラ続々",
+    "posts_num": 25,
+    "score": 65,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%9E%E3%83%BC%E3%83%99%E3%83%AB%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%89%E6%96%B0%E4%BD%9C%E7%99%BA%E8%A1%A8%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81%E6%9C%9F%E5%BE%85%E3%81%AE%E6%96%B0%E3%82%AD%E3%83%A3%E3%83%A9%E7%B6%9A%E3%80%85"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%9E%E3%83%BC%E3%83%99%E3%83%AB%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%89%E6%96%B0%E4%BD%9C%E7%99%BA%E8%A1%A8%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81%E6%9C%9F%E5%BE%85%E3%81%AE%E6%96%B0%E3%82%AD%E3%83%A3%E3%83%A9%E7%B6%9A%E3%80%85"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 43,
+    "summary": ""
+  },
+  {
+    "title": "アドリス・ガルシア、フィリーズと契約！復活なるか？",
+    "posts_num": 78,
+    "score": 69,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%A2%E3%83%89%E3%83%AA%E3%82%B9%E3%83%BB%E3%82%AC%E3%83%AB%E3%82%B7%E3%82%A2%E3%80%81%E3%83%95%E3%82%A3%E3%83%AA%E3%83%BC%E3%82%BA%E3%81%A8%E5%A5%91%E7%B4%84%EF%BC%81%E5%BE%A9%E6%B4%BB%E3%81%AA%E3%82%8B%E3%81%8B%EF%BC%9F"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%A2%E3%83%89%E3%83%AA%E3%82%B9%E3%83%BB%E3%82%AC%E3%83%AB%E3%82%B7%E3%82%A2%E3%80%81%E3%83%95%E3%82%A3%E3%83%AA%E3%83%BC%E3%82%BA%E3%81%A8%E5%A5%91%E7%B4%84%EF%BC%81%E5%BE%A9%E6%B4%BB%E3%81%AA%E3%82%8B%E3%81%8B%EF%BC%9F"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 44,
+    "summary": ""
+  },
+  {
+    "title": "Official髭男dism Zepp大阪公演、ファン興奮！熱狂的なライブレポ続々",
+    "posts_num": 35,
+    "score": 66,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Official%E9%AB%AD%E7%94%B7dism%20Zepp%E5%A4%A7%E9%98%AA%E5%85%AC%E6%BC%94%E3%80%81%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81%E7%86%B1%E7%8B%82%E7%9A%84%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%AC%E3%83%9D%E7%B6%9A%E3%80%85"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Official%E9%AB%AD%E7%94%B7dism%20Zepp%E5%A4%A7%E9%98%AA%E5%85%AC%E6%BC%94%E3%80%81%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81%E7%86%B1%E7%8B%82%E7%9A%84%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%AC%E3%83%9D%E7%B6%9A%E3%80%85"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 45,
+    "summary": ""
+  },
+  {
+    "title": "ドラゴンボールZ最新フィギュア＆ゲーム配信にファン熱狂！",
+    "posts_num": 82,
+    "score": 68,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%ABZ%E6%9C%80%E6%96%B0%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%82%A2%EF%BC%86%E3%82%B2%E3%83%BC%E3%83%A0%E9%85%8D%E4%BF%A1%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E7%86%B1%E7%8B%82%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%ABZ%E6%9C%80%E6%96%B0%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%82%A2%EF%BC%86%E3%82%B2%E3%83%BC%E3%83%A0%E9%85%8D%E4%BF%A1%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E7%86%B1%E7%8B%82%EF%BC%81"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 46,
+    "summary": ""
+  },
+  {
+    "title": "身内ネタ、その面白さと、時に感じる居心地の悪さ",
+    "posts_num": 64,
+    "score": 67,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E8%BA%AB%E5%86%85%E3%83%8D%E3%82%BF%E3%80%81%E3%81%9D%E3%81%AE%E9%9D%A2%E7%99%BD%E3%81%95%E3%81%A8%E3%80%81%E6%99%82%E3%81%AB%E6%84%9F%E3%81%98%E3%82%8B%E5%B1%85%E5%BF%83%E5%9C%B0%E3%81%AE%E6%82%AA%E3%81%95"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E8%BA%AB%E5%86%85%E3%83%8D%E3%82%BF%E3%80%81%E3%81%9D%E3%81%AE%E9%9D%A2%E7%99%BD%E3%81%95%E3%81%A8%E3%80%81%E6%99%82%E3%81%AB%E6%84%9F%E3%81%98%E3%82%8B%E5%B1%85%E5%BF%83%E5%9C%B0%E3%81%AE%E6%82%AA%E3%81%95"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 47,
+    "summary": ""
+  },
+  {
+    "title": "- 「愛しかない」 多くのファンが感じる感動と喜び",
+    "posts_num": 160,
+    "score": 70,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=-%20%E3%80%8C%E6%84%9B%E3%81%97%E3%81%8B%E3%81%AA%E3%81%84%E3%80%8D%20%E5%A4%9A%E3%81%8F%E3%81%AE%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8C%E6%84%9F%E3%81%98%E3%82%8B%E6%84%9F%E5%8B%95%E3%81%A8%E5%96%9C%E3%81%B3"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=-%20%E3%80%8C%E6%84%9B%E3%81%97%E3%81%8B%E3%81%AA%E3%81%84%E3%80%8D%20%E5%A4%9A%E3%81%8F%E3%81%AE%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8C%E6%84%9F%E3%81%98%E3%82%8B%E6%84%9F%E5%8B%95%E3%81%A8%E5%96%9C%E3%81%B3"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 48,
+    "summary": ""
+  },
+  {
+    "title": "きのこの山、SNSで話題に！どっち派？美味しさにファン歓喜",
+    "posts_num": 55,
+    "score": 66,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%81%8D%E3%81%AE%E3%81%93%E3%81%AE%E5%B1%B1%E3%80%81SNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%81%A9%E3%81%A3%E3%81%A1%E6%B4%BE%EF%BC%9F%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%95%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E6%AD%93%E5%96%9C"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%81%8D%E3%81%AE%E3%81%93%E3%81%AE%E5%B1%B1%E3%80%81SNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81%E3%81%A9%E3%81%A3%E3%81%A1%E6%B4%BE%EF%BC%9F%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%95%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E6%AD%93%E5%96%9C"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 49,
+    "summary": ""
+  },
+  {
+    "title": "ビオフェルミン効果に賛否！腸内環境改善に期待の声",
+    "posts_num": 45,
+    "score": 65,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%93%E3%82%AA%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9F%E3%83%B3%E5%8A%B9%E6%9E%9C%E3%81%AB%E8%B3%9B%E5%90%A6%EF%BC%81%E8%85%B8%E5%86%85%E7%92%B0%E5%A2%83%E6%94%B9%E5%96%84%E3%81%AB%E6%9C%9F%E5%BE%85%E3%81%AE%E5%A3%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%93%E3%82%AA%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9F%E3%83%B3%E5%8A%B9%E6%9E%9C%E3%81%AB%E8%B3%9B%E5%90%A6%EF%BC%81%E8%85%B8%E5%86%85%E7%92%B0%E5%A2%83%E6%94%B9%E5%96%84%E3%81%AB%E6%9C%9F%E5%BE%85%E3%81%AE%E5%A3%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 50,
+    "summary": ""
+  },
+  {
+    "title": "育休もらい逃げ：社会の制度と個人の選択が問われる",
+    "posts_num": 283,
+    "score": 71,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E8%82%B2%E4%BC%91%E3%82%82%E3%82%89%E3%81%84%E9%80%83%E3%81%92%EF%BC%9A%E7%A4%BE%E4%BC%9A%E3%81%AE%E5%88%B6%E5%BA%A6%E3%81%A8%E5%80%8B%E4%BA%BA%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%8C%E5%95%8F%E3%82%8F%E3%82%8C%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E8%82%B2%E4%BC%91%E3%82%82%E3%82%89%E3%81%84%E9%80%83%E3%81%92%EF%BC%9A%E7%A4%BE%E4%BC%9A%E3%81%AE%E5%88%B6%E5%BA%A6%E3%81%A8%E5%80%8B%E4%BA%BA%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%8C%E5%95%8F%E3%82%8F%E3%82%8C%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 51,
+    "summary": ""
+  },
+  {
+    "title": "怒鳴る行為に対する意見がSNSで拡散",
+    "posts_num": 48,
+    "score": 64,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%80%92%E9%B3%B4%E3%82%8B%E8%A1%8C%E7%82%BA%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E6%84%8F%E8%A6%8B%E3%81%8CSNS%E3%81%A7%E6%8B%A1%E6%95%A3"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%80%92%E9%B3%B4%E3%82%8B%E8%A1%8C%E7%82%BA%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E6%84%8F%E8%A6%8B%E3%81%8CSNS%E3%81%A7%E6%8B%A1%E6%95%A3"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 52,
+    "summary": ""
+  },
+  {
+    "title": "虹ヶ咲近江彼方、誕生日祝福の声多数！ファンは「可愛い」「尊い」と絶賛",
+    "posts_num": 933,
+    "score": 75,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E8%99%B9%E3%83%B6%E5%92%B2%E8%BF%91%E6%B1%9F%E5%BD%BC%E6%96%B9%E3%80%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F%E3%81%AE%E5%A3%B0%E5%A4%9A%E6%95%B0%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%AF%E3%80%8C%E5%8F%AF%E6%84%9B%E3%81%84%E3%80%8D%E3%80%8C%E5%B0%8A%E3%81%84%E3%80%8D%E3%81%A8%E7%B5%B6%E8%B3%9B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E8%99%B9%E3%83%B6%E5%92%B2%E8%BF%91%E6%B1%9F%E5%BD%BC%E6%96%B9%E3%80%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F%E3%81%AE%E5%A3%B0%E5%A4%9A%E6%95%B0%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%AF%E3%80%8C%E5%8F%AF%E6%84%9B%E3%81%84%E3%80%8D%E3%80%8C%E5%B0%8A%E3%81%84%E3%80%8D%E3%81%A8%E7%B5%B6%E8%B3%9B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 53,
+    "summary": ""
+  },
+  {
+    "title": "アクトレイザー発売35周年！ゲーム業界の話題は多岐にわたる",
+    "posts_num": 182,
+    "score": 68,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%A2%E3%82%AF%E3%83%88%E3%83%AC%E3%82%A4%E3%82%B6%E3%83%BC%E7%99%BA%E5%A3%B235%E5%91%A8%E5%B9%B4%EF%BC%81%E3%82%B2%E3%83%BC%E3%83%A0%E6%A5%AD%E7%95%8C%E3%81%AE%E8%A9%B1%E9%A1%8C%E3%81%AF%E5%A4%9A%E5%B2%90%E3%81%AB%E3%82%8F%E3%81%9F%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%A2%E3%82%AF%E3%83%88%E3%83%AC%E3%82%A4%E3%82%B6%E3%83%BC%E7%99%BA%E5%A3%B235%E5%91%A8%E5%B9%B4%EF%BC%81%E3%82%B2%E3%83%BC%E3%83%A0%E6%A5%AD%E7%95%8C%E3%81%AE%E8%A9%B1%E9%A1%8C%E3%81%AF%E5%A4%9A%E5%B2%90%E3%81%AB%E3%82%8F%E3%81%9F%E3%82%8B"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 54,
+    "summary": ""
+  },
+  {
+    "title": "前髪ぱっつんヘアスタイルがSNSで話題に",
+    "posts_num": 48,
+    "score": 63,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%89%8D%E9%AB%AA%E3%81%B1%E3%81%A3%E3%81%A4%E3%82%93%E3%83%98%E3%82%A2%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%8CSNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%89%8D%E9%AB%AA%E3%81%B1%E3%81%A3%E3%81%A4%E3%82%93%E3%83%98%E3%82%A2%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%8CSNS%E3%81%A7%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 55,
+    "summary": ""
+  },
+  {
+    "title": "ブルアカファン、久田イズナ誕生日を祝福！絆100達成報告も",
+    "posts_num": 295,
+    "score": 69,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%96%E3%83%AB%E3%82%A2%E3%82%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%80%81%E4%B9%85%E7%94%B0%E3%82%A4%E3%82%BA%E3%83%8A%E8%AA%95%E7%94%9F%E6%97%A5%E3%82%92%E7%A5%9D%E7%A6%8F%EF%BC%81%E7%B5%86100%E9%81%94%E6%88%90%E5%A0%B1%E5%91%8A%E3%82%82"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%96%E3%83%AB%E3%82%A2%E3%82%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%80%81%E4%B9%85%E7%94%B0%E3%82%A4%E3%82%BA%E3%83%8A%E8%AA%95%E7%94%9F%E6%97%A5%E3%82%92%E7%A5%9D%E7%A6%8F%EF%BC%81%E7%B5%86100%E9%81%94%E6%88%90%E5%A0%B1%E5%91%8A%E3%82%82"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 56,
+    "summary": ""
+  },
+  {
+    "title": "銀八先生で登場の高杉晋助にファン興奮！「かっこよすぎる」の声",
+    "posts_num": 39,
+    "score": 61,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%8A%80%E5%85%AB%E5%85%88%E7%94%9F%E3%81%A7%E7%99%BB%E5%A0%B4%E3%81%AE%E9%AB%98%E6%9D%89%E6%99%8B%E5%8A%A9%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81%E3%80%8C%E3%81%8B%E3%81%A3%E3%81%93%E3%82%88%E3%81%99%E3%81%8E%E3%82%8B%E3%80%8D%E3%81%AE%E5%A3%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%8A%80%E5%85%AB%E5%85%88%E7%94%9F%E3%81%A7%E7%99%BB%E5%A0%B4%E3%81%AE%E9%AB%98%E6%9D%89%E6%99%8B%E5%8A%A9%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE%EF%BC%81%E3%80%8C%E3%81%8B%E3%81%A3%E3%81%93%E3%82%88%E3%81%99%E3%81%8E%E3%82%8B%E3%80%8D%E3%81%AE%E5%A3%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 57,
+    "summary": ""
+  },
+  {
+    "title": "昭和生まれに関する意見がSNSで議論に",
+    "posts_num": 95,
+    "score": 64,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%98%AD%E5%92%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%84%8F%E8%A6%8B%E3%81%8CSNS%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%98%AD%E5%92%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%84%8F%E8%A6%8B%E3%81%8CSNS%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 58,
+    "summary": ""
+  },
+  {
+    "title": "Mrs. GREEN APPLEミセス一番くじ、発売日にファンが熱狂！",
+    "posts_num": 36,
+    "score": 60,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Mrs.%20GREEN%20APPLE%E3%83%9F%E3%82%BB%E3%82%B9%E4%B8%80%E7%95%AA%E3%81%8F%E3%81%98%E3%80%81%E7%99%BA%E5%A3%B2%E6%97%A5%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8C%E7%86%B1%E7%8B%82%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Mrs.%20GREEN%20APPLE%E3%83%9F%E3%82%BB%E3%82%B9%E4%B8%80%E7%95%AA%E3%81%8F%E3%81%98%E3%80%81%E7%99%BA%E5%A3%B2%E6%97%A5%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8C%E7%86%B1%E7%8B%82%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 59,
+    "summary": ""
+  },
+  {
+    "title": "BTS JUNG KOOK、Rolling Stone誌表紙撮影メイキング公開！",
+    "posts_num": 36,
+    "score": 60,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=BTS%20JUNG%20KOOK%E3%80%81Rolling%20Stone%E8%AA%8C%E8%A1%A8%E7%B4%99%E6%92%AE%E5%BD%B1%E3%83%A1%E3%82%A4%E3%82%AD%E3%83%B3%E3%82%B0%E5%85%AC%E9%96%8B%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=BTS%20JUNG%20KOOK%E3%80%81Rolling%20Stone%E8%AA%8C%E8%A1%A8%E7%B4%99%E6%92%AE%E5%BD%B1%E3%83%A1%E3%82%A4%E3%82%AD%E3%83%B3%E3%82%B0%E5%85%AC%E9%96%8B%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 60,
+    "summary": ""
+  },
+  {
+    "title": "叢雲カゲツ、スト6でMR2000達成！わずか1年で驚異的な成長にファン興奮",
+    "posts_num": 807,
+    "score": 71,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%8F%A2%E9%9B%B2%E3%82%AB%E3%82%B2%E3%83%84%E3%80%81%E3%82%B9%E3%83%886%E3%81%A7MR2000%E9%81%94%E6%88%90%EF%BC%81%E3%82%8F%E3%81%9A%E3%81%8B1%E5%B9%B4%E3%81%A7%E9%A9%9A%E7%95%B0%E7%9A%84%E3%81%AA%E6%88%90%E9%95%B7%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%8F%A2%E9%9B%B2%E3%82%AB%E3%82%B2%E3%83%84%E3%80%81%E3%82%B9%E3%83%886%E3%81%A7MR2000%E9%81%94%E6%88%90%EF%BC%81%E3%82%8F%E3%81%9A%E3%81%8B1%E5%B9%B4%E3%81%A7%E9%A9%9A%E7%95%B0%E7%9A%84%E3%81%AA%E6%88%90%E9%95%B7%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E8%88%88%E5%A5%AE"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 61,
+    "summary": ""
+  },
+  {
+    "title": "SNSユーザー、政治や社会問題に対する失望感と日常の些細な不満を吐露",
+    "posts_num": 48,
+    "score": 60,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%80%81%E6%94%BF%E6%B2%BB%E3%82%84%E7%A4%BE%E4%BC%9A%E5%95%8F%E9%A1%8C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%A4%B1%E6%9C%9B%E6%84%9F%E3%81%A8%E6%97%A5%E5%B8%B8%E3%81%AE%E4%BA%9B%E7%B4%B0%E3%81%AA%E4%B8%8D%E6%BA%80%E3%82%92%E5%90%90%E9%9C%B2"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=SNS%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%80%81%E6%94%BF%E6%B2%BB%E3%82%84%E7%A4%BE%E4%BC%9A%E5%95%8F%E9%A1%8C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%A4%B1%E6%9C%9B%E6%84%9F%E3%81%A8%E6%97%A5%E5%B8%B8%E3%81%AE%E4%BA%9B%E7%B4%B0%E3%81%AA%E4%B8%8D%E6%BA%80%E3%82%92%E5%90%90%E9%9C%B2"
+      }
+    ],
+    "category": "politics",
+    "cluster_id": 62,
+    "summary": ""
+  },
+  {
+    "title": "リセット症候群、SNS上で経験談が相次ぐ",
+    "posts_num": 66,
+    "score": 61,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E7%97%87%E5%80%99%E7%BE%A4%E3%80%81SNS%E4%B8%8A%E3%81%A7%E7%B5%8C%E9%A8%93%E8%AB%87%E3%81%8C%E7%9B%B8%E6%AC%A1%E3%81%90"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E7%97%87%E5%80%99%E7%BE%A4%E3%80%81SNS%E4%B8%8A%E3%81%A7%E7%B5%8C%E9%A8%93%E8%AB%87%E3%81%8C%E7%9B%B8%E6%AC%A1%E3%81%90"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 63,
+    "summary": ""
+  },
+  {
+    "title": "ダンダダン、新章突入！アニメ展キービジュアル解禁！",
+    "posts_num": 276,
+    "score": 66,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%80%E3%83%B3%E3%83%80%E3%83%80%E3%83%B3%E3%80%81%E6%96%B0%E7%AB%A0%E7%AA%81%E5%85%A5%EF%BC%81%E3%82%A2%E3%83%8B%E3%83%A1%E5%B1%95%E3%82%AD%E3%83%BC%E3%83%93%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%AB%E8%A7%A3%E7%A6%81%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%80%E3%83%B3%E3%83%80%E3%83%80%E3%83%B3%E3%80%81%E6%96%B0%E7%AB%A0%E7%AA%81%E5%85%A5%EF%BC%81%E3%82%A2%E3%83%8B%E3%83%A1%E5%B1%95%E3%82%AD%E3%83%BC%E3%83%93%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%AB%E8%A7%A3%E7%A6%81%EF%BC%81"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 64,
+    "summary": ""
+  },
+  {
+    "title": "しょりしゅと、ファンを魅了する可愛さと親近感",
+    "posts_num": 45,
+    "score": 59,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%81%97%E3%82%87%E3%82%8A%E3%81%97%E3%82%85%E3%81%A8%E3%80%81%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E9%AD%85%E4%BA%86%E3%81%99%E3%82%8B%E5%8F%AF%E6%84%9B%E3%81%95%E3%81%A8%E8%A6%AA%E8%BF%91%E6%84%9F"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%81%97%E3%82%87%E3%82%8A%E3%81%97%E3%82%85%E3%81%A8%E3%80%81%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E9%AD%85%E4%BA%86%E3%81%99%E3%82%8B%E5%8F%AF%E6%84%9B%E3%81%95%E3%81%A8%E8%A6%AA%E8%BF%91%E6%84%9F"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 65,
+    "summary": ""
+  },
+  {
+    "title": "天音かなた、自己ベスト更新の握力にファン驚き！卒業まであとわずか",
+    "posts_num": 217,
+    "score": 64,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%A4%A9%E9%9F%B3%E3%81%8B%E3%81%AA%E3%81%9F%E3%80%81%E8%87%AA%E5%B7%B1%E3%83%99%E3%82%B9%E3%83%88%E6%9B%B4%E6%96%B0%E3%81%AE%E6%8F%A1%E5%8A%9B%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E9%A9%9A%E3%81%8D%EF%BC%81%E5%8D%92%E6%A5%AD%E3%81%BE%E3%81%A7%E3%81%82%E3%81%A8%E3%82%8F%E3%81%9A%E3%81%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%A4%A9%E9%9F%B3%E3%81%8B%E3%81%AA%E3%81%9F%E3%80%81%E8%87%AA%E5%B7%B1%E3%83%99%E3%82%B9%E3%83%88%E6%9B%B4%E6%96%B0%E3%81%AE%E6%8F%A1%E5%8A%9B%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E9%A9%9A%E3%81%8D%EF%BC%81%E5%8D%92%E6%A5%AD%E3%81%BE%E3%81%A7%E3%81%82%E3%81%A8%E3%82%8F%E3%81%9A%E3%81%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 66,
+    "summary": ""
+  },
+  {
+    "title": "山本すず19歳お誕生日！ファンから祝福の声が殺到",
+    "posts_num": 217,
+    "score": 64,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%B1%B1%E6%9C%AC%E3%81%99%E3%81%9A19%E6%AD%B3%E3%81%8A%E8%AA%95%E7%94%9F%E6%97%A5%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8B%E3%82%89%E7%A5%9D%E7%A6%8F%E3%81%AE%E5%A3%B0%E3%81%8C%E6%AE%BA%E5%88%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%B1%B1%E6%9C%AC%E3%81%99%E3%81%9A19%E6%AD%B3%E3%81%8A%E8%AA%95%E7%94%9F%E6%97%A5%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8B%E3%82%89%E7%A5%9D%E7%A6%8F%E3%81%AE%E5%A3%B0%E3%81%8C%E6%AE%BA%E5%88%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 67,
+    "summary": ""
+  },
+  {
+    "title": "三浦翔平、赤西仁とのゴルフ秘話語る！「timelesz」ゲスト出演にファン歓喜",
+    "posts_num": 266,
+    "score": 64,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E4%B8%89%E6%B5%A6%E7%BF%94%E5%B9%B3%E3%80%81%E8%B5%A4%E8%A5%BF%E4%BB%81%E3%81%A8%E3%81%AE%E3%82%B4%E3%83%AB%E3%83%95%E7%A7%98%E8%A9%B1%E8%AA%9E%E3%82%8B%EF%BC%81%E3%80%8Ctimelesz%E3%80%8D%E3%82%B2%E3%82%B9%E3%83%88%E5%87%BA%E6%BC%94%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E6%AD%93%E5%96%9C"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E4%B8%89%E6%B5%A6%E7%BF%94%E5%B9%B3%E3%80%81%E8%B5%A4%E8%A5%BF%E4%BB%81%E3%81%A8%E3%81%AE%E3%82%B4%E3%83%AB%E3%83%95%E7%A7%98%E8%A9%B1%E8%AA%9E%E3%82%8B%EF%BC%81%E3%80%8Ctimelesz%E3%80%8D%E3%82%B2%E3%82%B9%E3%83%88%E5%87%BA%E6%BC%94%E3%81%AB%E3%83%95%E3%82%A1%E3%83%B3%E6%AD%93%E5%96%9C"
+      }
+    ],
+    "category": "sports",
+    "cluster_id": 68,
+    "summary": ""
+  },
+  {
+    "title": "ジジババに関する意見がSNSで議論に",
+    "posts_num": 120,
+    "score": 61,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%B8%E3%82%B8%E3%83%90%E3%83%90%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%84%8F%E8%A6%8B%E3%81%8CSNS%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%B8%E3%82%B8%E3%83%90%E3%83%90%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%84%8F%E8%A6%8B%E3%81%8CSNS%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 69,
+    "summary": ""
+  },
+  {
+    "title": "WEST.の「ひらめけ！うんぴょこちゃんねる」に視聴者興奮！",
+    "posts_num": 431,
+    "score": 65,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=WEST.%E3%81%AE%E3%80%8C%E3%81%B2%E3%82%89%E3%82%81%E3%81%91%EF%BC%81%E3%81%86%E3%82%93%E3%81%B4%E3%82%87%E3%81%93%E3%81%A1%E3%82%83%E3%82%93%E3%81%AD%E3%82%8B%E3%80%8D%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E8%88%88%E5%A5%AE%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=WEST.%E3%81%AE%E3%80%8C%E3%81%B2%E3%82%89%E3%82%81%E3%81%91%EF%BC%81%E3%81%86%E3%82%93%E3%81%B4%E3%82%87%E3%81%93%E3%81%A1%E3%82%83%E3%82%93%E3%81%AD%E3%82%8B%E3%80%8D%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E8%88%88%E5%A5%AE%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 70,
+    "summary": ""
+  },
+  {
+    "title": "『嘆きの亡霊は引退したい』最終回放送！ファンは続編に期待",
+    "posts_num": 282,
+    "score": 63,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8E%E5%98%86%E3%81%8D%E3%81%AE%E4%BA%A1%E9%9C%8A%E3%81%AF%E5%BC%95%E9%80%80%E3%81%97%E3%81%9F%E3%81%84%E3%80%8F%E6%9C%80%E7%B5%82%E5%9B%9E%E6%94%BE%E9%80%81%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%AF%E7%B6%9A%E7%B7%A8%E3%81%AB%E6%9C%9F%E5%BE%85"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8E%E5%98%86%E3%81%8D%E3%81%AE%E4%BA%A1%E9%9C%8A%E3%81%AF%E5%BC%95%E9%80%80%E3%81%97%E3%81%9F%E3%81%84%E3%80%8F%E6%9C%80%E7%B5%82%E5%9B%9E%E6%94%BE%E9%80%81%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%AF%E7%B6%9A%E7%B7%A8%E3%81%AB%E6%9C%9F%E5%BE%85"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 71,
+    "summary": ""
+  },
+  {
+    "title": "「まさしゅー」が話題！timeleszファミリアで橋本将生と周杜の仲良しぶりをファンが称賛",
+    "posts_num": 140,
+    "score": 60,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8C%E3%81%BE%E3%81%95%E3%81%97%E3%82%85%E3%83%BC%E3%80%8D%E3%81%8C%E8%A9%B1%E9%A1%8C%EF%BC%81timelesz%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%82%A2%E3%81%A7%E6%A9%8B%E6%9C%AC%E5%B0%86%E7%94%9F%E3%81%A8%E5%91%A8%E6%9D%9C%E3%81%AE%E4%BB%B2%E8%89%AF%E3%81%97%E3%81%B6%E3%82%8A%E3%82%92%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8C%E7%A7%B0%E8%B3%9B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8C%E3%81%BE%E3%81%95%E3%81%97%E3%82%85%E3%83%BC%E3%80%8D%E3%81%8C%E8%A9%B1%E9%A1%8C%EF%BC%81timelesz%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%82%A2%E3%81%A7%E6%A9%8B%E6%9C%AC%E5%B0%86%E7%94%9F%E3%81%A8%E5%91%A8%E6%9D%9C%E3%81%AE%E4%BB%B2%E8%89%AF%E3%81%97%E3%81%B6%E3%82%8A%E3%82%92%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8C%E7%A7%B0%E8%B3%9B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 72,
+    "summary": ""
+  },
+  {
+    "title": "Vaundy、情熱大陸で音楽活動の裏側を公開！",
+    "posts_num": 639,
+    "score": 66,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Vaundy%E3%80%81%E6%83%85%E7%86%B1%E5%A4%A7%E9%99%B8%E3%81%A7%E9%9F%B3%E6%A5%BD%E6%B4%BB%E5%8B%95%E3%81%AE%E8%A3%8F%E5%81%B4%E3%82%92%E5%85%AC%E9%96%8B%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Vaundy%E3%80%81%E6%83%85%E7%86%B1%E5%A4%A7%E9%99%B8%E3%81%A7%E9%9F%B3%E6%A5%BD%E6%B4%BB%E5%8B%95%E3%81%AE%E8%A3%8F%E5%81%B4%E3%82%92%E5%85%AC%E9%96%8B%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 73,
+    "summary": ""
+  },
+  {
+    "title": "都成の変貌に期待！『シナントロープ』最終回へ",
+    "posts_num": 112,
+    "score": 59,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%83%BD%E6%88%90%E3%81%AE%E5%A4%89%E8%B2%8C%E3%81%AB%E6%9C%9F%E5%BE%85%EF%BC%81%E3%80%8E%E3%82%B7%E3%83%8A%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%97%E3%80%8F%E6%9C%80%E7%B5%82%E5%9B%9E%E3%81%B8"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%83%BD%E6%88%90%E3%81%AE%E5%A4%89%E8%B2%8C%E3%81%AB%E6%9C%9F%E5%BE%85%EF%BC%81%E3%80%8E%E3%82%B7%E3%83%8A%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%97%E3%80%8F%E6%9C%80%E7%B5%82%E5%9B%9E%E3%81%B8"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 74,
+    "summary": ""
+  },
+  {
+    "title": "Dead by Daylightハロウィンチャプター、来年1月削除へ",
+    "posts_num": 40,
+    "score": 54,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=Dead%20by%20Daylight%E3%83%8F%E3%83%AD%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%81%E3%83%A3%E3%83%97%E3%82%BF%E3%83%BC%E3%80%81%E6%9D%A5%E5%B9%B41%E6%9C%88%E5%89%8A%E9%99%A4%E3%81%B8"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=Dead%20by%20Daylight%E3%83%8F%E3%83%AD%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%81%E3%83%A3%E3%83%97%E3%82%BF%E3%83%BC%E3%80%81%E6%9D%A5%E5%B9%B41%E6%9C%88%E5%89%8A%E9%99%A4%E3%81%B8"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 75,
+    "summary": ""
+  },
+  {
+    "title": "仙台大・佐藤幻瑛、米大へ編入へ　ドラ1候補の海外流出に衝撃",
+    "posts_num": 43,
+    "score": 54,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E4%BB%99%E5%8F%B0%E5%A4%A7%E3%83%BB%E4%BD%90%E8%97%A4%E5%B9%BB%E7%91%9B%E3%80%81%E7%B1%B3%E5%A4%A7%E3%81%B8%E7%B7%A8%E5%85%A5%E3%81%B8%E3%80%80%E3%83%89%E3%83%A91%E5%80%99%E8%A3%9C%E3%81%AE%E6%B5%B7%E5%A4%96%E6%B5%81%E5%87%BA%E3%81%AB%E8%A1%9D%E6%92%83"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E4%BB%99%E5%8F%B0%E5%A4%A7%E3%83%BB%E4%BD%90%E8%97%A4%E5%B9%BB%E7%91%9B%E3%80%81%E7%B1%B3%E5%A4%A7%E3%81%B8%E7%B7%A8%E5%85%A5%E3%81%B8%E3%80%80%E3%83%89%E3%83%A91%E5%80%99%E8%A3%9C%E3%81%AE%E6%B5%B7%E5%A4%96%E6%B5%81%E5%87%BA%E3%81%AB%E8%A1%9D%E6%92%83"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 76,
+    "summary": ""
+  },
+  {
+    "title": "佐々木美玲、餃子とビールの話でファン歓喜！誕生日祝いのコメントも殺到",
+    "posts_num": 175,
+    "score": 59,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E4%BD%90%E3%80%85%E6%9C%A8%E7%BE%8E%E7%8E%B2%E3%80%81%E9%A4%83%E5%AD%90%E3%81%A8%E3%83%93%E3%83%BC%E3%83%AB%E3%81%AE%E8%A9%B1%E3%81%A7%E3%83%95%E3%82%A1%E3%83%B3%E6%AD%93%E5%96%9C%EF%BC%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E3%81%84%E3%81%AE%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%82%E6%AE%BA%E5%88%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E4%BD%90%E3%80%85%E6%9C%A8%E7%BE%8E%E7%8E%B2%E3%80%81%E9%A4%83%E5%AD%90%E3%81%A8%E3%83%93%E3%83%BC%E3%83%AB%E3%81%AE%E8%A9%B1%E3%81%A7%E3%83%95%E3%82%A1%E3%83%B3%E6%AD%93%E5%96%9C%EF%BC%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E3%81%84%E3%81%AE%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%82%E6%AE%BA%E5%88%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 77,
+    "summary": ""
+  },
+  {
+    "title": "配信者たちの長時間配信に視聴者歓喜！",
+    "posts_num": 106,
+    "score": 57,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%85%8D%E4%BF%A1%E8%80%85%E3%81%9F%E3%81%A1%E3%81%AE%E9%95%B7%E6%99%82%E9%96%93%E9%85%8D%E4%BF%A1%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E6%AD%93%E5%96%9C%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%85%8D%E4%BF%A1%E8%80%85%E3%81%9F%E3%81%A1%E3%81%AE%E9%95%B7%E6%99%82%E9%96%93%E9%85%8D%E4%BF%A1%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E6%AD%93%E5%96%9C%EF%BC%81"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 78,
+    "summary": ""
+  },
+  {
+    "title": "ひかなつ展の話題や舞台チケット交換も！ファン熱狂の年末",
+    "posts_num": 37,
+    "score": 52,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%81%B2%E3%81%8B%E3%81%AA%E3%81%A4%E5%B1%95%E3%81%AE%E8%A9%B1%E9%A1%8C%E3%82%84%E8%88%9E%E5%8F%B0%E3%83%81%E3%82%B1%E3%83%83%E3%83%88%E4%BA%A4%E6%8F%9B%E3%82%82%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E7%86%B1%E7%8B%82%E3%81%AE%E5%B9%B4%E6%9C%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%81%B2%E3%81%8B%E3%81%AA%E3%81%A4%E5%B1%95%E3%81%AE%E8%A9%B1%E9%A1%8C%E3%82%84%E8%88%9E%E5%8F%B0%E3%83%81%E3%82%B1%E3%83%83%E3%83%88%E4%BA%A4%E6%8F%9B%E3%82%82%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E7%86%B1%E7%8B%82%E3%81%AE%E5%B9%B4%E6%9C%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 79,
+    "summary": ""
+  },
+  {
+    "title": "「生活必需品」がTwitterでトレンド入り！",
+    "posts_num": 47,
+    "score": 53,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8C%E7%94%9F%E6%B4%BB%E5%BF%85%E9%9C%80%E5%93%81%E3%80%8D%E3%81%8CTwitter%E3%81%A7%E3%83%88%E3%83%AC%E3%83%B3%E3%83%89%E5%85%A5%E3%82%8A%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8C%E7%94%9F%E6%B4%BB%E5%BF%85%E9%9C%80%E5%93%81%E3%80%8D%E3%81%8CTwitter%E3%81%A7%E3%83%88%E3%83%AC%E3%83%B3%E3%83%89%E5%85%A5%E3%82%8A%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 80,
+    "summary": ""
+  },
+  {
+    "title": "せつーなコーチングで常勝！ナイトレイン配信が話題に",
+    "posts_num": 54,
+    "score": 53,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%81%9B%E3%81%A4%E3%83%BC%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E5%B8%B8%E5%8B%9D%EF%BC%81%E3%83%8A%E3%82%A4%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E9%85%8D%E4%BF%A1%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%81%9B%E3%81%A4%E3%83%BC%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E5%B8%B8%E5%8B%9D%EF%BC%81%E3%83%8A%E3%82%A4%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E9%85%8D%E4%BF%A1%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 81,
+    "summary": ""
+  },
+  {
+    "title": "りゅうきち＆甘結もか＆せつな、エルデンリングナイトレインで成長ぶりに称賛！",
+    "posts_num": 36,
+    "score": 51,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%82%8A%E3%82%85%E3%81%86%E3%81%8D%E3%81%A1%EF%BC%86%E7%94%98%E7%B5%90%E3%82%82%E3%81%8B%EF%BC%86%E3%81%9B%E3%81%A4%E3%81%AA%E3%80%81%E3%82%A8%E3%83%AB%E3%83%87%E3%83%B3%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%8A%E3%82%A4%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E3%81%A7%E6%88%90%E9%95%B7%E3%81%B6%E3%82%8A%E3%81%AB%E7%A7%B0%E8%B3%9B%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%82%8A%E3%82%85%E3%81%86%E3%81%8D%E3%81%A1%EF%BC%86%E7%94%98%E7%B5%90%E3%82%82%E3%81%8B%EF%BC%86%E3%81%9B%E3%81%A4%E3%81%AA%E3%80%81%E3%82%A8%E3%83%AB%E3%83%87%E3%83%B3%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%8A%E3%82%A4%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E3%81%A7%E6%88%90%E9%95%B7%E3%81%B6%E3%82%8A%E3%81%AB%E7%A7%B0%E8%B3%9B%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 82,
+    "summary": ""
+  },
+  {
+    "title": "「悪いのはあなたです」第6話・7話放送！ドロドロ展開に視聴者興奮",
+    "posts_num": 82,
+    "score": 54,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%80%8C%E6%82%AA%E3%81%84%E3%81%AE%E3%81%AF%E3%81%82%E3%81%AA%E3%81%9F%E3%81%A7%E3%81%99%E3%80%8D%E7%AC%AC6%E8%A9%B1%E3%83%BB7%E8%A9%B1%E6%94%BE%E9%80%81%EF%BC%81%E3%83%89%E3%83%AD%E3%83%89%E3%83%AD%E5%B1%95%E9%96%8B%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E8%88%88%E5%A5%AE"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%80%8C%E6%82%AA%E3%81%84%E3%81%AE%E3%81%AF%E3%81%82%E3%81%AA%E3%81%9F%E3%81%A7%E3%81%99%E3%80%8D%E7%AC%AC6%E8%A9%B1%E3%83%BB7%E8%A9%B1%E6%94%BE%E9%80%81%EF%BC%81%E3%83%89%E3%83%AD%E3%83%89%E3%83%AD%E5%B1%95%E9%96%8B%E3%81%AB%E8%A6%96%E8%81%B4%E8%80%85%E8%88%88%E5%A5%AE"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 83,
+    "summary": ""
+  },
+  {
+    "title": "武尊の発言、ブレイキングダウンの危険性再浮上",
+    "posts_num": 39,
+    "score": 50,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%AD%A6%E5%B0%8A%E3%81%AE%E7%99%BA%E8%A8%80%E3%80%81%E3%83%96%E3%83%AC%E3%82%A4%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%80%E3%82%A6%E3%83%B3%E3%81%AE%E5%8D%B1%E9%99%BA%E6%80%A7%E5%86%8D%E6%B5%AE%E4%B8%8A"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%AD%A6%E5%B0%8A%E3%81%AE%E7%99%BA%E8%A8%80%E3%80%81%E3%83%96%E3%83%AC%E3%82%A4%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%80%E3%82%A6%E3%83%B3%E3%81%AE%E5%8D%B1%E9%99%BA%E6%80%A7%E5%86%8D%E6%B5%AE%E4%B8%8A"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 84,
+    "summary": ""
+  },
+  {
+    "title": "江戸川乱歩作品、再び注目を集める",
+    "posts_num": 45,
+    "score": 51,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%B1%9F%E6%88%B8%E5%B7%9D%E4%B9%B1%E6%AD%A9%E4%BD%9C%E5%93%81%E3%80%81%E5%86%8D%E3%81%B3%E6%B3%A8%E7%9B%AE%E3%82%92%E9%9B%86%E3%82%81%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%B1%9F%E6%88%B8%E5%B7%9D%E4%B9%B1%E6%AD%A9%E4%BD%9C%E5%93%81%E3%80%81%E5%86%8D%E3%81%B3%E6%B3%A8%E7%9B%AE%E3%82%92%E9%9B%86%E3%82%81%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 85,
+    "summary": ""
+  },
+  {
+    "title": "ユートの「落ち着け遊矢！」がファンを魅了！ARC-V再放送で注目集まる",
+    "posts_num": 225,
+    "score": 56,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%83%A6%E3%83%BC%E3%83%88%E3%81%AE%E3%80%8C%E8%90%BD%E3%81%A1%E7%9D%80%E3%81%91%E9%81%8A%E7%9F%A2%EF%BC%81%E3%80%8D%E3%81%8C%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E9%AD%85%E4%BA%86%EF%BC%81ARC-V%E5%86%8D%E6%94%BE%E9%80%81%E3%81%A7%E6%B3%A8%E7%9B%AE%E9%9B%86%E3%81%BE%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%83%A6%E3%83%BC%E3%83%88%E3%81%AE%E3%80%8C%E8%90%BD%E3%81%A1%E7%9D%80%E3%81%91%E9%81%8A%E7%9F%A2%EF%BC%81%E3%80%8D%E3%81%8C%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E9%AD%85%E4%BA%86%EF%BC%81ARC-V%E5%86%8D%E6%94%BE%E9%80%81%E3%81%A7%E6%B3%A8%E7%9B%AE%E9%9B%86%E3%81%BE%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 86,
+    "summary": ""
+  },
+  {
+    "title": "櫻井翔の温かい言葉に阿部詩選手涙、藤城清治さんの平和への願いに感動",
+    "posts_num": 38,
+    "score": 49,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%AB%BB%E4%BA%95%E7%BF%94%E3%81%AE%E6%B8%A9%E3%81%8B%E3%81%84%E8%A8%80%E8%91%89%E3%81%AB%E9%98%BF%E9%83%A8%E8%A9%A9%E9%81%B8%E6%89%8B%E6%B6%99%E3%80%81%E8%97%A4%E5%9F%8E%E6%B8%85%E6%B2%BB%E3%81%95%E3%82%93%E3%81%AE%E5%B9%B3%E5%92%8C%E3%81%B8%E3%81%AE%E9%A1%98%E3%81%84%E3%81%AB%E6%84%9F%E5%8B%95"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%AB%BB%E4%BA%95%E7%BF%94%E3%81%AE%E6%B8%A9%E3%81%8B%E3%81%84%E8%A8%80%E8%91%89%E3%81%AB%E9%98%BF%E9%83%A8%E8%A9%A9%E9%81%B8%E6%89%8B%E6%B6%99%E3%80%81%E8%97%A4%E5%9F%8E%E6%B8%85%E6%B2%BB%E3%81%95%E3%82%93%E3%81%AE%E5%B9%B3%E5%92%8C%E3%81%B8%E3%81%AE%E9%A1%98%E3%81%84%E3%81%AB%E6%84%9F%E5%8B%95"
+      }
+    ],
+    "category": "sports",
+    "cluster_id": 87,
+    "summary": ""
+  },
+  {
+    "title": "小川晶前市長、前橋市長選出馬意向を表明",
+    "posts_num": 80,
+    "score": 52,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E5%B0%8F%E5%B7%9D%E6%99%B6%E5%89%8D%E5%B8%82%E9%95%B7%E3%80%81%E5%89%8D%E6%A9%8B%E5%B8%82%E9%95%B7%E9%81%B8%E5%87%BA%E9%A6%AC%E6%84%8F%E5%90%91%E3%82%92%E8%A1%A8%E6%98%8E"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E5%B0%8F%E5%B7%9D%E6%99%B6%E5%89%8D%E5%B8%82%E9%95%B7%E3%80%81%E5%89%8D%E6%A9%8B%E5%B8%82%E9%95%B7%E9%81%B8%E5%87%BA%E9%A6%AC%E6%84%8F%E5%90%91%E3%82%92%E8%A1%A8%E6%98%8E"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 88,
+    "summary": ""
+  },
+  {
+    "title": "灯里愛夏＆てるとくん、配信でファンを笑顔に",
+    "posts_num": 119,
+    "score": 53,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E7%81%AF%E9%87%8C%E6%84%9B%E5%A4%8F%EF%BC%86%E3%81%A6%E3%82%8B%E3%81%A8%E3%81%8F%E3%82%93%E3%80%81%E9%85%8D%E4%BF%A1%E3%81%A7%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E7%AC%91%E9%A1%94%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E7%81%AF%E9%87%8C%E6%84%9B%E5%A4%8F%EF%BC%86%E3%81%A6%E3%82%8B%E3%81%A8%E3%81%8F%E3%82%93%E3%80%81%E9%85%8D%E4%BF%A1%E3%81%A7%E3%83%95%E3%82%A1%E3%83%B3%E3%82%92%E7%AC%91%E9%A1%94%E3%81%AB"
+      }
+    ],
+    "category": "entertainment",
+    "cluster_id": 89,
+    "summary": ""
+  },
+  {
+    "title": "CoC「庭師は何を口遊む」全生還！ 各卓の感想も",
+    "posts_num": 25,
+    "score": 46,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=CoC%E3%80%8C%E5%BA%AD%E5%B8%AB%E3%81%AF%E4%BD%95%E3%82%92%E5%8F%A3%E9%81%8A%E3%82%80%E3%80%8D%E5%85%A8%E7%94%9F%E9%82%84%EF%BC%81%20%E5%90%84%E5%8D%93%E3%81%AE%E6%84%9F%E6%83%B3%E3%82%82"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=CoC%E3%80%8C%E5%BA%AD%E5%B8%AB%E3%81%AF%E4%BD%95%E3%82%92%E5%8F%A3%E9%81%8A%E3%82%80%E3%80%8D%E5%85%A8%E7%94%9F%E9%82%84%EF%BC%81%20%E5%90%84%E5%8D%93%E3%81%AE%E6%84%9F%E6%83%B3%E3%82%82"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 90,
+    "summary": ""
+  },
+  {
+    "title": "- 決済サービスの現状を分析！ユーザーはこう語る",
+    "posts_num": 142,
+    "score": 53,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=-%20%E6%B1%BA%E6%B8%88%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E7%8F%BE%E7%8A%B6%E3%82%92%E5%88%86%E6%9E%90%EF%BC%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AF%E3%81%93%E3%81%86%E8%AA%9E%E3%82%8B"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=-%20%E6%B1%BA%E6%B8%88%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E7%8F%BE%E7%8A%B6%E3%82%92%E5%88%86%E6%9E%90%EF%BC%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AF%E3%81%93%E3%81%86%E8%AA%9E%E3%82%8B"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 91,
+    "summary": ""
+  },
+  {
+    "title": "櫻井翔、阿部詩選手に寄り添う「大丈夫だよ」",
+    "posts_num": 67,
+    "score": 49,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%AB%BB%E4%BA%95%E7%BF%94%E3%80%81%E9%98%BF%E9%83%A8%E8%A9%A9%E9%81%B8%E6%89%8B%E3%81%AB%E5%AF%84%E3%82%8A%E6%B7%BB%E3%81%86%E3%80%8C%E5%A4%A7%E4%B8%88%E5%A4%AB%E3%81%A0%E3%82%88%E3%80%8D"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%AB%BB%E4%BA%95%E7%BF%94%E3%80%81%E9%98%BF%E9%83%A8%E8%A9%A9%E9%81%B8%E6%89%8B%E3%81%AB%E5%AF%84%E3%82%8A%E6%B7%BB%E3%81%86%E3%80%8C%E5%A4%A7%E4%B8%88%E5%A4%AB%E3%81%A0%E3%82%88%E3%80%8D"
+      }
+    ],
+    "category": "sports",
+    "cluster_id": 92,
+    "summary": ""
+  },
+  {
+    "title": "みかみてれん先生、誕生日祝福！ファンから「みかみてれん節」愛称で感謝の声",
+    "posts_num": 50,
+    "score": 48,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E3%81%BF%E3%81%8B%E3%81%BF%E3%81%A6%E3%82%8C%E3%82%93%E5%85%88%E7%94%9F%E3%80%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8B%E3%82%89%E3%80%8C%E3%81%BF%E3%81%8B%E3%81%BF%E3%81%A6%E3%82%8C%E3%82%93%E7%AF%80%E3%80%8D%E6%84%9B%E7%A7%B0%E3%81%A7%E6%84%9F%E8%AC%9D%E3%81%AE%E5%A3%B0"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E3%81%BF%E3%81%8B%E3%81%BF%E3%81%A6%E3%82%8C%E3%82%93%E5%85%88%E7%94%9F%E3%80%81%E8%AA%95%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F%EF%BC%81%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8B%E3%82%89%E3%80%8C%E3%81%BF%E3%81%8B%E3%81%BF%E3%81%A6%E3%82%8C%E3%82%93%E7%AF%80%E3%80%8D%E6%84%9B%E7%A7%B0%E3%81%A7%E6%84%9F%E8%AC%9D%E3%81%AE%E5%A3%B0"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 93,
+    "summary": ""
+  },
+  {
+    "title": "高額療養費制度見直しへ：上限引き上げと所得区分細分化",
+    "posts_num": 119,
+    "score": 51,
+    "heatLevel": "high",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%AB%98%E9%A1%8D%E7%99%82%E9%A4%8A%E8%B2%BB%E5%88%B6%E5%BA%A6%E8%A6%8B%E7%9B%B4%E3%81%97%E3%81%B8%EF%BC%9A%E4%B8%8A%E9%99%90%E5%BC%95%E3%81%8D%E4%B8%8A%E3%81%92%E3%81%A8%E6%89%80%E5%BE%97%E5%8C%BA%E5%88%86%E7%B4%B0%E5%88%86%E5%8C%96"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%AB%98%E9%A1%8D%E7%99%82%E9%A4%8A%E8%B2%BB%E5%88%B6%E5%BA%A6%E8%A6%8B%E7%9B%B4%E3%81%97%E3%81%B8%EF%BC%9A%E4%B8%8A%E9%99%90%E5%BC%95%E3%81%8D%E4%B8%8A%E3%81%92%E3%81%A8%E6%89%80%E5%BE%97%E5%8C%BA%E5%88%86%E7%B4%B0%E5%88%86%E5%8C%96"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 94,
+    "summary": ""
+  },
+  {
+    "title": "DJよっさん、骨折で入院？ ファンから心配の声続々",
+    "posts_num": 87,
+    "score": 49,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=DJ%E3%82%88%E3%81%A3%E3%81%95%E3%82%93%E3%80%81%E9%AA%A8%E6%8A%98%E3%81%A7%E5%85%A5%E9%99%A2%EF%BC%9F%20%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8B%E3%82%89%E5%BF%83%E9%85%8D%E3%81%AE%E5%A3%B0%E7%B6%9A%E3%80%85"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=DJ%E3%82%88%E3%81%A3%E3%81%95%E3%82%93%E3%80%81%E9%AA%A8%E6%8A%98%E3%81%A7%E5%85%A5%E9%99%A2%EF%BC%9F%20%E3%83%95%E3%82%A1%E3%83%B3%E3%81%8B%E3%82%89%E5%BF%83%E9%85%8D%E3%81%AE%E5%A3%B0%E7%B6%9A%E3%80%85"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 95,
+    "summary": ""
+  },
+  {
+    "title": "ARC-V BB戦、賛否両論！エンタメデュエルとストーリー展開が話題に",
+    "posts_num": 70,
+    "score": 48,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=ARC-V%20BB%E6%88%A6%E3%80%81%E8%B3%9B%E5%90%A6%E4%B8%A1%E8%AB%96%EF%BC%81%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%A1%E3%83%87%E3%83%A5%E3%82%A8%E3%83%AB%E3%81%A8%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E5%B1%95%E9%96%8B%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=ARC-V%20BB%E6%88%A6%E3%80%81%E8%B3%9B%E5%90%A6%E4%B8%A1%E8%AB%96%EF%BC%81%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%A1%E3%83%87%E3%83%A5%E3%82%A8%E3%83%AB%E3%81%A8%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E5%B1%95%E9%96%8B%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 96,
+    "summary": ""
+  },
+  {
+    "title": "鈴木佑捺の「太陽の立場がない」発言が話題に！",
+    "posts_num": 42,
+    "score": 46,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E9%88%B4%E6%9C%A8%E4%BD%91%E6%8D%BA%E3%81%AE%E3%80%8C%E5%A4%AA%E9%99%BD%E3%81%AE%E7%AB%8B%E5%A0%B4%E3%81%8C%E3%81%AA%E3%81%84%E3%80%8D%E7%99%BA%E8%A8%80%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E9%88%B4%E6%9C%A8%E4%BD%91%E6%8D%BA%E3%81%AE%E3%80%8C%E5%A4%AA%E9%99%BD%E3%81%AE%E7%AB%8B%E5%A0%B4%E3%81%8C%E3%81%AA%E3%81%84%E3%80%8D%E7%99%BA%E8%A8%80%E3%81%8C%E8%A9%B1%E9%A1%8C%E3%81%AB%EF%BC%81"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 97,
+    "summary": ""
+  },
+  {
+    "title": "伊集院光 深夜の馬鹿力、リスナーから愛される深夜のラジオ番組",
+    "posts_num": 60,
+    "score": 46,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E4%BC%8A%E9%9B%86%E9%99%A2%E5%85%89%20%E6%B7%B1%E5%A4%9C%E3%81%AE%E9%A6%AC%E9%B9%BF%E5%8A%9B%E3%80%81%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%81%8B%E3%82%89%E6%84%9B%E3%81%95%E3%82%8C%E3%82%8B%E6%B7%B1%E5%A4%9C%E3%81%AE%E3%83%A9%E3%82%B8%E3%82%AA%E7%95%AA%E7%B5%84"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E4%BC%8A%E9%9B%86%E9%99%A2%E5%85%89%20%E6%B7%B1%E5%A4%9C%E3%81%AE%E9%A6%AC%E9%B9%BF%E5%8A%9B%E3%80%81%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%81%8B%E3%82%89%E6%84%9B%E3%81%95%E3%82%8C%E3%82%8B%E6%B7%B1%E5%A4%9C%E3%81%AE%E3%83%A9%E3%82%B8%E3%82%AA%E7%95%AA%E7%B5%84"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 98,
+    "summary": ""
+  },
+  {
+    "title": "推し活、年25万で収まる？SNS上で議論が白熱",
+    "posts_num": 46,
+    "score": 45,
+    "heatLevel": "low",
+    "co_occurring_words": [],
+    "links": [
+      {
+        "type": "search",
+        "provider": "Google",
+        "display_text": "Google検索",
+        "url": "https://www.google.com/search?q=%E6%8E%A8%E3%81%97%E6%B4%BB%E3%80%81%E5%B9%B425%E4%B8%87%E3%81%A7%E5%8F%8E%E3%81%BE%E3%82%8B%EF%BC%9FSNS%E4%B8%8A%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%8C%E7%99%BD%E7%86%B1"
+      },
+      {
+        "type": "shop",
+        "provider": "Mercari",
+        "display_text": "メルカリ",
+        "url": "https://jp.mercari.com/search?keyword=%E6%8E%A8%E3%81%97%E6%B4%BB%E3%80%81%E5%B9%B425%E4%B8%87%E3%81%A7%E5%8F%8E%E3%81%BE%E3%82%8B%EF%BC%9FSNS%E4%B8%8A%E3%81%A7%E8%AD%B0%E8%AB%96%E3%81%8C%E7%99%BD%E7%86%B1"
+      }
+    ],
+    "category": "all",
+    "cluster_id": 99,
+    "summary": ""
   }
 ]
