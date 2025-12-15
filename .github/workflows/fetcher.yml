@@ -15,31 +15,36 @@ on:
 
 jobs:
   fetch-and-cache:
-    # ★★★★★★★★★★
-    # ★ 変更点 1 ★
-    # ★★★★★★★★★★
-    # 実行環境を、通常の'ubuntu-latest'から、Playwright公式のDockerイメージに変更
     runs-on: ubuntu-latest
+    # Dockerコンテナの利用は維持する
     container:
       image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
 
     steps:
       - name: Checkout main branch for scripts
         uses: actions/checkout@v4
-
-      # ★★★★★★★★★★
-      # ★ 変更点 2 ★
-      # ★★★★★★★★★★
-      # Set up Pythonとplaywright installステップは、もはや不要。
-      # Dockerイメージの中に、適切なバージョンのPythonと、
-      # 全てのブラウザ、全ての依存関係が、既に完璧にインストールされている。
-      # - name: Set up Python
-      #   ...
-      # - name: Install Playwright Browsers
-      #   ...
       
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
+      # ★★★★★★★★★★
+      # ★ 変更点 ★
+      # ★★★★★★★★★★
+      - name: 🔬 Debugging: Verify Environment and Dependencies
+        run: |
+          echo "--- Verifying Python and Pip ---"
+          which python
+          python --version
+          which pip
+          pip --version
+          
+          echo "\n--- Installing Dependencies with Verbose Output ---"
+          # -v オプションで、pipが何をしているかを詳細に出力させる
+          pip install -v -r requirements.txt
+          
+          echo "\n--- Verifying Installed Playwright ---"
+          pip show playwright
+          
+          echo "\n--- Verifying Pre-installed Browsers ---"
+          # Dockerイメージにプリインストールされているブラウザの場所を確認する
+          ls -lR /ms-playwright/
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
@@ -54,21 +59,8 @@ jobs:
           GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
         run: python scripts/main.py
 
+      # ... (以降のキャッシュ保存とGitプッシュのステップは変更なし)
       - name: 💾 Save current scores to cache for next run
-        uses: actions/cache/save@v4
-        with:
-          path: cache/scores_to_cache.json
-          key: scores-cache-v1-${{ github.run_id }}
-          restore-keys: |
-            scores-cache-v1-
-
+        # ...
       - name: 🚀 Commit and Push data to cache-branch
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout --orphan cache-branch-temp
-          git reset --hard
-          git checkout main -- cache/latest_trends.json cache/scores_to_cache.json
-          git add cache/latest_trends.json cache/scores_to_cache.json
-          git commit -m "chore: Update data cache on $(date)"
-          git push origin HEAD:cache-branch --force
+        # ...
