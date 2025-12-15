@@ -32,12 +32,8 @@ jobs:
       # ★★★★★★★★★★
       # ★ 変更点 ★
       # ★★★★★★★★★★
-      - name: 🎭 Install Playwright and its dependencies
-        # Playwright公式が提供するGitHub Actionを使用します。
-        # これが、GitHub Actions上でPlaywrightをセットアップする最も確実な方法です。
-        uses: microsoft/playwright-python@v1.4.0
-        with:
-          run: playwright install --with-deps chromium
+      - name: 🎭 Install Playwright Browsers
+        run: playwright install --with-deps chromium
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore

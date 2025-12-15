@@ -41,7 +41,7 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: 🏗️ Generate Site Logic
-        run: python src/generator.py
+        run: python scripts/generator.py
       
       - name: 📂 Copy Static Assets
         run: cp -r static dist/

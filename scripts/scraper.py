@@ -2,12 +2,14 @@
 """
 VIBRAトレンドスクレイパー (Playwright版)
 JavaScriptで動的に生成されるコンテンツに対応し、タイムアウトエラーを防御的に処理する。
+環境変数からブラウザパスを読み込むデバッグ機能付き。
 """
 import asyncio
+import os
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 from typing import List
-import config  # config.pyから設定を読み込む
+import config
 from models import RawTrendItem
 from pydantic import BaseModel, ValidationError, HttpUrl
 
@@ -24,8 +26,17 @@ async def _fetch_page_content(url: str, wait_selector: str) -> str:
     セレクタが見つからない場合は、タイムアウト後に警告を出し、空文字を返す。
     """
     html_content = ""
+
+    # --- デバッグ情報出力 ---
+    browsers_path = os.environ.get("PLAYWRIGHT_BROWSERS_PATH")
+    if browsers_path:
+        print(f"[DEBUG][scraper] PLAYWRIGHT_BROWSERS_PATH is set to: {browsers_path}")
+    else:
+        print("[DEBUG][scraper] PLAYWRIGHT_BROWSERS_PATH is NOT set.")
+        
     async with async_playwright() as p:
-        # ヘッドレスモードでChromiumブラウザを起動
+        # launch()には何も渡さず、Playwrightが環境変数を自動で読むことに期待する
+        # これがPlaywrightの標準的な動作である
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page(user_agent=config.REQUEST_HEADERS.get("User-Agent"))
         try:
@@ -33,17 +44,15 @@ async def _fetch_page_content(url: str, wait_selector: str) -> str:
             await page.goto(url, timeout=config.REQUEST_TIMEOUT_SECONDS * 1000)
             
             print(f"[INFO][scraper:playwright] Waiting for selector '{wait_selector}'...")
-            # ★ 変更点: タイムアウトを短くし、エラーを握りつぶす
-            await page.wait_for_selector(wait_selector, timeout=5000) # 5秒に短縮
+            await page.wait_for_selector(wait_selector, timeout=5000)
             
             print("[INFO][scraper:playwright] Page rendered. Getting content...")
             html_content = await page.content()
         except Exception as e:
-            # ★ 変更点: タイムアウトエラーが発生しても、単に警告を出し、処理を続行する
             print(f"[WARNING][scraper:playwright] Selector '{wait_selector}' not found on {url}. It might not have this element. Error: {e}")
         finally:
             await browser.close()
-    return html_content # ★ 失敗した場合は空文字が返る
+    return html_content
 
 def fetch_raw_trends() -> List[RawTrendItem]:
     """
@@ -52,7 +61,6 @@ def fetch_raw_trends() -> List[RawTrendItem]:
     """
     print("[INFO][scraper] Starting fetch_raw_trends with Playwright...")
     
-    # 非同期関数を実行し、HTMLコンテンツを取得
     html = asyncio.run(_fetch_page_content(
         url=config.DATA_SOURCE_URL,
         wait_selector=config.TREND_SELECTORS[0]
@@ -62,10 +70,8 @@ def fetch_raw_trends() -> List[RawTrendItem]:
         print("[CRITICAL][scraper] Failed to get HTML content from Playwright. Exiting.")
         return []
 
-    # BeautifulSoupでHTMLを解析
     soup = BeautifulSoup(html, "html.parser")
 
-    # config.pyで定義された正確なセレクタでトレンド要素のリストを取得
     trend_elements = soup.select(config.TREND_SELECTORS[0])
     
     if not trend_elements:
@@ -76,22 +82,18 @@ def fetch_raw_trends() -> List[RawTrendItem]:
     
     for i, element in enumerate(trend_elements):
         try:
-            # 各トレンド要素から情報を抽出
             title = element.select_one(config.TITLE_SELECTOR).text.strip()
             posts_num_text = element.select_one(config.POSTS_COUNT_SELECTOR).text
             posts_num = int(posts_num_text.replace("件のポスト", "").replace(",", "").strip())
             
-            # URLを絶対パスに変換
             raw_url = element.select_one(config.DETAIL_URL_SELECTOR)['href']
             if raw_url.startswith('/'):
                 detail_url = f"https://search.yahoo.co.jp{raw_url}"
             else:
                 detail_url = raw_url
 
-            # Pydanticでバリデーション
             ScrapedItem(title=title, posts_num=posts_num, detail_url=detail_url)
 
-            # 上位N件のみ詳細ページから関連投稿を取得
             related_posts = []
             if i < config.ANALYZE_TREND_COUNT and detail_url:
                 print(f"[INFO][scraper] Fetching details for '{title}'...")
@@ -104,7 +106,6 @@ def fetch_raw_trends() -> List[RawTrendItem]:
                     post_elements = detail_soup.select(config.POST_TEXT_SELECTOR)
                     related_posts = [p.text.strip() for p in post_elements[:5]]
 
-            # 最終的なデータオブジェクトを作成
             raw_trends.append(RawTrendItem(
                 title=title,
                 posts_num=posts_num,
@@ -119,8 +120,9 @@ def fetch_raw_trends() -> List[RawTrendItem]:
     print(f"[INFO][scraper] Successfully scraped {len(raw_trends)} trends.")
     return raw_trends
 
-# このファイルが直接実行された場合のテスト用
 if __name__ == '__main__':
+    # このファイルが直接実行された場合のテスト用ロジック
+    # (本番のCI/CDでは main.py から呼ばれる)
     trends = fetch_raw_trends()
     if trends:
         print("\n--- Scraping Test Result ---")
