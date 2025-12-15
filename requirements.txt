@@ -1,6 +1,8 @@
 # Core Web Scraping & Parsing
 requests
 beautifulsoup4
+selenium
+webdriver-manager
 
 # Template Engine
 Jinja2
@@ -13,8 +15,9 @@ python-louvain
 # Data Validation & Modeling
 pydantic
 
-# Headless Browser for JavaScript Rendering
-playwright
+# Image Processing for OGP
+Pillow
+matplotlib
 
 # Utility
 pytz

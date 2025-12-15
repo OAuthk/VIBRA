@@ -1,14 +1,17 @@
 # scripts/scraper.py
 """
-VIBRAトレンドスクレイパー (Playwright版)
-JavaScriptで動的に生成されるコンテンツに対応し、タイムアウトエラーを防御的に処理する。
-環境変数からブラウザパスを読み込むデバッグ機能付き。
+VIBRAトレンドスクレイパー (Selenium版)
+JavaScriptで動的に生成されるコンテンツに対応する、安定志向の実装。
 """
-import asyncio
-import os
-from playwright.async_api import async_playwright
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from typing import List
+import requests
 import config
 from models import RawTrendItem
 from pydantic import BaseModel, ValidationError, HttpUrl
@@ -19,93 +22,86 @@ class ScrapedItem(BaseModel):
     posts_num: int
     detail_url: HttpUrl
 
-async def _fetch_page_content(url: str, wait_selector: str) -> str:
-    """
-    Playwrightを使って指定されたURLにアクセスし、
-    特定の要素が表示されるのを待ってからHTMLコンテンツを返す。
-    セレクタが見つからない場合は、タイムアウト後に警告を出し、空文字を返す。
-    """
-    html_content = ""
-
-    # --- デバッグ情報出力 ---
-    browsers_path = os.environ.get("PLAYWRIGHT_BROWSERS_PATH")
-    if browsers_path:
-        print(f"[DEBUG][scraper] PLAYWRIGHT_BROWSERS_PATH is set to: {browsers_path}")
-    else:
-        print("[DEBUG][scraper] PLAYWRIGHT_BROWSERS_PATH is NOT set.")
-        
-    async with async_playwright() as p:
-        # launch()には何も渡さず、Playwrightが環境変数を自動で読むことに期待する
-        # これがPlaywrightの標準的な動作である
-        browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page(user_agent=config.REQUEST_HEADERS.get("User-Agent"))
-        try:
-            print(f"[INFO][scraper:playwright] Navigating to {url}...")
-            await page.goto(url, timeout=config.REQUEST_TIMEOUT_SECONDS * 1000)
-            
-            print(f"[INFO][scraper:playwright] Waiting for selector '{wait_selector}'...")
-            await page.wait_for_selector(wait_selector, timeout=5000)
-            
-            print("[INFO][scraper:playwright] Page rendered. Getting content...")
-            html_content = await page.content()
-        except Exception as e:
-            print(f"[WARNING][scraper:playwright] Selector '{wait_selector}' not found on {url}. It might not have this element. Error: {e}")
-        finally:
-            await browser.close()
-    return html_content
-
 def fetch_raw_trends() -> List[RawTrendItem]:
     """
-    PlaywrightでJavaScriptレンダリング後のHTMLを取得し、
+    SeleniumでJavaScriptレンダリング後のHTMLを取得し、
     トレンドデータを抽出してRawTrendItemのリストを返す。
     """
-    print("[INFO][scraper] Starting fetch_raw_trends with Playwright...")
+    print("[INFO][scraper] Starting fetch_raw_trends with Selenium...")
     
-    html = asyncio.run(_fetch_page_content(
-        url=config.DATA_SOURCE_URL,
-        wait_selector=config.TREND_SELECTORS[0]
-    ))
+    # --- Selenium WebDriverのセットアップ ---
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")  # ブラウザUIを表示しないヘッドレスモード
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument(f'user-agent={config.REQUEST_HEADERS["User-Agent"]}')
+    
+    html = ""
+    driver = None
+    try:
+        # webdriver-managerが、実行環境に適したChromeドライバを自動でダウンロード・管理してくれる
+        service = ChromeService(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
+        
+        print(f"[INFO][scraper:selenium] Navigating to {config.DATA_SOURCE_URL}...")
+        driver.get(config.DATA_SOURCE_URL)
+
+        # ★ 核心部分: 指定されたCSSセレクタの要素が表示されるまで最大20秒待機
+        print(f"[INFO][scraper:selenium] Waiting for selector '{config.TREND_SELECTORS[0]}'...")
+        WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, config.TREND_SELECTORS[0]))
+        )
+        
+        print("[INFO][scraper:selenium] Page rendered. Getting content...")
+        html = driver.page_source
+
+    except Exception as e:
+        print(f"[CRITICAL][scraper] Failed to get HTML content with Selenium. Error: {e}")
+        return []
+    finally:
+        # 必ずブラウザを閉じる
+        if driver:
+            driver.quit()
 
     if not html:
-        print("[CRITICAL][scraper] Failed to get HTML content from Playwright. Exiting.")
+        print("[CRITICAL][scraper] HTML content is empty after Selenium run. Exiting.")
         return []
 
+    # --- BeautifulSoupを使ったHTML解析 (ここから先は以前の設計と同じ) ---
     soup = BeautifulSoup(html, "html.parser")
-
     trend_elements = soup.select(config.TREND_SELECTORS[0])
     
     if not trend_elements:
-        print("[WARNING][scraper] No trend elements found in Playwright-rendered HTML. CSS selector might be outdated.")
+        print("[WARNING][scraper] No trend elements found in Selenium-rendered HTML. CSS selector might be outdated.")
         return []
 
     raw_trends: List[RawTrendItem] = []
     
     for i, element in enumerate(trend_elements):
         try:
+            # 各トレンド要素から情報を抽出
             title = element.select_one(config.TITLE_SELECTOR).text.strip()
             posts_num_text = element.select_one(config.POSTS_COUNT_SELECTOR).text
             posts_num = int(posts_num_text.replace("件のポスト", "").replace(",", "").strip())
             
+            # URLを絶対パスに変換
             raw_url = element.select_one(config.DETAIL_URL_SELECTOR)['href']
             if raw_url.startswith('/'):
                 detail_url = f"https://search.yahoo.co.jp{raw_url}"
             else:
                 detail_url = raw_url
 
+            # Pydanticでバリデーション
             ScrapedItem(title=title, posts_num=posts_num, detail_url=detail_url)
 
+            # 上位N件のみ詳細ページから関連投稿を取得
+            # 注意: この部分もSelenium化するとより堅牢になるが、まずは一覧取得の成功を優先
             related_posts = []
             if i < config.ANALYZE_TREND_COUNT and detail_url:
-                print(f"[INFO][scraper] Fetching details for '{title}'...")
-                detail_html = asyncio.run(_fetch_page_content(
-                    url=detail_url,
-                    wait_selector=config.POST_TEXT_SELECTOR
-                ))
-                if detail_html:
-                    detail_soup = BeautifulSoup(detail_html, "html.parser")
-                    post_elements = detail_soup.select(config.POST_TEXT_SELECTOR)
-                    related_posts = [p.text.strip() for p in post_elements[:5]]
+                # ここではrequestsを使い、もし失敗しても処理は続行される
+                related_posts = _fetch_related_posts_with_requests(detail_url)
 
+            # 最終的なデータオブジェクトを作成
             raw_trends.append(RawTrendItem(
                 title=title,
                 posts_num=posts_num,
@@ -120,12 +116,28 @@ def fetch_raw_trends() -> List[RawTrendItem]:
     print(f"[INFO][scraper] Successfully scraped {len(raw_trends)} trends.")
     return raw_trends
 
+
+def _fetch_related_posts_with_requests(url: str) -> List[str]:
+    """
+    【暫定対応】詳細ページはrequestsで取得を試みるヘルパー関数。
+    将来的にはここもSelenium化することが望ましい。
+    """
+    try:
+        print(f"[INFO][scraper:requests] Fetching details for {url}...")
+        response = requests.get(url, headers=config.REQUEST_HEADERS, timeout=config.REQUEST_TIMEOUT_SECONDS)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        post_elements = soup.select(config.POST_TEXT_SELECTOR)
+        return [p.text.strip() for p in post_elements[:5]]
+    except Exception as e:
+        print(f"[WARNING][scraper:requests] Failed to fetch related posts with requests from {url}: {e}")
+        return []
+
+# このファイルが直接実行された場合のテスト用
 if __name__ == '__main__':
-    # このファイルが直接実行された場合のテスト用ロジック
-    # (本番のCI/CDでは main.py から呼ばれる)
     trends = fetch_raw_trends()
     if trends:
-        print("\n--- Scraping Test Result ---")
+        print("\n--- Scraping Test Result (Selenium) ---")
         for trend in trends[:3]:
             print(f"Title: {trend.title}")
             print(f"Posts: {trend.posts_num}")
