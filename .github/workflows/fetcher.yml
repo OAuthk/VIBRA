@@ -1,13 +1,16 @@
+# .github/workflows/fetcher.yml
+# 責務：Seleniumを使いデータを取得・分析し、キャッシュファイルを生成し、それを'cache-branch'に安全に保存する。
+
 name: Fetch and Cache Trend Data
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
-  workflow_dispatch:
+    - cron: '*/15 * * * *' # 15分ごとに実行
+  workflow_dispatch: # 手動実行を許可
   push:
     branches:
       - main
-    paths:
+    paths: # バックエンドのコードに変更があった場合にも実行
       - 'scripts/**'
       - 'models.py'
       - 'requirements.txt'
@@ -16,22 +19,20 @@ on:
 jobs:
   fetch-and-cache:
     runs-on: ubuntu-latest
-    # Dockerコンテナの利用は維持
-    container:
-      image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
-
     steps:
       - name: Checkout main branch for scripts
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
       
-      # ★★★★★★★★★★
-      # ★ 変更点 ★
-      # ★★★★★★★★★★
-      - name: 📦 Install All Dependencies using Container's Pip
-        # Dockerコンテナにプリインストールされているpipを使い、
-        # 我々のプロジェクトの依存関係をインストールする。
-        # これにより、Playwrightのバージョンもコンテナ内のものと一致する。
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
+
+      # ★ Playwright関連のステップは全て削除され、特別な設定は不要になった
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
@@ -46,8 +47,21 @@ jobs:
           GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
         run: python scripts/main.py
 
-      # ... (以降のキャッシュ保存とGitプッシュのステップは変更なし)
       - name: 💾 Save current scores to cache for next run
-        # ...
+        uses: actions/cache/save@v4
+        with:
+          path: cache/scores_to_cache.json
+          key: scores-cache-v1-${{ github.run_id }}
+          restore-keys: |
+            scores-cache-v1-
+
       - name: 🚀 Commit and Push data to cache-branch
-        # ...
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan cache-branch-temp
+          git reset --hard
+          git checkout main -- cache/latest_trends.json cache/scores_to_cache.json
+          git add cache/latest_trends.json cache/scores_to_cache.json
+          git commit -m "chore: Update data cache on $(date)"
+          git push origin HEAD:cache-branch --force
