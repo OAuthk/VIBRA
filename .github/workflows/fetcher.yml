@@ -30,13 +30,10 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # ★★★★★★★★★★
-      # ★ 変更点 ★
-      # ★★★★★★★★★★
       - name: 🎭 Install Playwright Browsers to a predictable path
         run: playwright install --with-deps chromium
         env:
-          # ★ ブラウザのインストール先を、プロジェクトのディレクトリ内の 'pw-browsers' に強制する
+          # ブラウザのインストール先を、プロジェクトのディレクトリ内の 'pw-browsers' に強制する
           PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
 
       - name: 📥 Restore scores cache
@@ -46,16 +43,39 @@ jobs:
           path: cache/previous_scores.json
           key: scores-cache-v1
 
-      - name: 🐍 Run Data Pipeline
+      - name: 🐍 Run Data Pipeline with Debug Info
         env:
           MERCARI_AFFILIATE_ID: ${{ secrets.MERCARI_AFFILIATE_ID }}
           GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
-          # ★ Pythonスクリプト実行時にも、同じカスタムパスを教える
+          # Pythonスクリプト実行時にも、同じカスタムパスを教える
           PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
-        run: python scripts/main.py
+        run: |
+          # --- デバッグ情報出力 ---
+          echo "--- Verifying environment and file structure ---"
+          echo "GitHub Workspace: ${{ github.workspace }}"
+          echo "PLAYWRIGHT_BROWSERS_PATH is set to: $PLAYWRIGHT_BROWSERS_PATH"
+          echo "--- Listing contents of PLAYWRIGHT_BROWSERS_PATH ---"
+          ls -lR $PLAYWRIGHT_BROWSERS_PATH
+          echo "--- End of debug info ---"
+          
+          # --- メインスクリプト実行 ---
+          python scripts/main.py
 
-      # ... (以降のキャッシュ保存とGitプッシュのステップは変更なし)
       - name: 💾 Save current scores to cache for next run
-        # ...
+        uses: actions/cache/save@v4
+        with:
+          path: cache/scores_to_cache.json
+          key: scores-cache-v1-${{ github.run_id }}
+          restore-keys: |
+            scores-cache-v1-
+
       - name: 🚀 Commit and Push data to cache-branch
-        # ...
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan cache-branch-temp
+          git reset --hard
+          git checkout main -- cache/latest_trends.json cache/scores_to_cache.json
+          git add cache/latest_trends.json cache/scores_to_cache.json
+          git commit -m "chore: Update data cache on $(date)"
+          git push origin HEAD:cache-branch --force
