@@ -11,10 +11,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from typing import List
-import requests
 import config
 from models import RawTrendItem
 from pydantic import BaseModel, ValidationError, HttpUrl
+import requests # 詳細ページ取得用にrequestsもインポート
 
 # Pydanticモデルを使い、スクレイピングデータの型と構造を保証する
 class ScrapedItem(BaseModel):
@@ -67,7 +67,7 @@ def fetch_raw_trends() -> List[RawTrendItem]:
         print("[CRITICAL][scraper] HTML content is empty after Selenium run. Exiting.")
         return []
 
-    # --- BeautifulSoupを使ったHTML解析 (ここから先は以前の設計と同じ) ---
+    # --- BeautifulSoupを使ったHTML解析 ---
     soup = BeautifulSoup(html, "html.parser")
     trend_elements = soup.select(config.TREND_SELECTORS[0])
     
@@ -95,10 +95,8 @@ def fetch_raw_trends() -> List[RawTrendItem]:
             ScrapedItem(title=title, posts_num=posts_num, detail_url=detail_url)
 
             # 上位N件のみ詳細ページから関連投稿を取得
-            # 注意: この部分もSelenium化するとより堅牢になるが、まずは一覧取得の成功を優先
             related_posts = []
             if i < config.ANALYZE_TREND_COUNT and detail_url:
-                # ここではrequestsを使い、もし失敗しても処理は続行される
                 related_posts = _fetch_related_posts_with_requests(detail_url)
 
             # 最終的なデータオブジェクトを作成
@@ -118,10 +116,7 @@ def fetch_raw_trends() -> List[RawTrendItem]:
 
 
 def _fetch_related_posts_with_requests(url: str) -> List[str]:
-    """
-    【暫定対応】詳細ページはrequestsで取得を試みるヘルパー関数。
-    将来的にはここもSelenium化することが望ましい。
-    """
+    """【暫定対応】詳細ページはrequestsで取得を試みるヘルパー関数。"""
     try:
         print(f"[INFO][scraper:requests] Fetching details for {url}...")
         response = requests.get(url, headers=config.REQUEST_HEADERS, timeout=config.REQUEST_TIMEOUT_SECONDS)
@@ -133,8 +128,8 @@ def _fetch_related_posts_with_requests(url: str) -> List[str]:
         print(f"[WARNING][scraper:requests] Failed to fetch related posts with requests from {url}: {e}")
         return []
 
-# このファイルが直接実行された場合のテスト用
 if __name__ == '__main__':
+    # このファイルが直接実行された場合のテスト用ロジック
     trends = fetch_raw_trends()
     if trends:
         print("\n--- Scraping Test Result (Selenium) ---")

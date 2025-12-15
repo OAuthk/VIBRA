@@ -32,8 +32,6 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # ★ Playwright関連のステップは全て削除され、特別な設定は不要になった
-
       - name: 📥 Restore scores cache
         id: scores-cache-restore
         uses: actions/cache/restore@v4
