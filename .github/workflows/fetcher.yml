@@ -31,14 +31,12 @@ jobs:
       
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-
-      # ★★★★★★★★★★
-      # ★ 変更点 ★
-      # ★★★★★★★★★★
-      - name: 🎭 Install Playwright Browsers
-        # 'playwright'を直接呼び出す代わりに、'python -m playwright'として実行する
-        # これにより、PATHの問題を完全に回避できる
-        run: python -m playwright install --with-deps chromium
+      
+      - name: Install Selenium browser driver
+        run: |
+          # webdriver-managerがよしなにやってくれるが、CI環境では明示的にChrome for Testingをインストールする方が確実
+          # ただし、まずはwebdriver-managerに任せてみる。エラーが出たらここを修正。
+          echo "WebDriver will be installed by webdriver-manager automatically."
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
@@ -53,8 +51,21 @@ jobs:
           GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
         run: python scripts/main.py
 
-      # ... (以降のキャッシュ保存とGitプッシュのステップは変更なし)
-      - name: 💾 Save current scores to cache
-        # ...
+      - name: 💾 Save current scores to cache for next run
+        uses: actions/cache/save@v4
+        with:
+          path: cache/scores_to_cache.json
+          key: scores-cache-v1-${{ github.run_id }}
+          restore-keys: |
+            scores-cache-v1-
+
       - name: 🚀 Commit and Push data to cache-branch
-        # ...
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan cache-branch-temp
+          git reset --hard
+          git checkout main -- cache/latest_trends.json cache/scores_to_cache.json
+          git add cache/latest_trends.json cache/scores_to_cache.json
+          git commit -m "chore: Update data cache on $(date)"
+          git push origin HEAD:cache-branch --force
