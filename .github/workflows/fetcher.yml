@@ -15,16 +15,15 @@ on:
 
 permissions:
   contents: write
+  actions: write # ★ アーティファクトをアップロードするために必要
 
 jobs:
   fetch-and-cache:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch for scripts
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -32,14 +31,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
       
-      - name: Install Selenium browser driver
-        run: |
-          # webdriver-managerがよしなにやってくれるが、CI環境では明示的にChrome for Testingをインストールする方が確実
-          # ただし、まずはwebdriver-managerに任せてみる。エラーが出たらここを修正。
-          echo "WebDriver will be installed by webdriver-manager automatically."
-
       - name: 📥 Restore scores cache
-        id: scores-cache-restore
         uses: actions/cache/restore@v4
         with:
           path: cache/previous_scores.json
@@ -51,13 +43,23 @@ jobs:
           GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
         run: python scripts/main.py
 
-      - name: 💾 Save current scores to cache for next run
+      - name: 💾 Save current scores to cache
         uses: actions/cache/save@v4
         with:
           path: cache/scores_to_cache.json
           key: scores-cache-v1-${{ github.run_id }}
           restore-keys: |
             scores-cache-v1-
+            
+      # ★★★★★★★★★★
+      # ★ 変更点 ★
+      # ★★★★★★★★★★
+      - name: 📦 Upload data as artifact for Deploy workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: trends-data
+          path: cache/latest_trends.json
+          retention-days: 1
 
       - name: 🚀 Commit and Push data to cache-branch
         run: |
