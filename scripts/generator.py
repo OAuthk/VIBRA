@@ -58,8 +58,12 @@ def generate_site_from_cache():
 
     # 5. フロントエンドデータ保存
     trends_json_dst = os.path.join(dist_dir, 'trends.json')
+    output_data = {
+        "trends": frontend_trends,
+        "last_updated": datetime.now().strftime('%Y-%m-%d %H:%M')
+    }
     with open(trends_json_dst, 'w', encoding='utf-8') as f:
-        json.dump(frontend_trends, f, ensure_ascii=False, indent=2)
+        json.dump(output_data, f, ensure_ascii=False, indent=2)
     print(f"Generated frontend data at {trends_json_dst}")
 
     # 6. HTMLレンダリング

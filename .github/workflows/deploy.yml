@@ -1,11 +1,15 @@
+# .github/workflows/deploy.yml
+# 責務：最新のデータアーティファクトをダウンロードし、サイトをビルドし、GitHub Pagesにデプロイする。
+
 name: Build and Deploy Site
+
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: '5 * * * *' # fetcherの5分後に実行
+  workflow_dispatch: # 手動実行を許可
 
 permissions:
   contents: read
@@ -13,7 +17,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     env:
       GA4_TRACKING_ID: ${{ secrets.GA4_TRACKING_ID }}
@@ -21,38 +25,46 @@ jobs:
       - name: Checkout main branch (for templates and scripts)
         uses: actions/checkout@v4
 
-      - name: ⬇️ Fetch latest data from cache-branch
-        uses: actions/checkout@v4
+      # ★★★★★★★★★★
+      # ★ 変更点 ★
+      # ★★★★★★★★★★
+      - name: ⬇️ Download data artifact from the latest successful 'fetcher' run
+        uses: dawidd6/action-download-artifact@v3
         with:
-          ref: cache-branch
-          path: .cache-temp
-
-      - name: Move cache file to expected location
-        run: |
-          mkdir -p cache
-          mv .cache-temp/cache/latest_trends.json cache/latest_trends.json
+          # ワークフロー名で最新の成功した実行を探す
+          workflow: fetcher.yml 
+          name: trends-data
+          path: cache
       
-      - uses: actions/setup-python@v5
+      - name: 🔬 Debug: Verify downloaded cache file
+        run: |
+          echo "--- Verifying cache directory ---"
+          ls -lR cache/
+          echo "--- Verifying content of latest_trends.json ---"
+          cat cache/latest_trends.json || echo "Cache file is empty or does not exist."
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
         
-      - name: 🏗️ Generate Site Logic
+      - name: 🏗️ Generate Static Site
         run: python scripts/generator.py
       
       - name: 📂 Copy Static Assets
         run: cp -r static dist/
 
-      - name: 📦 Upload artifact
+      - name: 📦 Upload site artifact for deployment
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
   deploy:
-    needs: build-and-deploy
+    needs: build
     permissions:
       pages: write
       id-token: write

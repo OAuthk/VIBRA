@@ -1,5 +1,5 @@
 # .github/workflows/fetcher.yml
-# 責務：Seleniumを使いデータを取得・分析し、キャッシュファイルを生成し、それを'cache-branch'に安全に保存する。
+# 責務：データを取得・分析し、キャッシュファイルを生成し、それを'cache-branch'と'artifact'の両方に保存する。
 
 name: Fetch and Cache Trend Data
 
@@ -16,12 +16,10 @@ on:
       - 'requirements.txt'
       - '.github/workflows/fetcher.yml'
 
-# ★★★★★★★★★★
-# ★ 変更点 ★
-# ★★★★★★★★★★
-# ワークフローがリポジトリにコミットをプッシュするために必要な書き込み権限を付与する
+# ワークフローが必要とする権限を定義
 permissions:
-  contents: write
+  contents: write  # 'cache-branch'へのプッシュに必要
+  actions: write   # アーティファクトのアップロードに必要
 
 jobs:
   fetch-and-cache:
@@ -38,6 +36,12 @@ jobs:
       
       - name: Install Python dependencies
         run: pip install -r requirements.txt
+      
+      - name: Install Selenium browser
+        run: |
+          python -m playwright install --with-deps chromium
+          # 上記はPlaywrightのコマンドだが、Seleniumでも同様にブラウザが必要なため流用
+          # webdriver-managerがよしなにやってくれることを期待
 
       - name: 📥 Restore scores cache
         id: scores-cache-restore
@@ -59,29 +63,21 @@ jobs:
           key: scores-cache-v1-${{ github.run_id }}
           restore-keys: |
             scores-cache-v1-
+      
+      - name: 📦 Upload data as artifact for Deploy workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: trends-data
+          path: cache/latest_trends.json
+          retention-days: 1 # アーティファクトを1日で自動削除
 
-      - name: 🚀 Commit and Push data to cache-branch
+      - name: 🚀 Commit and Push data to cache-branch (for manual inspection)
         run: |
-          # Gitのユーザー設定
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # --- 安全なキャッシュブランチ更新手順 ---
-          
-          # 1. 'cache-branch-temp'という名前で、履歴のない新しい孤立したブランチを作成
           git checkout --orphan cache-branch-temp
-          
-          # 2. 現在のブランチの追跡対象ファイルをすべてリセットし、クリーンな状態にする
           git reset --hard
-          
-          # 3. 'main'ブランチから、必要なキャッシュファイル"だけ"を、現在のブランチに持ってくる
           git checkout main -- cache/latest_trends.json cache/scores_to_cache.json
-          
-          # 4. 持ってきたキャッシュファイルをステージング
           git add cache/latest_trends.json cache/scores_to_cache.json
-          
-          # 5. コミットを実行
           git commit -m "chore: Update data cache on $(date)"
-          
-          # 6. 'cache-branch-temp'ブランチを、リモートの'cache-branch'として強制プッシュ
           git push origin HEAD:cache-branch --force
