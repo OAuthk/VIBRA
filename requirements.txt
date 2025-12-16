@@ -1,23 +1,13 @@
-# Core Web Scraping & Parsing
+# requirements.txt
 requests
 beautifulsoup4
 selenium
 webdriver-manager
-
-# Template Engine
 Jinja2
-
-# Text Mining & Analysis
 janome
 networkx
 python-louvain
-
-# Data Validation & Modeling
 pydantic
-
-# Image Processing for OGP
 Pillow
 matplotlib
-
-# Utility
 pytz
