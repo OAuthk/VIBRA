@@ -15,7 +15,7 @@ on:
 
 permissions:
   contents: write
-  actions: write # ★ アーティファクトをアップロードするために必要
+  actions: write
 
 jobs:
   fetch-and-cache:
@@ -48,13 +48,14 @@ jobs:
         with:
           path: cache/scores_to_cache.json
           key: scores-cache-v1-${{ github.run_id }}
+          # ★★★★★★★★★★
+          # ★ 変更点 ★
+          # ★★★★★★★★★★
+          # 'restore-keys'を'with'ブロックの中に正しくインデント
           restore-keys: |
             scores-cache-v1-
             
-      # ★★★★★★★★★★
-      # ★ 変更点 ★
-      # ★★★★★★★★★★
-      - name: 📦 Upload data as artifact for Deploy workflow
+      - name: 📦 Upload data as artifact
         uses: actions/upload-artifact@v4
         with:
           name: trends-data
