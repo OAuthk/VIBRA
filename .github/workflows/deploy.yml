@@ -48,8 +48,8 @@ jobs:
       - name: 🏗️ Generate Static Site
         run: python scripts/generator.py
       
-      - name: 📂 Copy Static Assets
-        run: cp -r static dist/
+      # - name: 📂 Copy Static Assets
+      #   run: cp -r static dist/
 
       - name: 📦 Upload artifact
         uses: actions/upload-pages-artifact@v3
