@@ -23,6 +23,8 @@ CATEGORY_MAPPING = {
     'ビジネス': 'business',
     'スポーツ': 'entertainment',
     'エンタメ': 'entertainment',
+    'politics': 'business',   # フロントエンドにpoliticsがないためbusinessに寄せる
+    'social': 'all'
 }
 
 
@@ -70,7 +72,8 @@ def generate_site_from_cache():
     env = Environment(loader=FileSystemLoader(templates_dir))
     template_vars = {
         'ga4_tracking_id': os.environ.get('GA4_TRACKING_ID', ''),
-        'current_year': datetime.now().year
+        'current_year': datetime.now().year,
+        'cache_bust_version': int(datetime.now().timestamp())
     }
     
     # index.html
@@ -118,8 +121,9 @@ def _deserialize_trends(raw_data: List[Dict[str, Any]]) -> List[EnrichedTrendIte
 
 def _transform_for_frontend(item: EnrichedTrendItem) -> Dict[str, Any]:
     """EnrichedTrendItemをフロントエンド用形式に変換"""
-    # ステージ判定
-    if item.heatLevel == 'high' and item.score > 80:
+    # ステージ判定（緩和）
+    # High heat OR high score triggers peak visuals
+    if item.heatLevel == 'high' or item.score > 85:
         stage = 'peak'
     elif item.score < 30:
         stage = 'fading'
@@ -129,23 +133,33 @@ def _transform_for_frontend(item: EnrichedTrendItem) -> Dict[str, Any]:
     # カテゴリ正規化
     normalized_category = CATEGORY_MAPPING.get(item.category, 'all')
     
-    # Google検索URLを取得（Googleリンクを探す）
+    # Detail URL extraction (Priority: Google -> Mercari -> First Link)
     detail_url = ""
-    for link in item.links:
-        if link.provider == 'Google':
-            detail_url = link.url
-            break
-    
+    if item.links:
+        for link in item.links:
+            if link.provider == 'Google':
+                detail_url = link.url
+                break
+        if not detail_url:
+            detail_url = item.links[0].url
+
+    # Title Sanitization
+    title = item.title
+    # Check for None, empty, or specific keywords (case-insensitive)
+    if not title or str(title).strip() == "" or str(title).strip().upper() in ["UNDEFINED", "NULL", "NONE"]:
+        title = "注目トピック"
+
+
     return {
-        "text": item.title,
+        "text": title,
         "category": normalized_category,
         "stage": stage,
         "score": item.score,
         "heatLevel": item.heatLevel,
         "detail_url": detail_url,
-        "related_words": item.co_occurring_words,
+        "related_words": item.co_occurring_words if item.co_occurring_words else [], 
         "cluster_id": item.cluster_id,
-        "summary": item.summary
+        "summary": item.summary if item.summary else "詳細情報なし"
     }
 
 

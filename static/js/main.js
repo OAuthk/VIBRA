@@ -1,6 +1,6 @@
 /**
  * VIBRA - Living Cloud Visualization
- * D3.js based trend visualization
+ * Refactored for Stability & Performance
  */
 
 class VIBRAApp {
@@ -9,6 +9,8 @@ class VIBRAApp {
         this.currentGenre = 'all';
         this.svg = null;
         this.simulation = null;
+        this.width = 0;
+        this.height = 0;
         this.init();
     }
 
@@ -24,87 +26,87 @@ class VIBRAApp {
 
     async loadTrends() {
         try {
-            const response = await fetch('trends.json');
+            // Cache busting for data
+            const response = await fetch(`trends.json?v=${new Date().getTime()}`);
             if (!response.ok) throw new Error('Failed to load trends');
-            this.trends = await response.json();
+            const data = await response.json();
+            this.trends = data.trends || [];
+
+            // Update timestamp if available
+            if (data.last_updated) {
+                const timeDisplay = document.querySelector('.time-display');
+                if (timeDisplay) timeDisplay.textContent = data.last_updated;
+            }
+
             console.log(`Loaded ${this.trends.length} trends`);
         } catch (error) {
             console.error('Error loading trends:', error);
             this.trends = [];
+            document.getElementById('visualization').innerHTML = '<p class="no-data">トレンドの読み込みに失敗しました</p>';
         }
     }
 
     setupEventListeners() {
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', (e) => {
-                // Update active tab
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 e.target.classList.add('active');
-
-                // Filter by genre
                 this.currentGenre = e.target.dataset.genre;
                 this.renderVisualization();
             });
         });
+
+        // Window resize handler with debounce in class
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.renderVisualization();
+            }, 250);
+        });
     }
 
     updateTimeDisplay() {
+        // Fallback if not updated by JSON
         const timeDisplay = document.querySelector('.time-display');
-        if (timeDisplay) {
+        if (timeDisplay && !timeDisplay.textContent) {
             const now = new Date();
-            const options = {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                weekday: 'short'
-            };
-            timeDisplay.textContent = now.toLocaleDateString('ja-JP', options);
+            timeDisplay.textContent = now.toLocaleString('ja-JP');
         }
-    }
-
-    getCategoryMapping(category) {
-        // Map Japanese categories to genre filter values
-        const mapping = {
-            'IT': 'technology',
-            'テクノロジー': 'technology',
-            '総合': 'all',
-            'ニュース': 'business',
-            'スポーツ': 'entertainment',
-            'エンタメ': 'entertainment',
-            'ビジネス': 'business'
-        };
-        return mapping[category] || 'all';
     }
 
     getFilteredTrends() {
         if (this.currentGenre === 'all') {
             return this.trends;
         }
-        return this.trends.filter(trend => {
-            const mappedGenre = this.getCategoryMapping(trend.category);
-            return mappedGenre === this.currentGenre;
-        });
+        return this.trends.filter(trend => trend.category === this.currentGenre);
     }
 
-    getHeatColor(heatLevel, score) {
-        // Color palette based on heat level
+    // Heatmap color with random variance for organic look
+    getHeatColor(heatLevel) {
         const colors = {
             high: ['#EF4444', '#F97316', '#F59E0B'],    // Red-Orange
             medium: ['#3B82F6', '#6366F1', '#8B5CF6'],  // Blue-Purple
             low: ['#6B7280', '#9CA3AF', '#D1D5DB']      // Gray
         };
         const palette = colors[heatLevel] || colors.medium;
-        const index = Math.floor(Math.random() * palette.length);
-        return palette[index];
+        return palette[Math.floor(Math.random() * palette.length)];
     }
 
     renderVisualization() {
         const container = document.getElementById('visualization');
         if (!container) return;
 
-        // Clear previous visualization
+        // Use container size or Window fallback to PREVENT DIAGONAL FLIGHT (0,0 coordinate issue)
+        this.width = container.clientWidth || window.innerWidth;
+        this.height = container.clientHeight || (window.innerHeight - 100);
+
+        // Ensure we never have 0 dimensions
+        if (this.width === 0) this.width = 800;
+        if (this.height === 0) this.height = 600;
+
+        // Stop existing simulation
+        if (this.simulation) this.simulation.stop();
         container.innerHTML = '';
 
         const filteredTrends = this.getFilteredTrends();
@@ -113,177 +115,132 @@ class VIBRAApp {
             return;
         }
 
-        const width = container.clientWidth;
-        const height = container.clientHeight || 500;
-
-        // Create SVG
+        // --- D3 Initialization ---
         this.svg = d3.select(container)
             .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('viewBox', `0 0 ${width} ${height}`);
+            .attr('width', this.width)
+            .attr('height', this.height)
+            .attr('viewBox', `0 0 ${this.width} ${this.height}`);
 
-        // Create nodes from trends
-        const nodes = filteredTrends.map((trend, i) => ({
-            ...trend,
+        // Prepare Nodes
+        const nodes = filteredTrends.map((d, i) => ({
+            ...d,
             id: i,
-            radius: this.calculateRadius(trend.score),
-            color: this.getHeatColor(trend.heatLevel, trend.score)
+            radius: this.calculateRadius(d.score),
+            fillColor: this.getHeatColor(d.heatLevel),
+            // Start AT CENTER to prevent flying in from corner
+            x: this.width / 2 + (Math.random() - 0.5) * 50,
+            y: this.height / 2 + (Math.random() - 0.5) * 50
         }));
 
-        // Create force simulation - バブルを中央に強く密集させる
+        // Force Simulation
+        // Force Simulation - Tuned for stability and gentle floating
         this.simulation = d3.forceSimulation(nodes)
-            .force('charge', d3.forceManyBody().strength(150))  // さらに強い引力
-            .force('center', d3.forceCenter(width / 2, height / 2).strength(0.5))  // 中央への引力
-            .force('collision', d3.forceCollide().radius(d => d.radius + 1).strength(0.9))  // 最小マージン
-            .force('x', d3.forceX(width / 2).strength(0.3))   // X方向中央へ
-            .force('y', d3.forceY(height / 2).strength(0.3))  // Y方向中央へ
-            .on('tick', () => this.ticked(nodes))
-            .on('end', () => {
-                console.log('Simulation ended');
+            .velocityDecay(0.6) // Higher friction = less jitter, more "floating" feel
+            .force('charge', d3.forceManyBody().strength(-15))
+            .force('center', d3.forceCenter(this.width / 2, this.height / 2).strength(0.06))
+            .force('x', d3.forceX(this.width / 2).strength(0.1))
+            .force('y', d3.forceY(this.height / 2).strength(0.1))
+            .force('collision', d3.forceCollide().radius(d => d.radius + 5).strength(0.7));
+
+        // Tooltip
+        const tooltip = this.createTooltip();
+
+        // --- Render Groups (The VisualWrapper Pattern) ---
+
+        // 1. Outer Group: Positioned by D3 (Translate)
+        const nodeGroups = this.svg.selectAll('.node')
+            .data(nodes)
+            .join('g')
+            .attr('class', 'node')
+            .style('cursor', 'pointer')
+            .on('click', (e, d) => {
+                if (d.detail_url) window.open(d.detail_url, '_blank');
             });
 
-        // Create bubble groups
-        const bubbles = this.svg.selectAll('.bubble')
-            .data(nodes)
-            .enter()
-            .append('g')
-            .attr('class', d => `bubble stage-${d.stage}`)
-            .style('cursor', 'pointer')
-            .on('click', (event, d) => this.onBubbleClick(d))
-            .on('mouseenter', (event, d) => this.onBubbleHover(event, d, true))
-            .on('mouseleave', (event, d) => this.onBubbleHover(event, d, false));
+        // 2. Inner Wrapper: ANIMATED by CSS (Float) and Scaled on Hover
+        // Split into two groups to avoid 'transform' property conflict
+        const floaters = nodeGroups.append('g')
+            .attr('class', 'floater')
+            .style('animation-delay', () => `-${Math.random() * 5}s`);
 
-        // Add circles
-        bubbles.append('circle')
+        const scalers = floaters.append('g')
+            .attr('class', d => `scaler stage-${d.stage}`);
+
+        // 3. Visuals: Circle & Text (Attached to Scaler)
+        scalers.append('circle')
             .attr('r', d => d.radius)
-            .attr('fill', d => d.color)
-            .attr('opacity', 0.85)
+            .attr('fill', d => d.fillColor)
             .attr('stroke', '#fff')
-            .attr('stroke-width', 2);
+            .attr('stroke-width', 2)
+            .attr('stroke-opacity', 0.8);
 
-        // Add text labels
-        bubbles.append('text')
+        scalers.append('text')
             .attr('text-anchor', 'middle')
-            .attr('dy', '0.3em')
+            .attr('dy', '0.35em')
             .attr('fill', '#fff')
-            .attr('font-size', d => Math.max(10, d.radius / 3))
-            .attr('font-weight', '600')
+            .attr('font-weight', '700')
+            .attr('font-size', d => Math.max(12, d.radius / 3.5))
+            .style('pointer-events', 'none')
             .text(d => this.truncateText(d.text, d.radius));
 
-        // Add tooltip
-        this.createTooltip();
+        // --- Interaction (Hover for Tooltip) ---
+        nodeGroups
+            .on('mouseenter', (event, d) => {
+                tooltip.style('opacity', 1)
+                    .html(`
+                        <div class="tt-header">${d.text || 'No Title'}</div>
+                        <div class="tt-body">${d.summary || '詳細情報なし'}</div>
+                        <div class="tt-meta">
+                            <span class="badg">${d.heatLevel ? d.heatLevel.toUpperCase() : 'N/A'}</span>
+                            <span>Score: ${d.score}</span>
+                        </div>
+                        <div class="tt-related">関連: ${d.related_words && d.related_words.length > 0 ? d.related_words.join(', ') : '-'}</div>
+                    `)
+                    .style('left', (event.pageX + 15) + 'px')
+                    .style('top', (event.pageY - 15) + 'px');
+            })
+            .on('mousemove', (event) => {
+                tooltip
+                    .style('left', (event.pageX + 15) + 'px')
+                    .style('top', (event.pageY - 15) + 'px');
+            })
+            .on('mouseleave', () => {
+                tooltip.style('opacity', 0);
+            });
+
+        // --- Tick Update ---
+        this.simulation.on('tick', () => {
+            nodeGroups.attr('transform', d => `translate(${d.x}, ${d.y})`);
+        });
     }
 
     calculateRadius(score) {
-        // Scale score (0-100) to radius (20-60)
-        const minRadius = 25;
-        const maxRadius = 65;
-        return minRadius + (score / 100) * (maxRadius - minRadius);
+        const minR = 30;
+        const maxR = 80;
+        return minR + (score / 100) * (maxR - minR);
     }
 
     truncateText(text, radius) {
-        const maxChars = Math.floor(radius / 6);
-        if (text.length > maxChars) {
-            return text.substring(0, maxChars - 1) + '…';
-        }
-        return text;
-    }
+        if (!text) return '';
+        const t = String(text); // Ensure string
+        const lower = t.toLowerCase().trim();
+        if (lower === 'undefined' || lower === 'null' || lower === 'none' || lower === '') return '';
 
-    ticked(nodes) {
-        this.svg.selectAll('.bubble')
-            .attr('transform', d => `translate(${d.x}, ${d.y})`);
+        const limit = Math.floor(radius / 4); // Adjusted limit
+        return t.length > limit ? t.substring(0, limit) + '..' : t;
     }
 
     createTooltip() {
-        // Remove existing tooltip
-        d3.select('.tooltip').remove();
-
-        d3.select('body')
-            .append('div')
-            .attr('class', 'tooltip')
-            .style('opacity', 0);
-    }
-
-    onBubbleHover(event, d, isEnter) {
-        const tooltip = d3.select('.tooltip');
-        const bubble = d3.select(event.currentTarget);
-
-        if (isEnter) {
-            // バブルを浮かび上がらせる（サイズ拡大 + 影強調）
-            bubble.select('circle')
-                .transition()
-                .duration(200)
-                .attr('r', d.radius * 1.1)
-                .attr('opacity', 1)
-                .style('filter', 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3))');
-
-            // テキストも少し大きく
-            bubble.select('text')
-                .transition()
-                .duration(200)
-                .attr('font-size', Math.max(12, d.radius / 2.5));
-
-            tooltip.transition()
-                .duration(200)
-                .style('opacity', 1);
-
-            tooltip.html(`
-                <strong>${d.text}</strong><br>
-                <div style="font-size:0.85em; color:#ddd; margin:4px 0; max-width:200px; white-space:normal; line-height:1.4;">${d.summary || '詳細情報なし'}</div>
-                <div style="font-size:0.8em; opacity:0.8; margin-top:4px;">
-                    カテゴリ: ${d.category}<br>
-                    スコア: ${d.score}
-                </div>
-            `)
-                .style('left', (event.pageX + 15) + 'px')
-                .style('top', (event.pageY - 10) + 'px');
-        } else {
-            // 元のサイズに戻す
-            bubble.select('circle')
-                .transition()
-                .duration(300)
-                .attr('r', d.radius)
-                .attr('opacity', 0.85)
-                .style('filter', null);
-
-            // テキストも元に戻す
-            bubble.select('text')
-                .transition()
-                .duration(300)
-                .attr('font-size', Math.max(10, d.radius / 3));
-
-            tooltip.transition()
-                .duration(300)
-                .style('opacity', 0);
+        let tt = d3.select('.tooltip');
+        if (tt.empty()) {
+            tt = d3.select('body').append('div').attr('class', 'tooltip');
         }
-    }
-
-    onBubbleClick(d) {
-        if (d.detail_url) {
-            window.open(d.detail_url, '_blank');
-        }
-    }
-
-    // Handle window resize
-    handleResize() {
-        if (this.simulation) {
-            this.simulation.stop();
-        }
-        this.renderVisualization();
+        return tt;
     }
 }
 
-// Initialize app when DOM is ready
+// Start
 document.addEventListener('DOMContentLoaded', () => {
     window.vibraApp = new VIBRAApp();
-
-    // Handle window resize with debounce
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            window.vibraApp.handleResize();
-        }, 250);
-    });
 });
