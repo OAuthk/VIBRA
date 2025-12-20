@@ -38,7 +38,17 @@ body {
     font-weight: 800;
     background: linear-gradient(135deg, #a78bfa, #2dd4bf);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Fallback */
+}
+
+/* Global Reset update */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 .time-display {
