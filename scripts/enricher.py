@@ -17,7 +17,8 @@ from models import AnalyzedTrendItem, EnrichedTrendItem, Link
 W1_RANK = 0.4
 W2_POSTS = 0.3
 W3_VELOCITY = 0.3
-VELOCITY_THRESHOLD_HIGH = 20
+# 急上昇判定の閾値（少し緩和 20 -> 15）
+VELOCITY_THRESHOLD_HIGH = 15
 
 # カテゴリリストは category_classifier.py に移動
 
@@ -50,7 +51,14 @@ def enrich_trends(analyzed_trends: List[AnalyzedTrendItem]) -> List[EnrichedTren
         post_metric = (math.log1p(trend.posts_num) / math.log1p(max_posts)) * 100
         
         previous_score = previous_scores.get(trend.title, 0)
-        velocity_metric = max(0, 100 - previous_score)
+        # 前回のスコアがない（新規）場合は高めのVelocityを与える
+        if previous_score == 0:
+            velocity_metric = 100 
+        else:
+            velocity_metric = max(0, 100 - (previous_score - 0)) # 簡易計算
+            
+        # Velocity計算の精密化: 今回ランクインして、かつ前回より高い場合にスコアを加算したいが、
+        # ここではシンプルに「現在の勢い」を表現する構成にする
         
         score = int(
             W1_RANK * rank_metric +
@@ -62,7 +70,11 @@ def enrich_trends(analyzed_trends: List[AnalyzedTrendItem]) -> List[EnrichedTren
         
         # ヒートレベル判定
         velocity_diff = score - previous_score
-        if velocity_diff >= VELOCITY_THRESHOLD_HIGH and score > 50:
+        
+        # 条件緩和: 
+        # 1. 急上昇 (Diff >= 15) かつ スコア50以上
+        # 2. 殿堂入り級 (Score >= 90) -> 常にHigh
+        if (velocity_diff >= VELOCITY_THRESHOLD_HIGH and score > 50) or score >= 90:
             heat_level = 'high'
         elif score > 60:
             heat_level = 'medium'

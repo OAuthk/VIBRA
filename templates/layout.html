@@ -1,60 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIBRA - リアルタイムトレンドを美しく可視化。今何が話題になっているかを一目で確認できます。">
-    <meta name="keywords" content="トレンド, リアルタイム, 可視化, VIBRA">
-    <meta property="og:title" content="VIBRA - Living Cloud">
-    <meta property="og:description" content="リアルタイムトレンドを美しく可視化">
-    <meta property="og:type" content="website">
     <title>VIBRA - Living Cloud</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="static/css/style.css">
-
-    <!-- Google Analytics Snippet (to be filled by Jinja2) -->
+    <link rel="stylesheet" href="css/style.css?v={{ cache_bust_version }}">
+    
     {% if ga4_tracking_id and 'DEFAULT' not in ga4_tracking_id %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga4_tracking_id }}"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', '{{ ga4_tracking_id }}');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ ga4_tracking_id }}');
     </script>
     {% endif %}
 </head>
-
 <body>
     <header class="header">
-        <h1 class="brand">VIBRA</h1>
+        <div class="brand">VIBRA</div>
         <div class="header-meta">
-            <div class="time-display" aria-live="polite"></div>
+            <div class="time-display"></div>
         </div>
     </header>
 
-    <nav class="tabs-container" role="navigation" aria-label="カテゴリフィルター">
-        <div class="tabs" role="tablist">
-            <button class="tab active" data-genre="all" role="tab" aria-selected="true">すべて</button>
-            <button class="tab" data-genre="technology" role="tab" aria-selected="false">テクノロジー</button>
-            <button class="tab" data-genre="entertainment" role="tab" aria-selected="false">エンタメ</button>
-            <button class="tab" data-genre="business" role="tab" aria-selected="false">ビジネス</button>
+    <nav class="tabs-container">
+        <div class="tabs">
+            <button class="tab active" data-genre="all">すべて</button>
+            <button class="tab" data-genre="technology">テクノロジー</button>
+            <button class="tab" data-genre="entertainment">エンタメ</button>
+            <button class="tab" data-genre="business">ビジネス</button>
+            <!-- Add other genres as needed -->
         </div>
     </nav>
 
     <main class="main-content">
-        <div id="visualization" class="visualization-container" role="img" aria-label="トレンド可視化"></div>
+        <div id="visualization" class="visualization-container">
+            <!-- D3.js will render the SVG here -->
+        </div>
     </main>
 
     <footer class="footer">
         <p>&copy; {{ current_year }} VIBRA. Powered by D3.js</p>
-        <p class="footer-links"><a href="guidelines.html">AI機能ガイドライン</a></p>
+        <a href="guidelines.html">AI機能ガイドライン</a>
     </footer>
 
-    <script src="static/js/main.js"></script>
+    <script src="js/main.js?v={{ cache_bust_version }}"></script>
 </body>
-
 </html>
