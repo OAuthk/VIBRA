@@ -54,6 +54,37 @@ def generate_site_from_cache():
     if os.path.exists(dist_dir):
         shutil.rmtree(dist_dir)
     os.makedirs(dist_dir)
+
+    # 3.5 静的ファイルのコピー
+    static_src = os.path.join(base_dir, 'static')
+    if os.path.exists(static_src):
+        # dist直下に static の中身を展開するのではなく、dist/static または dist/css, dist/js として配置されるようにする
+        # layout.htmlでは "css/style.css", "js/main.js" となっているので
+        # static/css -> dist/css, static/js -> dist/js となるようにコピーする
+        # shutil.copytreeはディレクトリごとコピーするので、
+        # dist/css 等が存在しないことを確認してコピー
+        
+        # Simple copy: static/* -> dist/*
+        # walk and copy or just copytree the whole static dir contents?
+        # Typically one wants dist/css, dist/js.
+        # If static has css/ and js/ inside it:
+        # copytree(static, dist, dirs_exist_ok=True) (Python 3.8+)
+        
+        try:
+            # Python 3.8+ support dirs_exist_ok
+            shutil.copytree(static_src, dist_dir, dirs_exist_ok=True)
+            print(f"[INFO] Copied static assets from {static_src} to {dist_dir}")
+        except TypeError:
+            # Fallback for older python if needed, but 3.8 is likely.
+            # If dirs_exist_ok not supported, we have to iterate
+             for item in os.listdir(static_src):
+                s = os.path.join(static_src, item)
+                d = os.path.join(dist_dir, item)
+                if os.path.isdir(s):
+                    shutil.copytree(s, d)
+                else:
+                    shutil.copy2(s, d)
+             print(f"[INFO] Copied static assets (fallback) to {dist_dir}")
     
     # 4. フロントエンド用データに変換
     frontend_trends = [_transform_for_frontend(item) for item in trends_data]
@@ -146,7 +177,9 @@ def _transform_for_frontend(item: EnrichedTrendItem) -> Dict[str, Any]:
     # Title Sanitization
     title = item.title
     # Check for None, empty, or specific keywords (case-insensitive)
-    if not title or str(title).strip() == "" or str(title).strip().upper() in ["UNDEFINED", "NULL", "NONE"]:
+    # Check for None, empty, or specific keywords (case-insensitive)
+    title_str = str(title).strip() if title else ""
+    if not title_str or title_str.upper() in ["UNDEFINED", "NULL", "NONE"] or "undefined" in title_str.lower():
         title = "注目トピック"
 
 
